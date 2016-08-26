@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>我的MarkDown</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link th:href="@{static/css/bootstrap.min.css}" href="/static/css/bootstrap.min.css"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{static/css/app.css}" href="/static/css/app.css" rel="stylesheet"
+          type="text/css"/>
+</head>
+<body>
+<div class="row">
+    <!--左面板-->
+    <div class="col-md-3 left-panel">
+        <span class="title"><i class="glyphicon glyphicon-user"></i> 我的文档</span>
+        <div id="tree"></div>
+        <div class="left-tools">
+            <div class="text-center">
+                <a href="javaScript:void (0)" id="categoryRefresh" class="refresh"><i
+                        class="glyphicon glyphicon-refresh"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--中部面板-->
+    <div class="col-md-9 middle-panel">
+        <div class="preview-panel">
+            <h1 class="text-center">欢迎使用Markdown View Tools</h1>
+        </div>
+    </div>
+</div>
+
+<!--右部面板-->
+<div class="right-panel" style="border: 1px solid black">
+    <ul class="list-unstyled text-center right-tools">
+        <li class="dropdown">
+            <span class="glyphicon glyphicon-th-list dropdown-toggle" id="dropdownMenu1"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></span>
+            <div id="category-list" class="dropdown-menu pull-right"
+                 aria-labelledby="dropdownMenu1">
+                <span class="cate-title">文档目录</span>
+                <div class="category">
+
+                </div>
+            </div>
+        </li>
+        <li><span class="glyphicon glyphicon-refresh" title="刷新此文档"></span></li>
+        <li><span class="glyphicon glyphicon-download-alt" title="下载此文档"></span></li>
+    </ul>
+</div>
+
+<script th:src="@{static/js/jquery.min.js}"
+        src="http://oce4brl1p.bkt.clouddn.com/jquery.min.js"></script>
+<script th:src="@{static/js/bootstrap.min.js}"
+        src="http://oce4brl1p.bkt.clouddn.com/bootstrap.min.js"></script>
+<script th:src="@{static/js/Parser.js}" src=""></script>
+<script th:src="@{static/js/highlight.min.js}" src="/static/js/highlight.min.js"></script>
+<script th:src="@{static/js/bootstrap-treeview.min.js}" src=""></script>
+<script th:src="@{static/js/app.js}" src=""></script>
+</body>
+</html>

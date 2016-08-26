@@ -1,0 +1,895 @@
+2016-08-26 09:47:15.361 ERROR 13600 --- [http-nio-8090-exec-7] org.springsource.loaded.jvm.JVM          : Problems copying method. Incompatible JVM?
+
+java.lang.reflect.InvocationTargetException: null
+	at sun.reflect.GeneratedMethodAccessor27.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_77]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_77]
+	at org.springsource.loaded.jvm.JVM.copyMethod(JVM.java:134) ~[springloaded-1.2.0.RELEASE.jar:1.2.0.RELEASE]
+	at org.springsource.loaded.ri.JavaMethodInvoker.createJavaMethod(JavaMethodInvoker.java:48) [springloaded-1.2.0.RELEASE.jar:1.2.0.RELEASE]
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlClassGetMethods(ReflectiveInterceptor.java:168) [springloaded-1.2.0.RELEASE.jar:1.2.0.RELEASE]
+	at com.alibaba.fastjson.util.TypeUtils.computeGetters(TypeUtils.java:1090) [fastjson-1.2.14.jar:na]
+	at com.alibaba.fastjson.util.TypeUtils.buildBeanInfo(TypeUtils.java:1046) [fastjson-1.2.14.jar:na]
+	at com.alibaba.fastjson.serializer.SerializeConfig.createJavaBeanSerializer(SerializeConfig.java:112) [fastjson-1.2.14.jar:na]
+	at com.alibaba.fastjson.serializer.SerializeConfig.getObjectWriter(SerializeConfig.java:519) [fastjson-1.2.14.jar:na]
+	at com.alibaba.fastjson.serializer.SerializeConfig.getObjectWriter(SerializeConfig.java:335) [fastjson-1.2.14.jar:na]
+	at com.alibaba.fastjson.serializer.JSONSerializer.getObjectWriter(JSONSerializer.java:318) [fastjson-1.2.14.jar:na]
+	at com.alibaba.fastjson.serializer.JSONSerializer.write(JSONSerializer.java:261) [fastjson-1.2.14.jar:na]
+	at com.alibaba.fastjson.JSON.writeJSONString(JSON.java:781) [fastjson-1.2.14.jar:na]
+	at com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter.writeInternal(FastJsonHttpMessageConverter.java:155) [fastjson-1.2.14.jar:na]
+	at com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter.write(FastJsonHttpMessageConverter.java:219) [fastjson-1.2.14.jar:na]
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:232) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:173) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:81) [spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:130) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:648) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) [spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:87) [spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77) [spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) [spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:522) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:1110) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:785) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1425) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_77]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_77]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_77]
+Caused by: java.lang.IllegalArgumentException: Can not copy a non-root Method
+	at java.lang.reflect.Method.copy(Method.java:151) ~[na:1.8.0_77]
+	... 67 common frames omitted
+
+2016-08-26 09:49:44.964  INFO 316 --- [main] cn.mrdear.Application                    : Starting Application on DESKTOP-KAR3OG3 with PID 316 (F:\Git\MarkdownViewTools\target\classes started by 牛李 in F:\Git\MarkdownViewTools)
+2016-08-26 09:49:44.967 DEBUG 316 --- [main] cn.mrdear.Application                    : Running with Spring Boot v1.4.0.RELEASE, Spring v4.3.2.RELEASE
+2016-08-26 09:49:44.968  INFO 316 --- [main] cn.mrdear.Application                    : No active profile set, falling back to default profiles: default
+2016-08-26 09:49:45.159  INFO 316 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4a3715d7: startup date [Fri Aug 26 09:49:45 CST 2016]; root of context hierarchy
+2016-08-26 09:49:46.005  INFO 316 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [class org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$c3a56937] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-08-26 09:49:46.550  INFO 316 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8090 (http)
+2016-08-26 09:49:46.558  INFO 316 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2016-08-26 09:49:46.559  INFO 316 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.4
+2016-08-26 09:49:46.621  INFO 316 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2016-08-26 09:49:46.621  INFO 316 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1464 ms
+2016-08-26 09:49:46.803  INFO 316 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-08-26 09:49:46.804  INFO 316 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-08-26 09:49:46.804  INFO 316 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-08-26 09:49:46.804  INFO 316 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2016-08-26 09:49:46.804  INFO 316 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'gzipFilter' to urls: [*.css, *.js, *.json]
+2016-08-26 09:49:46.805  INFO 316 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'simplePageCachingFilter' to urls: [/12321]
+2016-08-26 09:49:46.805  INFO 316 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2016-08-26 09:49:46.830 DEBUG 316 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter
+2016-08-26 09:49:46.831 DEBUG 316 --- [localhost-startStop-1] n.s.e.c.w.f.SimplePageCachingFilter      : Using configured cacheName of hello.
+2016-08-26 09:49:46.841 DEBUG 316 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from ehcache.xml found in the classpath: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 09:49:46.841 DEBUG 316 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from URL: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 09:49:46.842 DEBUG 316 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 09:49:46.857 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 09:49:46.857 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 09:49:46.859 DEBUG 316 --- [localhost-startStop-1] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 09:49:46.873 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Creating new CacheManager with default config
+2016-08-26 09:49:46.876 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.util.PropertyUtil         : propertiesString is null.
+2016-08-26 09:49:46.886 DEBUG 316 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheManagerEventListenerFactory class specified. Skipping...
+2016-08-26 09:49:46.920 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 09:49:46.920 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 09:49:46.920 DEBUG 316 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 09:49:46.924 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 09:49:46.924 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 09:49:46.924 DEBUG 316 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 09:49:46.933 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Using diskstore path E:\test
+2016-08-26 09:49:46.933 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Holding exclusive lock on E:\test\.ehcache-diskstore.lock
+2016-08-26 09:49:46.934 DEBUG 316 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 09:49:46.939 DEBUG 316 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Matching data file missing (or empty) for index file. Deleting index file E:\test\hello.index
+2016-08-26 09:49:46.940 DEBUG 316 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 09:49:46.968 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE
+2016-08-26 09:49:46.968 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE_BYTES
+2016-08-26 09:49:46.968 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: WRITER_QUEUE_LENGTH
+2016-08-26 09:49:46.969 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: REMOTE_SIZE
+2016-08-26 09:49:46.969 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LAST_REJOIN_TIMESTAMP
+2016-08-26 09:49:46.975 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_GET
+2016-08-26 09:49:46.975 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_PUT
+2016-08-26 09:49:46.975 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_REMOVE
+2016-08-26 09:49:46.976 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_COMMIT
+2016-08-26 09:49:46.976 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_ROLLBACK
+2016-08-26 09:49:46.976 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_RECOVERY
+2016-08-26 09:49:46.976 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: CLUSTER_EVENT
+2016-08-26 09:49:46.977 DEBUG 316 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: NONSTOP
+2016-08-26 09:49:46.979 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : Initialised cache: hello
+2016-08-26 09:49:46.980 DEBUG 316 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured. Skipping for 'hello'.
+2016-08-26 09:49:46.980 DEBUG 316 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured for defaultCache. Skipping for 'hello'.
+2016-08-26 09:49:46.984 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 09:49:46.984 DEBUG 316 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 09:49:46.984 DEBUG 316 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for cn.mrdear.filter.GzipFilter
+2016-08-26 09:49:47.080  INFO 316 --- [main] cn.mrdear.job.CategoryJob                : 写入目录成功
+2016-08-26 09:49:47.085  INFO 316 --- [main] o.s.c.ehcache.EhCacheManagerFactoryBean  : Initializing EhCache CacheManager
+2016-08-26 09:49:47.085 DEBUG 316 --- [main] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 09:49:47.086 DEBUG 316 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 09:49:47.086 DEBUG 316 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 09:49:47.086 DEBUG 316 --- [main] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 09:49:47.087 DEBUG 316 --- [main] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 09:49:47.279  INFO 316 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4a3715d7: startup date [Fri Aug 26 09:49:45 CST 2016]; root of context hierarchy
+2016-08-26 09:49:47.346  INFO 316 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String cn.mrdear.controller.IndexController.showIndex() throws java.io.IOException
+2016-08-26 09:49:47.347  INFO 316 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/article],methods=[POST]}" onto public cn.mrdear.entity.Article cn.mrdear.controller.IndexController.showArticle(java.lang.String,org.springframework.ui.Model) throws java.io.IOException
+2016-08-26 09:49:47.347  INFO 316 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/refresh/category],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.Boolean cn.mrdear.controller.IndexController.refreshCategory()
+2016-08-26 09:49:47.351  INFO 316 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-08-26 09:49:47.351  INFO 316 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-08-26 09:49:47.387  INFO 316 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 09:49:47.387  INFO 316 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 09:49:47.444  INFO 316 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 09:49:47.914  INFO 316 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-08-26 09:49:47.964  INFO 316 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8090 (http)
+2016-08-26 09:49:47.967  INFO 316 --- [main] cn.mrdear.Application                    : Started Application in 3.46 seconds (JVM running for 6.176)
+2016-08-26 09:50:21.616  INFO 9616 --- [main] cn.mrdear.Application                    : Starting Application on DESKTOP-KAR3OG3 with PID 9616 (F:\Git\MarkdownViewTools\target\classes started by 牛李 in F:\Git\MarkdownViewTools)
+2016-08-26 09:50:21.623 DEBUG 9616 --- [main] cn.mrdear.Application                    : Running with Spring Boot v1.4.0.RELEASE, Spring v4.3.2.RELEASE
+2016-08-26 09:50:21.623  INFO 9616 --- [main] cn.mrdear.Application                    : No active profile set, falling back to default profiles: default
+2016-08-26 09:50:21.982  INFO 9616 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4a9f9e0c: startup date [Fri Aug 26 09:50:21 CST 2016]; root of context hierarchy
+2016-08-26 09:50:23.295  INFO 9616 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [class org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$d91921a4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-08-26 09:50:24.032  INFO 9616 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8090 (http)
+2016-08-26 09:50:24.049  INFO 9616 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2016-08-26 09:50:24.051  INFO 9616 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.4
+2016-08-26 09:50:24.201  INFO 9616 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2016-08-26 09:50:24.202  INFO 9616 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2220 ms
+2016-08-26 09:50:24.512  INFO 9616 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-08-26 09:50:24.512  INFO 9616 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-08-26 09:50:24.512  INFO 9616 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-08-26 09:50:24.513  INFO 9616 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2016-08-26 09:50:24.513  INFO 9616 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'gzipFilter' to urls: [*.css, *.js, *.json]
+2016-08-26 09:50:24.513  INFO 9616 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'simplePageCachingFilter' to urls: [/12321]
+2016-08-26 09:50:24.513  INFO 9616 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2016-08-26 09:50:24.545 DEBUG 9616 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter
+2016-08-26 09:50:24.545 DEBUG 9616 --- [localhost-startStop-1] n.s.e.c.w.f.SimplePageCachingFilter      : Using configured cacheName of hello.
+2016-08-26 09:50:24.561 DEBUG 9616 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from ehcache.xml found in the classpath: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 09:50:24.561 DEBUG 9616 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from URL: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 09:50:24.561 DEBUG 9616 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 09:50:24.579 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 09:50:24.579 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 09:50:24.581 DEBUG 9616 --- [localhost-startStop-1] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 09:50:24.593 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Creating new CacheManager with default config
+2016-08-26 09:50:24.595 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.util.PropertyUtil         : propertiesString is null.
+2016-08-26 09:50:24.605 DEBUG 9616 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheManagerEventListenerFactory class specified. Skipping...
+2016-08-26 09:50:24.670 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 09:50:24.670 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 09:50:24.670 DEBUG 9616 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 09:50:24.678 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 09:50:24.678 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 09:50:24.678 DEBUG 9616 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 09:50:24.692 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Using diskstore path E:\test
+2016-08-26 09:50:24.692 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Holding exclusive lock on E:\test\.ehcache-diskstore.lock
+2016-08-26 09:50:24.693 DEBUG 9616 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 09:50:24.702 DEBUG 9616 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Matching data file missing (or empty) for index file. Deleting index file E:\test\hello.index
+2016-08-26 09:50:24.702 DEBUG 9616 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 09:50:24.772 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE
+2016-08-26 09:50:24.774 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE_BYTES
+2016-08-26 09:50:24.774 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: WRITER_QUEUE_LENGTH
+2016-08-26 09:50:24.774 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: REMOTE_SIZE
+2016-08-26 09:50:24.775 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LAST_REJOIN_TIMESTAMP
+2016-08-26 09:50:24.788 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_GET
+2016-08-26 09:50:24.789 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_PUT
+2016-08-26 09:50:24.789 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_REMOVE
+2016-08-26 09:50:24.790 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_COMMIT
+2016-08-26 09:50:24.790 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_ROLLBACK
+2016-08-26 09:50:24.791 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_RECOVERY
+2016-08-26 09:50:24.791 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: CLUSTER_EVENT
+2016-08-26 09:50:24.792 DEBUG 9616 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: NONSTOP
+2016-08-26 09:50:24.798 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : Initialised cache: hello
+2016-08-26 09:50:24.798 DEBUG 9616 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured. Skipping for 'hello'.
+2016-08-26 09:50:24.798 DEBUG 9616 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured for defaultCache. Skipping for 'hello'.
+2016-08-26 09:50:24.807 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 09:50:24.808 DEBUG 9616 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 09:50:24.809 DEBUG 9616 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for cn.mrdear.filter.GzipFilter
+2016-08-26 09:50:25.052  INFO 9616 --- [main] cn.mrdear.job.CategoryJob                : 写入目录成功
+2016-08-26 09:50:25.059  INFO 9616 --- [main] o.s.c.ehcache.EhCacheManagerFactoryBean  : Initializing EhCache CacheManager
+2016-08-26 09:50:25.060 DEBUG 9616 --- [main] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 09:50:25.062 DEBUG 9616 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 09:50:25.062 DEBUG 9616 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 09:50:25.062 DEBUG 9616 --- [main] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 09:50:25.063 DEBUG 9616 --- [main] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 09:50:25.793  INFO 9616 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4a9f9e0c: startup date [Fri Aug 26 09:50:21 CST 2016]; root of context hierarchy
+2016-08-26 09:50:25.934  INFO 9616 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/article],methods=[POST]}" onto public cn.mrdear.entity.Article cn.mrdear.controller.IndexController.showArticle(java.lang.String,org.springframework.ui.Model) throws java.io.IOException
+2016-08-26 09:50:25.936  INFO 9616 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String cn.mrdear.controller.IndexController.showIndex() throws java.io.IOException
+2016-08-26 09:50:25.936  INFO 9616 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/refresh/category],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.Boolean cn.mrdear.controller.IndexController.refreshCategory()
+2016-08-26 09:50:25.939  INFO 9616 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-08-26 09:50:25.939  INFO 9616 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-08-26 09:50:26.053  INFO 9616 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 09:50:26.053  INFO 9616 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 09:50:26.169  INFO 9616 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 09:50:26.984  INFO 9616 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-08-26 09:50:27.105  INFO 9616 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8090 (http)
+2016-08-26 09:50:27.115  INFO 9616 --- [main] cn.mrdear.Application                    : Started Application in 6.731 seconds (JVM running for 12.417)
+2016-08-26 09:59:57.664  INFO 10504 --- [main] cn.mrdear.Application                    : Starting Application on DESKTOP-KAR3OG3 with PID 10504 (F:\Git\MarkdownViewTools\target\classes started by 牛李 in F:\Git\MarkdownViewTools)
+2016-08-26 09:59:57.669 DEBUG 10504 --- [main] cn.mrdear.Application                    : Running with Spring Boot v1.4.0.RELEASE, Spring v4.3.2.RELEASE
+2016-08-26 09:59:57.669  INFO 10504 --- [main] cn.mrdear.Application                    : No active profile set, falling back to default profiles: default
+2016-08-26 09:59:57.945  INFO 10504 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d7e3d91: startup date [Fri Aug 26 09:59:57 CST 2016]; root of context hierarchy
+2016-08-26 09:59:58.774  INFO 10504 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [class org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$d34e0f9c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-08-26 09:59:59.292  INFO 10504 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8090 (http)
+2016-08-26 09:59:59.303  INFO 10504 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2016-08-26 09:59:59.304  INFO 10504 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.4
+2016-08-26 09:59:59.372  INFO 10504 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2016-08-26 09:59:59.372  INFO 10504 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1429 ms
+2016-08-26 09:59:59.567  INFO 10504 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-08-26 09:59:59.568  INFO 10504 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-08-26 09:59:59.568  INFO 10504 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-08-26 09:59:59.568  INFO 10504 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2016-08-26 09:59:59.568  INFO 10504 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'gzipFilter' to urls: [*.css, *.js, *.json]
+2016-08-26 09:59:59.569  INFO 10504 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'simplePageCachingFilter' to urls: [/12321]
+2016-08-26 09:59:59.569  INFO 10504 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2016-08-26 09:59:59.589 DEBUG 10504 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter
+2016-08-26 09:59:59.589 DEBUG 10504 --- [localhost-startStop-1] n.s.e.c.w.f.SimplePageCachingFilter      : Using configured cacheName of hello.
+2016-08-26 09:59:59.601 DEBUG 10504 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from ehcache.xml found in the classpath: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 09:59:59.601 DEBUG 10504 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from URL: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 09:59:59.601 DEBUG 10504 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 09:59:59.614 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 09:59:59.614 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 09:59:59.615 DEBUG 10504 --- [localhost-startStop-1] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 09:59:59.629 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Creating new CacheManager with default config
+2016-08-26 09:59:59.632 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.util.PropertyUtil         : propertiesString is null.
+2016-08-26 09:59:59.638 DEBUG 10504 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheManagerEventListenerFactory class specified. Skipping...
+2016-08-26 09:59:59.676 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 09:59:59.677 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 09:59:59.677 DEBUG 10504 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 09:59:59.683 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 09:59:59.684 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 09:59:59.684 DEBUG 10504 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 09:59:59.710  WARN 10504 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : diskStorePath 'E:\test' is already used by an existing CacheManager either in the same VM or in a different process.
+The diskStore path for this CacheManager will be set to E:\test\ehcache_auto_created3713170387479496538diskstore.
+To avoid this warning consider using the CacheManager factory methods to create a singleton CacheManager or specifying a separate ehcache configuration (ehcache.xml) for each CacheManager instance.
+2016-08-26 09:59:59.710 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Using diskstore path E:\test\ehcache_auto_created3713170387479496538diskstore
+2016-08-26 09:59:59.710 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Holding exclusive lock on E:\test\ehcache_auto_created3713170387479496538diskstore\.ehcache-diskstore.lock
+2016-08-26 09:59:59.710 DEBUG 10504 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.data
+2016-08-26 09:59:59.711 DEBUG 10504 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 09:59:59.717 DEBUG 10504 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Matching data file missing (or empty) for index file. Deleting index file E:\test\ehcache_auto_created3713170387479496538diskstore\hello.index
+2016-08-26 09:59:59.717 DEBUG 10504 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 09:59:59.758 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE
+2016-08-26 09:59:59.759 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE_BYTES
+2016-08-26 09:59:59.759 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: WRITER_QUEUE_LENGTH
+2016-08-26 09:59:59.759 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: REMOTE_SIZE
+2016-08-26 09:59:59.759 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LAST_REJOIN_TIMESTAMP
+2016-08-26 09:59:59.767 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_GET
+2016-08-26 09:59:59.768 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_PUT
+2016-08-26 09:59:59.768 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_REMOVE
+2016-08-26 09:59:59.769 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_COMMIT
+2016-08-26 09:59:59.769 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_ROLLBACK
+2016-08-26 09:59:59.769 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_RECOVERY
+2016-08-26 09:59:59.769 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: CLUSTER_EVENT
+2016-08-26 09:59:59.769 DEBUG 10504 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: NONSTOP
+2016-08-26 09:59:59.774 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : Initialised cache: hello
+2016-08-26 09:59:59.774 DEBUG 10504 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured. Skipping for 'hello'.
+2016-08-26 09:59:59.774 DEBUG 10504 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured for defaultCache. Skipping for 'hello'.
+2016-08-26 09:59:59.782 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 09:59:59.782 DEBUG 10504 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 09:59:59.783 DEBUG 10504 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for cn.mrdear.filter.GzipFilter
+2016-08-26 09:59:59.923  INFO 10504 --- [main] cn.mrdear.job.CategoryJob                : 写入目录成功
+2016-08-26 09:59:59.928  INFO 10504 --- [main] o.s.c.ehcache.EhCacheManagerFactoryBean  : Initializing EhCache CacheManager
+2016-08-26 09:59:59.929 DEBUG 10504 --- [main] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 09:59:59.931 DEBUG 10504 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 09:59:59.931 DEBUG 10504 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 09:59:59.931 DEBUG 10504 --- [main] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 09:59:59.932 DEBUG 10504 --- [main] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:00:00.162  INFO 10504 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d7e3d91: startup date [Fri Aug 26 09:59:57 CST 2016]; root of context hierarchy
+2016-08-26 10:00:00.235  INFO 10504 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/article],methods=[POST]}" onto public cn.mrdear.entity.Article cn.mrdear.controller.IndexController.showArticle(java.lang.String,org.springframework.ui.Model) throws java.io.IOException
+2016-08-26 10:00:00.236  INFO 10504 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String cn.mrdear.controller.IndexController.showIndex() throws java.io.IOException
+2016-08-26 10:00:00.236  INFO 10504 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/refresh/category],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.Boolean cn.mrdear.controller.IndexController.refreshCategory()
+2016-08-26 10:00:00.240  INFO 10504 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-08-26 10:00:00.240  INFO 10504 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-08-26 10:00:00.281  INFO 10504 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:00:00.281  INFO 10504 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:00:00.339  INFO 10504 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:00:00.764  INFO 10504 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-08-26 10:00:00.815  INFO 10504 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8090 (http)
+2016-08-26 10:00:00.818  INFO 10504 --- [main] cn.mrdear.Application                    : Started Application in 3.638 seconds (JVM running for 6.226)
+2016-08-26 10:00:05.734  INFO 10504 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-08-26 10:00:05.734  INFO 10504 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2016-08-26 10:00:05.752  INFO 10504 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 18 ms
+2016-08-26 10:00:06.173 DEBUG 10504 --- [http-nio-8090-exec-2] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> text/css,*/*;q=0.1: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 01:29:23 GMT
+2016-08-26 10:00:06.173 DEBUG 10504 --- [http-nio-8090-exec-2] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/css/app.css. Writing with gzip compression
+2016-08-26 10:00:06.175 DEBUG 10504 --- [http-nio-8090-exec-4] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 01:13:26 GMT
+2016-08-26 10:00:06.175 DEBUG 10504 --- [http-nio-8090-exec-3] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 01:27:24 GMT
+2016-08-26 10:00:06.176 DEBUG 10504 --- [http-nio-8090-exec-4] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/highlight.min.js. Writing with gzip compression
+2016-08-26 10:00:06.176 DEBUG 10504 --- [http-nio-8090-exec-3] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/Parser.js. Writing with gzip compression
+2016-08-26 10:00:06.177 DEBUG 10504 --- [http-nio-8090-exec-5] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 01:26:45 GMT
+2016-08-26 10:00:06.177 DEBUG 10504 --- [http-nio-8090-exec-5] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/app.js. Writing with gzip compression
+2016-08-26 10:00:06.240 DEBUG 10504 --- [http-nio-8090-exec-6] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> application/json, text/javascript, */*; q=0.01: x-requested-with -> XMLHttpRequest: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 01:47:03 GMT
+2016-08-26 10:00:06.241 DEBUG 10504 --- [http-nio-8090-exec-6] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/json/category.json. Writing with gzip compression
+2016-08-26 10:22:02.422  INFO 12904 --- [main] cn.mrdear.Application                    : Starting Application on DESKTOP-KAR3OG3 with PID 12904 (F:\Git\MarkdownViewTools\target\classes started by 牛李 in F:\Git\MarkdownViewTools)
+2016-08-26 10:22:02.426 DEBUG 12904 --- [main] cn.mrdear.Application                    : Running with Spring Boot v1.4.0.RELEASE, Spring v4.3.2.RELEASE
+2016-08-26 10:22:02.427  INFO 12904 --- [main] cn.mrdear.Application                    : No active profile set, falling back to default profiles: default
+2016-08-26 10:22:02.787  INFO 12904 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3b6d844d: startup date [Fri Aug 26 10:22:02 CST 2016]; root of context hierarchy
+2016-08-26 10:22:03.593  INFO 12904 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [class org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$7a5457d8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-08-26 10:22:04.291  INFO 12904 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8090 (http)
+2016-08-26 10:22:04.304  INFO 12904 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2016-08-26 10:22:04.306  INFO 12904 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.4
+2016-08-26 10:22:04.422  INFO 12904 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2016-08-26 10:22:04.423  INFO 12904 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1639 ms
+2016-08-26 10:22:04.659  INFO 12904 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-08-26 10:22:04.660  INFO 12904 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-08-26 10:22:04.660  INFO 12904 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-08-26 10:22:04.660  INFO 12904 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2016-08-26 10:22:04.661  INFO 12904 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'gzipFilter' to urls: [*.css, *.js, *.json]
+2016-08-26 10:22:04.661  INFO 12904 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'simplePageCachingFilter' to urls: [/12321]
+2016-08-26 10:22:04.661  INFO 12904 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2016-08-26 10:22:04.691 DEBUG 12904 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter
+2016-08-26 10:22:04.691 DEBUG 12904 --- [localhost-startStop-1] n.s.e.c.w.f.SimplePageCachingFilter      : Using configured cacheName of hello.
+2016-08-26 10:22:04.705 DEBUG 12904 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from ehcache.xml found in the classpath: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 10:22:04.705 DEBUG 12904 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from URL: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 10:22:04.705 DEBUG 12904 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 10:22:04.726 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 10:22:04.726 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 10:22:04.728 DEBUG 12904 --- [localhost-startStop-1] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 10:22:04.749 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Creating new CacheManager with default config
+2016-08-26 10:22:04.752 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.util.PropertyUtil         : propertiesString is null.
+2016-08-26 10:22:04.768 DEBUG 12904 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheManagerEventListenerFactory class specified. Skipping...
+2016-08-26 10:22:04.819 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 10:22:04.819 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 10:22:04.819 DEBUG 12904 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 10:22:04.829 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 10:22:04.829 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 10:22:04.829 DEBUG 12904 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 10:22:04.849  WARN 12904 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : diskStorePath 'E:\test' is already used by an existing CacheManager either in the same VM or in a different process.
+The diskStore path for this CacheManager will be set to E:\test\ehcache_auto_created4568316764916165389diskstore.
+To avoid this warning consider using the CacheManager factory methods to create a singleton CacheManager or specifying a separate ehcache configuration (ehcache.xml) for each CacheManager instance.
+2016-08-26 10:22:04.849 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Using diskstore path E:\test\ehcache_auto_created4568316764916165389diskstore
+2016-08-26 10:22:04.849 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Holding exclusive lock on E:\test\ehcache_auto_created4568316764916165389diskstore\.ehcache-diskstore.lock
+2016-08-26 10:22:04.850 DEBUG 12904 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.data
+2016-08-26 10:22:04.850 DEBUG 12904 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 10:22:04.857 DEBUG 12904 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Matching data file missing (or empty) for index file. Deleting index file E:\test\ehcache_auto_created4568316764916165389diskstore\hello.index
+2016-08-26 10:22:04.858 DEBUG 12904 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 10:22:04.921 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE
+2016-08-26 10:22:04.922 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE_BYTES
+2016-08-26 10:22:04.923 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: WRITER_QUEUE_LENGTH
+2016-08-26 10:22:04.924 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: REMOTE_SIZE
+2016-08-26 10:22:04.924 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LAST_REJOIN_TIMESTAMP
+2016-08-26 10:22:04.938 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_GET
+2016-08-26 10:22:04.940 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_PUT
+2016-08-26 10:22:04.940 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_REMOVE
+2016-08-26 10:22:04.941 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_COMMIT
+2016-08-26 10:22:04.942 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_ROLLBACK
+2016-08-26 10:22:04.943 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_RECOVERY
+2016-08-26 10:22:04.944 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: CLUSTER_EVENT
+2016-08-26 10:22:04.944 DEBUG 12904 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: NONSTOP
+2016-08-26 10:22:04.950 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : Initialised cache: hello
+2016-08-26 10:22:04.950 DEBUG 12904 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured. Skipping for 'hello'.
+2016-08-26 10:22:04.950 DEBUG 12904 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured for defaultCache. Skipping for 'hello'.
+2016-08-26 10:22:04.961 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:22:04.961 DEBUG 12904 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:22:04.962 DEBUG 12904 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for cn.mrdear.filter.GzipFilter
+2016-08-26 10:22:05.088  INFO 12904 --- [main] cn.mrdear.job.CategoryJob                : 写入目录成功
+2016-08-26 10:22:05.093  INFO 12904 --- [main] o.s.c.ehcache.EhCacheManagerFactoryBean  : Initializing EhCache CacheManager
+2016-08-26 10:22:05.093 DEBUG 12904 --- [main] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 10:22:05.095 DEBUG 12904 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 10:22:05.095 DEBUG 12904 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 10:22:05.095 DEBUG 12904 --- [main] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 10:22:05.096 DEBUG 12904 --- [main] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:22:05.369  INFO 12904 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3b6d844d: startup date [Fri Aug 26 10:22:02 CST 2016]; root of context hierarchy
+2016-08-26 10:22:05.438  INFO 12904 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String cn.mrdear.controller.IndexController.showIndex() throws java.io.IOException
+2016-08-26 10:22:05.439  INFO 12904 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/article],methods=[POST]}" onto public cn.mrdear.entity.Article cn.mrdear.controller.IndexController.showArticle(java.lang.String,org.springframework.ui.Model) throws java.io.IOException
+2016-08-26 10:22:05.439  INFO 12904 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/refresh/category],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.Boolean cn.mrdear.controller.IndexController.refreshCategory()
+2016-08-26 10:22:05.442  INFO 12904 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-08-26 10:22:05.442  INFO 12904 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-08-26 10:22:05.515  INFO 12904 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:22:05.515  INFO 12904 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:22:05.583  INFO 12904 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:22:06.268  INFO 12904 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-08-26 10:22:06.330  INFO 12904 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8090 (http)
+2016-08-26 10:22:06.335  INFO 12904 --- [main] cn.mrdear.Application                    : Started Application in 4.453 seconds (JVM running for 4.969)
+2016-08-26 10:25:02.990  INFO 10224 --- [main] cn.mrdear.Application                    : Starting Application on DESKTOP-KAR3OG3 with PID 10224 (F:\Git\MarkdownViewTools\target\classes started by 牛李 in F:\Git\MarkdownViewTools)
+2016-08-26 10:25:02.993 DEBUG 10224 --- [main] cn.mrdear.Application                    : Running with Spring Boot v1.4.0.RELEASE, Spring v4.3.2.RELEASE
+2016-08-26 10:25:02.994  INFO 10224 --- [main] cn.mrdear.Application                    : No active profile set, falling back to default profiles: default
+2016-08-26 10:25:03.284  INFO 10224 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3b6d844d: startup date [Fri Aug 26 10:25:03 CST 2016]; root of context hierarchy
+2016-08-26 10:25:04.076  INFO 10224 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [class org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$e846a1e7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-08-26 10:25:04.696  INFO 10224 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8090 (http)
+2016-08-26 10:25:04.708  INFO 10224 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2016-08-26 10:25:04.710  INFO 10224 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.4
+2016-08-26 10:25:04.821  INFO 10224 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2016-08-26 10:25:04.821  INFO 10224 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1540 ms
+2016-08-26 10:25:05.081  INFO 10224 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-08-26 10:25:05.081  INFO 10224 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-08-26 10:25:05.082  INFO 10224 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-08-26 10:25:05.082  INFO 10224 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2016-08-26 10:25:05.082  INFO 10224 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'gzipFilter' to urls: [*.css, *.js, *.json]
+2016-08-26 10:25:05.082  INFO 10224 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'simplePageCachingFilter' to urls: [/12321]
+2016-08-26 10:25:05.082  INFO 10224 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2016-08-26 10:25:05.107 DEBUG 10224 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter
+2016-08-26 10:25:05.107 DEBUG 10224 --- [localhost-startStop-1] n.s.e.c.w.f.SimplePageCachingFilter      : Using configured cacheName of hello.
+2016-08-26 10:25:05.114 DEBUG 10224 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from ehcache.xml found in the classpath: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 10:25:05.115 DEBUG 10224 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from URL: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 10:25:05.115 DEBUG 10224 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 10:25:05.127 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 10:25:05.127 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 10:25:05.128 DEBUG 10224 --- [localhost-startStop-1] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 10:25:05.141 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Creating new CacheManager with default config
+2016-08-26 10:25:05.143 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.util.PropertyUtil         : propertiesString is null.
+2016-08-26 10:25:05.152 DEBUG 10224 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheManagerEventListenerFactory class specified. Skipping...
+2016-08-26 10:25:05.190 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 10:25:05.190 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 10:25:05.190 DEBUG 10224 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 10:25:05.196 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 10:25:05.197 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 10:25:05.197 DEBUG 10224 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 10:25:05.207 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Using diskstore path E:\test
+2016-08-26 10:25:05.207 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Holding exclusive lock on E:\test\.ehcache-diskstore.lock
+2016-08-26 10:25:05.208 DEBUG 10224 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 10:25:05.213 DEBUG 10224 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Matching data file missing (or empty) for index file. Deleting index file E:\test\hello.index
+2016-08-26 10:25:05.213 DEBUG 10224 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 10:25:05.247 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE
+2016-08-26 10:25:05.247 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE_BYTES
+2016-08-26 10:25:05.248 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: WRITER_QUEUE_LENGTH
+2016-08-26 10:25:05.248 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: REMOTE_SIZE
+2016-08-26 10:25:05.248 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LAST_REJOIN_TIMESTAMP
+2016-08-26 10:25:05.256 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_GET
+2016-08-26 10:25:05.257 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_PUT
+2016-08-26 10:25:05.257 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_REMOVE
+2016-08-26 10:25:05.258 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_COMMIT
+2016-08-26 10:25:05.258 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_ROLLBACK
+2016-08-26 10:25:05.259 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_RECOVERY
+2016-08-26 10:25:05.260 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: CLUSTER_EVENT
+2016-08-26 10:25:05.260 DEBUG 10224 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: NONSTOP
+2016-08-26 10:25:05.264 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : Initialised cache: hello
+2016-08-26 10:25:05.264 DEBUG 10224 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured. Skipping for 'hello'.
+2016-08-26 10:25:05.264 DEBUG 10224 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured for defaultCache. Skipping for 'hello'.
+2016-08-26 10:25:05.270 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:25:05.270 DEBUG 10224 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:25:05.271 DEBUG 10224 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for cn.mrdear.filter.GzipFilter
+2016-08-26 10:25:05.408  INFO 10224 --- [main] cn.mrdear.job.CategoryJob                : 写入目录成功
+2016-08-26 10:25:05.414  INFO 10224 --- [main] o.s.c.ehcache.EhCacheManagerFactoryBean  : Initializing EhCache CacheManager
+2016-08-26 10:25:05.415 DEBUG 10224 --- [main] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 10:25:05.416 DEBUG 10224 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 10:25:05.417 DEBUG 10224 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 10:25:05.417 DEBUG 10224 --- [main] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 10:25:05.418 DEBUG 10224 --- [main] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:25:05.733  INFO 10224 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3b6d844d: startup date [Fri Aug 26 10:25:03 CST 2016]; root of context hierarchy
+2016-08-26 10:25:05.827  INFO 10224 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/article],methods=[POST]}" onto public cn.mrdear.entity.Article cn.mrdear.controller.IndexController.showArticle(java.lang.String,org.springframework.ui.Model) throws java.io.IOException
+2016-08-26 10:25:05.828  INFO 10224 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String cn.mrdear.controller.IndexController.showIndex() throws java.io.IOException
+2016-08-26 10:25:05.828  INFO 10224 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/refresh/category],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public java.lang.Boolean cn.mrdear.controller.IndexController.refreshCategory()
+2016-08-26 10:25:05.830  INFO 10224 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-08-26 10:25:05.831  INFO 10224 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-08-26 10:25:05.893  INFO 10224 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:25:05.893  INFO 10224 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:25:05.944  INFO 10224 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:25:06.532  INFO 10224 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-08-26 10:25:06.595  INFO 10224 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8090 (http)
+2016-08-26 10:25:06.600  INFO 10224 --- [main] cn.mrdear.Application                    : Started Application in 4.127 seconds (JVM running for 4.623)
+2016-08-26 10:25:11.411  INFO 10224 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-08-26 10:25:11.411  INFO 10224 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2016-08-26 10:25:11.426  INFO 10224 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 15 ms
+2016-08-26 10:25:11.710 DEBUG 10224 --- [http-nio-8090-exec-3] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> text/css,*/*;q=0.1: if-modified-since -> Fri, 26 Aug 2016 01:29:23 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:25:11.710 DEBUG 10224 --- [http-nio-8090-exec-2] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> text/css,*/*;q=0.1: if-modified-since -> Thu, 25 Aug 2016 14:52:57 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:25:11.710 DEBUG 10224 --- [http-nio-8090-exec-4] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Thu, 25 Aug 2016 14:52:57 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:25:11.710 DEBUG 10224 --- [http-nio-8090-exec-3] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/css/app.css. Writing with gzip compression
+2016-08-26 10:25:11.710 DEBUG 10224 --- [http-nio-8090-exec-4] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/jquery.min.js. Writing with gzip compression
+2016-08-26 10:25:11.710 DEBUG 10224 --- [http-nio-8090-exec-2] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/css/bootstrap.min.css. Writing with gzip compression
+2016-08-26 10:25:11.712 DEBUG 10224 --- [http-nio-8090-exec-5] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Thu, 25 Aug 2016 14:52:57 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:25:11.713 DEBUG 10224 --- [http-nio-8090-exec-5] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/bootstrap.min.js. Writing with gzip compression
+2016-08-26 10:25:11.713 DEBUG 10224 --- [http-nio-8090-exec-7] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Fri, 26 Aug 2016 01:13:26 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:25:11.714 DEBUG 10224 --- [http-nio-8090-exec-7] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/highlight.min.js. Writing with gzip compression
+2016-08-26 10:25:11.715 DEBUG 10224 --- [http-nio-8090-exec-6] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Fri, 26 Aug 2016 01:27:24 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:25:11.716 DEBUG 10224 --- [http-nio-8090-exec-6] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/Parser.js. Writing with gzip compression
+2016-08-26 10:25:11.751 DEBUG 10224 --- [http-nio-8090-exec-8] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Thu, 25 Aug 2016 14:52:57 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:25:11.751 DEBUG 10224 --- [http-nio-8090-exec-8] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/bootstrap-treeview.min.js. Writing with gzip compression
+2016-08-26 10:25:11.753 DEBUG 10224 --- [http-nio-8090-exec-9] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Fri, 26 Aug 2016 01:26:45 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:25:11.753 DEBUG 10224 --- [http-nio-8090-exec-9] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/app.js. Writing with gzip compression
+2016-08-26 10:25:11.878 DEBUG 10224 --- [http-nio-8090-exec-10] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> application/json, text/javascript, */*; q=0.01: x-requested-with -> XMLHttpRequest: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 01:59:59 GMT
+2016-08-26 10:25:11.879 DEBUG 10224 --- [http-nio-8090-exec-10] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/json/category.json. Writing with gzip compression
+2016-08-26 10:25:32.604 DEBUG 10224 --- [http-nio-8090-exec-2] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> text/css,*/*;q=0.1: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:25:32.605 DEBUG 10224 --- [http-nio-8090-exec-2] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/css/bootstrap.min.css. Writing with gzip compression
+2016-08-26 10:25:32.605 DEBUG 10224 --- [http-nio-8090-exec-7] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> text/css,*/*;q=0.1: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:25:32.605 DEBUG 10224 --- [http-nio-8090-exec-7] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/css/app.css. Writing with gzip compression
+2016-08-26 10:26:20.515 DEBUG 10224 --- [http-nio-8090-exec-3] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> text/css,*/*;q=0.1: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:26:20.515 DEBUG 10224 --- [http-nio-8090-exec-5] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> text/css,*/*;q=0.1: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:26:20.515 DEBUG 10224 --- [http-nio-8090-exec-3] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/css/bootstrap.min.css. Writing with gzip compression
+2016-08-26 10:26:20.515 DEBUG 10224 --- [http-nio-8090-exec-5] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/css/app.css. Writing with gzip compression
+2016-08-26 10:26:20.516 DEBUG 10224 --- [http-nio-8090-exec-4] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:26:20.517 DEBUG 10224 --- [http-nio-8090-exec-4] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/jquery.min.js. Writing with gzip compression
+2016-08-26 10:26:20.519 DEBUG 10224 --- [http-nio-8090-exec-3] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:26:20.520 DEBUG 10224 --- [http-nio-8090-exec-3] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/bootstrap.min.js. Writing with gzip compression
+2016-08-26 10:26:20.521 DEBUG 10224 --- [http-nio-8090-exec-2] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:26:20.521 DEBUG 10224 --- [http-nio-8090-exec-2] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/Parser.js. Writing with gzip compression
+2016-08-26 10:26:20.522 DEBUG 10224 --- [http-nio-8090-exec-7] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:26:20.522 DEBUG 10224 --- [http-nio-8090-exec-7] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/highlight.min.js. Writing with gzip compression
+2016-08-26 10:26:20.525 DEBUG 10224 --- [http-nio-8090-exec-9] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:26:20.526 DEBUG 10224 --- [http-nio-8090-exec-9] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/bootstrap-treeview.min.js. Writing with gzip compression
+2016-08-26 10:26:20.526 DEBUG 10224 --- [http-nio-8090-exec-10] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:26:20.526 DEBUG 10224 --- [http-nio-8090-exec-10] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/app.js. Writing with gzip compression
+2016-08-26 10:26:20.642 DEBUG 10224 --- [http-nio-8090-exec-8] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> application/json, text/javascript, */*; q=0.01: x-requested-with -> XMLHttpRequest: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:25:05 GMT
+2016-08-26 10:26:20.643 DEBUG 10224 --- [http-nio-8090-exec-8] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/json/category.json. Writing with gzip compression
+2016-08-26 10:35:42.722  INFO 6604 --- [main] cn.mrdear.Application                    : Starting Application on DESKTOP-KAR3OG3 with PID 6604 (F:\Git\MarkdownViewTools\target\classes started by 牛李 in F:\Git\MarkdownViewTools)
+2016-08-26 10:35:42.726 DEBUG 6604 --- [main] cn.mrdear.Application                    : Running with Spring Boot v1.4.0.RELEASE, Spring v4.3.2.RELEASE
+2016-08-26 10:35:42.727  INFO 6604 --- [main] cn.mrdear.Application                    : No active profile set, falling back to default profiles: default
+2016-08-26 10:35:43.024  INFO 6604 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3b6d844d: startup date [Fri Aug 26 10:35:43 CST 2016]; root of context hierarchy
+2016-08-26 10:35:43.801  INFO 6604 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [class org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$7a5457d8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-08-26 10:35:44.514  INFO 6604 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8090 (http)
+2016-08-26 10:35:44.530  INFO 6604 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2016-08-26 10:35:44.532  INFO 6604 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.4
+2016-08-26 10:35:44.648  INFO 6604 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2016-08-26 10:35:44.648  INFO 6604 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1627 ms
+2016-08-26 10:35:44.902  INFO 6604 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-08-26 10:35:44.903  INFO 6604 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-08-26 10:35:44.903  INFO 6604 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-08-26 10:35:44.903  INFO 6604 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2016-08-26 10:35:44.903  INFO 6604 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'gzipFilter' to urls: [*.css, *.js, *.json]
+2016-08-26 10:35:44.904  INFO 6604 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'simplePageCachingFilter' to urls: [/12321]
+2016-08-26 10:35:44.904  INFO 6604 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2016-08-26 10:35:44.931 DEBUG 6604 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter
+2016-08-26 10:35:44.931 DEBUG 6604 --- [localhost-startStop-1] n.s.e.c.w.f.SimplePageCachingFilter      : Using configured cacheName of hello.
+2016-08-26 10:35:44.940 DEBUG 6604 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from ehcache.xml found in the classpath: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 10:35:44.940 DEBUG 6604 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from URL: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 10:35:44.941 DEBUG 6604 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 10:35:44.953 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 10:35:44.954 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 10:35:44.955 DEBUG 6604 --- [localhost-startStop-1] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 10:35:44.972 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Creating new CacheManager with default config
+2016-08-26 10:35:44.976 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.util.PropertyUtil         : propertiesString is null.
+2016-08-26 10:35:44.989 DEBUG 6604 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheManagerEventListenerFactory class specified. Skipping...
+2016-08-26 10:35:45.046 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 10:35:45.046 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 10:35:45.047 DEBUG 6604 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 10:35:45.054 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 10:35:45.054 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 10:35:45.054 DEBUG 6604 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 10:35:45.070 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Using diskstore path E:\test
+2016-08-26 10:35:45.070 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Holding exclusive lock on E:\test\.ehcache-diskstore.lock
+2016-08-26 10:35:45.072 DEBUG 6604 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 10:35:45.079 DEBUG 6604 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Matching data file missing (or empty) for index file. Deleting index file E:\test\hello.index
+2016-08-26 10:35:45.080 DEBUG 6604 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 10:35:45.142 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE
+2016-08-26 10:35:45.143 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE_BYTES
+2016-08-26 10:35:45.144 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: WRITER_QUEUE_LENGTH
+2016-08-26 10:35:45.144 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: REMOTE_SIZE
+2016-08-26 10:35:45.144 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LAST_REJOIN_TIMESTAMP
+2016-08-26 10:35:45.156 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_GET
+2016-08-26 10:35:45.158 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_PUT
+2016-08-26 10:35:45.159 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_REMOVE
+2016-08-26 10:35:45.159 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_COMMIT
+2016-08-26 10:35:45.160 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_ROLLBACK
+2016-08-26 10:35:45.160 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_RECOVERY
+2016-08-26 10:35:45.160 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: CLUSTER_EVENT
+2016-08-26 10:35:45.160 DEBUG 6604 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: NONSTOP
+2016-08-26 10:35:45.165 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : Initialised cache: hello
+2016-08-26 10:35:45.165 DEBUG 6604 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured. Skipping for 'hello'.
+2016-08-26 10:35:45.165 DEBUG 6604 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured for defaultCache. Skipping for 'hello'.
+2016-08-26 10:35:45.172 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:35:45.172 DEBUG 6604 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:35:45.173 DEBUG 6604 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for cn.mrdear.filter.GzipFilter
+2016-08-26 10:35:45.300  INFO 6604 --- [main] cn.mrdear.job.CategoryJob                : 写入目录成功
+2016-08-26 10:35:45.303  INFO 6604 --- [main] o.s.c.ehcache.EhCacheManagerFactoryBean  : Initializing EhCache CacheManager
+2016-08-26 10:35:45.304 DEBUG 6604 --- [main] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 10:35:45.305 DEBUG 6604 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 10:35:45.305 DEBUG 6604 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 10:35:45.305 DEBUG 6604 --- [main] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 10:35:45.306 DEBUG 6604 --- [main] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:35:45.572  INFO 6604 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3b6d844d: startup date [Fri Aug 26 10:35:43 CST 2016]; root of context hierarchy
+2016-08-26 10:35:45.645  INFO 6604 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/article],methods=[POST]}" onto public cn.mrdear.entity.Article cn.mrdear.controller.IndexController.showArticle(java.lang.String,org.springframework.ui.Model) throws java.io.IOException
+2016-08-26 10:35:45.646  INFO 6604 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String cn.mrdear.controller.IndexController.showIndex() throws java.io.IOException
+2016-08-26 10:35:45.646  INFO 6604 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/categorys],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public com.alibaba.fastjson.JSONObject cn.mrdear.controller.IndexController.showCategory()
+2016-08-26 10:35:45.649  INFO 6604 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-08-26 10:35:45.650  INFO 6604 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-08-26 10:35:45.731  INFO 6604 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:35:45.732  INFO 6604 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:35:45.796  INFO 6604 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:35:46.518  INFO 6604 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-08-26 10:35:46.575  INFO 6604 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8090 (http)
+2016-08-26 10:35:46.579  INFO 6604 --- [main] cn.mrdear.Application                    : Started Application in 4.384 seconds (JVM running for 4.842)
+2016-08-26 10:35:53.217  INFO 6604 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-08-26 10:35:53.217  INFO 6604 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2016-08-26 10:35:53.233  INFO 6604 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+2016-08-26 10:35:53.536 DEBUG 6604 --- [http-nio-8090-exec-2] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> text/css,*/*;q=0.1: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:35:53.536 DEBUG 6604 --- [http-nio-8090-exec-3] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> text/css,*/*;q=0.1: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:26:18 GMT
+2016-08-26 10:35:53.536 DEBUG 6604 --- [http-nio-8090-exec-2] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/css/bootstrap.min.css. Writing with gzip compression
+2016-08-26 10:35:53.538 DEBUG 6604 --- [http-nio-8090-exec-5] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:35:53.538 DEBUG 6604 --- [http-nio-8090-exec-4] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:35:53.538 DEBUG 6604 --- [http-nio-8090-exec-3] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/css/app.css. Writing with gzip compression
+2016-08-26 10:35:53.539 DEBUG 6604 --- [http-nio-8090-exec-5] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/bootstrap.min.js. Writing with gzip compression
+2016-08-26 10:35:53.540 DEBUG 6604 --- [http-nio-8090-exec-4] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/jquery.min.js. Writing with gzip compression
+2016-08-26 10:35:53.544 DEBUG 6604 --- [http-nio-8090-exec-6] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:35:53.546 DEBUG 6604 --- [http-nio-8090-exec-6] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/Parser.js. Writing with gzip compression
+2016-08-26 10:35:53.550 DEBUG 6604 --- [http-nio-8090-exec-7] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:35:53.551 DEBUG 6604 --- [http-nio-8090-exec-7] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/highlight.min.js. Writing with gzip compression
+2016-08-26 10:35:53.565 DEBUG 6604 --- [http-nio-8090-exec-4] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:35:53.565 DEBUG 6604 --- [http-nio-8090-exec-4] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/app.js. Writing with gzip compression
+2016-08-26 10:35:53.568 DEBUG 6604 --- [http-nio-8090-exec-8] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: accept -> */*: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT
+2016-08-26 10:35:53.570 DEBUG 6604 --- [http-nio-8090-exec-8] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/bootstrap-treeview.min.js. Writing with gzip compression
+2016-08-26 10:35:53.694 ERROR 6604 --- [http-nio-8090-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.ClassCastException: com.alibaba.fastjson.JSONArray cannot be cast to com.alibaba.fastjson.JSONObject] with root cause
+
+java.lang.ClassCastException: com.alibaba.fastjson.JSONArray cannot be cast to com.alibaba.fastjson.JSONObject
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:206) ~[fastjson-1.2.14.jar:na]
+	at cn.mrdear.controller.IndexController.showCategory(IndexController.java:74) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_77]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_77]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_77]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_77]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:114) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:87) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:522) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:1110) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:785) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1425) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_77]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_77]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_77]
+
+2016-08-26 10:35:57.853 ERROR 6604 --- [http-nio-8090-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.ClassCastException: com.alibaba.fastjson.JSONArray cannot be cast to com.alibaba.fastjson.JSONObject] with root cause
+
+java.lang.ClassCastException: com.alibaba.fastjson.JSONArray cannot be cast to com.alibaba.fastjson.JSONObject
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:206) ~[fastjson-1.2.14.jar:na]
+	at cn.mrdear.controller.IndexController.showCategory(IndexController.java:74) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_77]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_77]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_77]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_77]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:114) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:87) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:522) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:1110) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:785) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1425) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_77]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_77]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_77]
+
+2016-08-26 10:35:59.443 ERROR 6604 --- [http-nio-8090-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.ClassCastException: com.alibaba.fastjson.JSONArray cannot be cast to com.alibaba.fastjson.JSONObject] with root cause
+
+java.lang.ClassCastException: com.alibaba.fastjson.JSONArray cannot be cast to com.alibaba.fastjson.JSONObject
+	at com.alibaba.fastjson.JSON.parseObject(JSON.java:206) ~[fastjson-1.2.14.jar:na]
+	at cn.mrdear.controller.IndexController.showCategory(IndexController.java:74) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_77]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_77]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_77]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_77]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:221) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:114) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) ~[spring-webmvc-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:87) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.2.RELEASE.jar:4.3.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) ~[tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:522) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:1110) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:785) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1425) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_77]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_77]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.4.jar:8.5.4]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_77]
+
+2016-08-26 10:36:41.511  INFO 14956 --- [main] cn.mrdear.Application                    : Starting Application on DESKTOP-KAR3OG3 with PID 14956 (F:\Git\MarkdownViewTools\target\classes started by 牛李 in F:\Git\MarkdownViewTools)
+2016-08-26 10:36:41.516 DEBUG 14956 --- [main] cn.mrdear.Application                    : Running with Spring Boot v1.4.0.RELEASE, Spring v4.3.2.RELEASE
+2016-08-26 10:36:41.516  INFO 14956 --- [main] cn.mrdear.Application                    : No active profile set, falling back to default profiles: default
+2016-08-26 10:36:41.822  INFO 14956 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3b6d844d: startup date [Fri Aug 26 10:36:41 CST 2016]; root of context hierarchy
+2016-08-26 10:36:42.577  INFO 14956 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [class org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$3e0894ab] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-08-26 10:36:43.202  INFO 14956 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8090 (http)
+2016-08-26 10:36:43.217  INFO 14956 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2016-08-26 10:36:43.219  INFO 14956 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.4
+2016-08-26 10:36:43.321  INFO 14956 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2016-08-26 10:36:43.321  INFO 14956 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1502 ms
+2016-08-26 10:36:43.570  INFO 14956 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-08-26 10:36:43.571  INFO 14956 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-08-26 10:36:43.571  INFO 14956 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-08-26 10:36:43.572  INFO 14956 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2016-08-26 10:36:43.572  INFO 14956 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'gzipFilter' to urls: [*.css, *.js, *.json]
+2016-08-26 10:36:43.572  INFO 14956 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'simplePageCachingFilter' to urls: [/12321]
+2016-08-26 10:36:43.572  INFO 14956 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2016-08-26 10:36:43.599 DEBUG 14956 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter
+2016-08-26 10:36:43.599 DEBUG 14956 --- [localhost-startStop-1] n.s.e.c.w.f.SimplePageCachingFilter      : Using configured cacheName of hello.
+2016-08-26 10:36:43.609 DEBUG 14956 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from ehcache.xml found in the classpath: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 10:36:43.610 DEBUG 14956 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from URL: file:/F:/Git/MarkdownViewTools/target/classes/ehcache.xml
+2016-08-26 10:36:43.610 DEBUG 14956 --- [localhost-startStop-1] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 10:36:43.627 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 10:36:43.627 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 10:36:43.629 DEBUG 14956 --- [localhost-startStop-1] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 10:36:43.646 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Creating new CacheManager with default config
+2016-08-26 10:36:43.649 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.util.PropertyUtil         : propertiesString is null.
+2016-08-26 10:36:43.659 DEBUG 14956 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheManagerEventListenerFactory class specified. Skipping...
+2016-08-26 10:36:43.700 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 10:36:43.701 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 10:36:43.701 DEBUG 14956 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 10:36:43.706 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : No BootstrapCacheLoaderFactory class specified. Skipping...
+2016-08-26 10:36:43.706 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : CacheWriter factory not configured. Skipping...
+2016-08-26 10:36:43.706 DEBUG 14956 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : No CacheExceptionHandlerFactory class specified. Skipping...
+2016-08-26 10:36:43.716 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Using diskstore path E:\test
+2016-08-26 10:36:43.717 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.DiskStorePathManager      : Holding exclusive lock on E:\test\.ehcache-diskstore.lock
+2016-08-26 10:36:43.718 DEBUG 14956 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 10:36:43.723 DEBUG 14956 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Matching data file missing (or empty) for index file. Deleting index file E:\test\hello.index
+2016-08-26 10:36:43.724 DEBUG 14956 --- [localhost-startStop-1] n.s.e.store.disk.DiskStorageFactory      : Failed to delete file hello.index
+2016-08-26 10:36:43.769 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE
+2016-08-26 10:36:43.770 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LOCAL_OFFHEAP_SIZE_BYTES
+2016-08-26 10:36:43.771 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: WRITER_QUEUE_LENGTH
+2016-08-26 10:36:43.771 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: REMOTE_SIZE
+2016-08-26 10:36:43.771 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Pass-Through Statistic: LAST_REJOIN_TIMESTAMP
+2016-08-26 10:36:43.780 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_GET
+2016-08-26 10:36:43.781 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_PUT
+2016-08-26 10:36:43.782 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: OFFHEAP_REMOVE
+2016-08-26 10:36:43.782 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_COMMIT
+2016-08-26 10:36:43.782 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_ROLLBACK
+2016-08-26 10:36:43.782 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: XA_RECOVERY
+2016-08-26 10:36:43.783 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: CLUSTER_EVENT
+2016-08-26 10:36:43.783 DEBUG 14956 --- [localhost-startStop-1] n.s.e.s.extended.ExtendedStatisticsImpl  : Mocking Operation Statistic: NONSTOP
+2016-08-26 10:36:43.788 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.Cache                     : Initialised cache: hello
+2016-08-26 10:36:43.789 DEBUG 14956 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured. Skipping for 'hello'.
+2016-08-26 10:36:43.789 DEBUG 14956 --- [localhost-startStop-1] n.sf.ehcache.config.ConfigurationHelper  : CacheDecoratorFactory not configured for defaultCache. Skipping for 'hello'.
+2016-08-26 10:36:43.796 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:36:43.796 DEBUG 14956 --- [localhost-startStop-1] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:36:43.797 DEBUG 14956 --- [localhost-startStop-1] n.s.e.constructs.web.filter.Filter       : Suppression of stack traces enabled for cn.mrdear.filter.GzipFilter
+2016-08-26 10:36:43.936  INFO 14956 --- [main] cn.mrdear.job.CategoryJob                : 写入目录成功
+2016-08-26 10:36:43.939  INFO 14956 --- [main] o.s.c.ehcache.EhCacheManagerFactoryBean  : Initializing EhCache CacheManager
+2016-08-26 10:36:43.940 DEBUG 14956 --- [main] n.s.ehcache.config.ConfigurationFactory  : Configuring ehcache from InputStream
+2016-08-26 10:36:43.942 DEBUG 14956 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xmlns:xsi
+2016-08-26 10:36:43.942 DEBUG 14956 --- [main] net.sf.ehcache.config.BeanHandler        : Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+2016-08-26 10:36:43.942 DEBUG 14956 --- [main] n.s.e.config.DiskStoreConfiguration      : Disk Store Path: E:\test
+2016-08-26 10:36:43.943 DEBUG 14956 --- [main] net.sf.ehcache.CacheManager              : Attempting to create an existing singleton. Existing singleton returned.
+2016-08-26 10:36:44.222  INFO 14956 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3b6d844d: startup date [Fri Aug 26 10:36:41 CST 2016]; root of context hierarchy
+2016-08-26 10:36:44.310  INFO 14956 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String cn.mrdear.controller.IndexController.showIndex() throws java.io.IOException
+2016-08-26 10:36:44.311  INFO 14956 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/categorys],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public com.alibaba.fastjson.JSONArray cn.mrdear.controller.IndexController.showCategory()
+2016-08-26 10:36:44.311  INFO 14956 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/article],methods=[POST]}" onto public cn.mrdear.entity.Article cn.mrdear.controller.IndexController.showArticle(java.lang.String,org.springframework.ui.Model) throws java.io.IOException
+2016-08-26 10:36:44.314  INFO 14956 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-08-26 10:36:44.314  INFO 14956 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-08-26 10:36:44.399  INFO 14956 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:36:44.399  INFO 14956 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:36:44.472  INFO 14956 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-08-26 10:36:45.134  INFO 14956 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2016-08-26 10:36:45.203  INFO 14956 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8090 (http)
+2016-08-26 10:36:45.208  INFO 14956 --- [main] cn.mrdear.Application                    : Started Application in 4.241 seconds (JVM running for 4.736)
+2016-08-26 10:36:47.057  INFO 14956 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-08-26 10:36:47.058  INFO 14956 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2016-08-26 10:36:47.077  INFO 14956 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms
+2016-08-26 10:36:47.350 DEBUG 14956 --- [http-nio-8090-exec-2] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> text/css,*/*;q=0.1: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:36:47.351 DEBUG 14956 --- [http-nio-8090-exec-3] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> text/css,*/*;q=0.1: if-modified-since -> Fri, 26 Aug 2016 02:26:18 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:36:47.351 DEBUG 14956 --- [http-nio-8090-exec-2] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/css/bootstrap.min.css. Writing with gzip compression
+2016-08-26 10:36:47.351 DEBUG 14956 --- [http-nio-8090-exec-3] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/css/app.css. Writing with gzip compression
+2016-08-26 10:36:47.351 DEBUG 14956 --- [http-nio-8090-exec-4] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:36:47.352 DEBUG 14956 --- [http-nio-8090-exec-4] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/jquery.min.js. Writing with gzip compression
+2016-08-26 10:36:47.355 DEBUG 14956 --- [http-nio-8090-exec-6] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:36:47.355 DEBUG 14956 --- [http-nio-8090-exec-5] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:36:47.355 DEBUG 14956 --- [http-nio-8090-exec-6] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/Parser.js. Writing with gzip compression
+2016-08-26 10:36:47.355 DEBUG 14956 --- [http-nio-8090-exec-5] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/bootstrap.min.js. Writing with gzip compression
+2016-08-26 10:36:47.359 DEBUG 14956 --- [http-nio-8090-exec-7] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:36:47.359 DEBUG 14956 --- [http-nio-8090-exec-7] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/highlight.min.js. Writing with gzip compression
+2016-08-26 10:36:47.379 DEBUG 14956 --- [http-nio-8090-exec-9] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Fri, 26 Aug 2016 02:35:31 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:36:47.379 DEBUG 14956 --- [http-nio-8090-exec-8] n.s.e.constructs.web.filter.Filter       : Request Headers: host -> localhost:8090: connection -> keep-alive: cache-control -> max-age=0: accept -> */*: if-modified-since -> Fri, 26 Aug 2016 02:23:23 GMT: user-agent -> Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36: referer -> http://localhost:8090/: accept-encoding -> gzip, deflate, sdch: accept-language -> zh-CN,zh;q=0.8: cookie -> Webstorm-bdec8ca4=bd82f0a9-5bfd-4056-b3ee-8af520081774; Idea-9dcd54cb=40ee7585-6f90-48aa-a22f-30f460e90fcd
+2016-08-26 10:36:47.380 DEBUG 14956 --- [http-nio-8090-exec-8] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/bootstrap-treeview.min.js. Writing with gzip compression
+2016-08-26 10:36:47.380 DEBUG 14956 --- [http-nio-8090-exec-9] cn.mrdear.filter.GzipFilter              : http://localhost:8090/static/js/app.js. Writing with gzip compression
