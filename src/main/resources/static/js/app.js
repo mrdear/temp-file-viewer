@@ -11,37 +11,48 @@ function getTreeView() {
                                 selectedBackColor: "#338FFF",
                                 onhoverColor: "#F1FBE8",
                                 onNodeSelected: function (event, data) {
-                                    $.ajax({
-                                               type: "POST",
-                                               url: "/article",
-                                               data: {path: data.path},
-                                               success: function (result) {
-                                                   var parser = new HyperDown;
-                                                   var html = parser.makeHtml(result.content);
-                                                   //转换markdown
-                                                   $(".preview-panel").html(html);
-                                                   //代码高亮
-                                                   $('pre code').each(function(i, block) {
-                                                       hljs.highlightBlock(block);
-                                                   });
-                                               },
-                                               complete: function () {
-                                                   $(".category").empty();
-                                                   setTimeout(function () {
-                                                       //生成目录
-                                                       $("h2,h3,h4,h5,h6").each(function(i,item){
-                                                           var tag = $(item).get(0).localName;
-                                                           $(item).attr("id","wow"+i);
-                                                           $(".category").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
-                                                       });
-                                                   },1000);
-                                               }
-                                           });
+                                    getArticle(data);
                                 }
                             });
     });
 }
-
+//刷新文档
+$("#refresh-file").click(function () {
+    var nodes = $('#tree').treeview('getSelected', 1);
+    if (nodes[0].path != ""){
+        getArticle(nodes[0]);
+    }
+});
+//刷新目录
 $("#categoryRefresh").click(function () {
     getTreeView();
+});
+//生成文档
+function getArticle(data) {
+    $.ajax({
+               type: "POST",
+               url: "/article",
+               data: {path: data.path},
+               beforeSend:function () {
+                   $(".preview-panel").empty(1000);
+               },
+               success: function (result) {
+                   //转换为markdown
+                   md2Html(result.content, $(".preview-panel"), function(html) {
+                        $('pre').addClass("hljs-dark");
+                   });
+
+                   //代码高亮
+                   $('pre code').each(function(i, block) {
+                       hljs.highlightBlock(block);
+                   });
+                   //生成文档回到顶部
+                   $('body,html').animate({scrollTop:0},1000);
+               }
+           });
+}
+//回到顶部
+$("#top").click(function(){
+    $('body,html').animate({scrollTop:0},1000);
+    return false;
 });

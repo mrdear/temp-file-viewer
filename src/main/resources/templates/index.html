@@ -4,10 +4,8 @@
     <meta charset="UTF-8"/>
     <title>我的MarkDown</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link th:href="@{static/css/bootstrap.min.css}" href="/static/css/bootstrap.min.css"
-          rel="stylesheet" type="text/css"/>
-    <link th:href="@{static/css/app.css}" href="/static/css/app.css" rel="stylesheet"
-          type="text/css"/>
+    <link th:href="@{static/css/bootstrap.min.css}" href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{static/css/app.css}" href="http://oce4brl1p.bkt.clouddn.com/app.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div class="row">
@@ -44,16 +42,15 @@
                 </div>
             </div>
         </li>
-        <li><span class="glyphicon glyphicon-refresh" title="刷新此文档"></span></li>
+        <li><span id="refresh-file" class="glyphicon glyphicon-refresh" title="刷新此文档"></span></li>
         <li><span class="glyphicon glyphicon-download-alt" title="下载此文档"></span></li>
+        <li><a href="#top" id="top"><span class="glyphicon glyphicon-arrow-up" title="回到顶部"></span></a></li>
     </ul>
 </div>
 
-<script th:src="@{static/js/jquery.min.js}"
-        src="http://oce4brl1p.bkt.clouddn.com/jquery.min.js"></script>
-<script th:src="@{static/js/bootstrap.min.js}"
-        src="http://oce4brl1p.bkt.clouddn.com/bootstrap.min.js"></script>
-<script th:src="@{static/js/Parser.js}" src=""></script>
+<script th:src="@{static/js/jquery.min.js}" src="http://oce4brl1p.bkt.clouddn.com/jquery.min.js"></script>
+<script th:src="@{static/js/bootstrap.min.js}" src="http://oce4brl1p.bkt.clouddn.com/bootstrap.min.js"></script>
+<script th:src="@{static/js/md2html.js}" src=""></script>
 <script th:src="@{static/js/highlight.min.js}" src="/static/js/highlight.min.js"></script>
 <script th:src="@{static/js/bootstrap-treeview.min.js}" src=""></script>
 <script th:src="@{static/js/app.js}" src=""></script>
