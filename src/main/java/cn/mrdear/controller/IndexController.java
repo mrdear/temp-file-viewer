@@ -6,10 +6,15 @@ import com.alibaba.fastjson.JSONArray;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.File;
@@ -57,6 +62,10 @@ public class IndexController {
         return article;
     }
 
+    /**
+     * 获取目录
+     * @return
+     */
     @RequestMapping(value = "/categorys",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody JSONArray showCategory(){
         ArrayList<String> pathList = fileService.findFilesPath();//存放路径集合
@@ -73,6 +82,24 @@ public class IndexController {
         //定制序列化
         String result = fileService.toTreeJsonStr(categories);
         return JSON.parseArray(result);
+    }
+
+    /**
+     * 下载文件
+     * @param path
+     * @return
+     */
+    @RequestMapping(value = "/downloadFile",method = RequestMethod.GET)
+    public ResponseEntity<byte[]> downloadFile(@RequestParam(required = true) String path) throws IOException {
+        if (path.endsWith("md")){
+            File file = new File(path);
+            String filename = path.substring(path.lastIndexOf("\\")+1);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            headers.setContentDispositionFormData("attachment", filename);
+            return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),headers, HttpStatus.CREATED);
+        }
+        return null;
     }
 
 }

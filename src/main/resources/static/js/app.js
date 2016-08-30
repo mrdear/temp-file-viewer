@@ -17,10 +17,17 @@ function getTreeView() {
     });
 }
 //刷新文档
-$("#refresh-file").click(function () {
+$("#refreshFile").click(function () {
     var nodes = $('#tree').treeview('getSelected', 1);
     if (nodes[0].path != ""){
         getArticle(nodes[0]);
+    }
+});
+//下载文档
+$("#downloadFile").click(function () {
+    var nodes = $('#tree').treeview('getSelected', 1);
+    if (nodes[0].path != ""){
+        window.location.href = "/downloadFile?path="+nodes[0].path;
     }
 });
 //刷新目录

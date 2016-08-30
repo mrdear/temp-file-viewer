@@ -25,18 +25,18 @@ import cn.mrdear.filter.GzipFilter;
 @EnableCaching
 public class CacheConfig {
     /**
-     * 配置ehcache的Gzip压缩
+     * 配置ehcache的Gzip压缩,一般只压缩静态文件,但是不要尝试压缩图片,图片本身传送就会压缩的
      * @return
      */
     @Bean
     public FilterRegistrationBean gzipFilter(){
         FilterRegistrationBean gzipFilter = new FilterRegistrationBean(new GzipFilter());
-        String[] arrs = {"*.css","*.js","*.json"};
+        String[] arrs = {"*.css","*.js","*.json","*.eot","*.svg","*.woff","*.woff2"};
         gzipFilter.setUrlPatterns(Arrays.asList(arrs));
         return gzipFilter;
     }
     /**
-     * 配置页面缓存,页面缓存会自动开启GZIP压缩
+     * 对于整个页面的缓存配置
      */
     @Bean
     public FilterRegistrationBean helloFilter(){

@@ -80,13 +80,6 @@ public class GzipFilter extends Filter {
      */
     protected void doFilter(final HttpServletRequest request, final HttpServletResponse response, final FilterChain chain)
             throws Exception {
-            String urlEnd = request.getServletPath();
-        if (urlEnd.endsWith("jpg") || urlEnd.endsWith("png") || urlEnd.endsWith("gif")){
-            LOG.debug("设置不拦截图片,直接放行"+request.getRequestURI());
-            chain.doFilter(request, response);
-            return ;
-        }
-
         if (!isIncluded(request) && acceptsEncoding(request, "gzip") && !response.isCommitted()) {
             // Client accepts zipped content
             if (LOG.isDebugEnabled()) {
