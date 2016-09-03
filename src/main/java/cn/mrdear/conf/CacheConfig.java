@@ -67,12 +67,12 @@ public class CacheConfig {
     }
     /**
      *  ehcache 主要的管理器
-     * @param bean
+     * @param ehCacheManagerFactoryBean
      * @return
      */
     @Bean
-    public EhCacheCacheManager ehCacheCacheManager(EhCacheManagerFactoryBean bean){
-        return new EhCacheCacheManager(bean.getObject());
+    public EhCacheCacheManager ehCacheCacheManager(EhCacheManagerFactoryBean ehCacheManagerFactoryBean){
+        return new EhCacheCacheManager(ehCacheManagerFactoryBean.getObject());
     }
 
 }

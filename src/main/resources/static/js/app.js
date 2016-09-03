@@ -63,3 +63,15 @@ $("#top").click(function(){
     $('body,html').animate({scrollTop:0},1000);
     return false;
 });
+
+//文本比较
+
+
+    $(".diff-textarea").on('change keyup', function() {
+        $(".diff-wrapper").prettyTextDiff({
+                                               originalContent: $('#original').val(),
+                                               changedContent: $('#changed').val(),
+                                               diffContainer: ".diff"
+                                           });
+
+    });

@@ -44,15 +44,20 @@
         </li>
         <li><span id="refreshFile" class="glyphicon glyphicon-refresh" title="刷新此文档"></span></li>
         <li><span id="downloadFile" class="glyphicon glyphicon-download-alt" title="下载此文档"></span></li>
+        <li><a href="javascript:void(0)" data-toggle="modal" data-target=".modal"><span class="glyphicon glyphicon-pencil" title="比较文档"></span></a></li>
         <li><a href="#top" id="top"><span class="glyphicon glyphicon-arrow-up" title="回到顶部"></span></a></li>
     </ul>
 </div>
+<!--比较模态框-->
+<div class="modal fade" th:include="fragment/compare :: compare"></div>
 
 <script th:src="@{static/js/jquery.min.js}" src="http://oce4brl1p.bkt.clouddn.com/jquery.min.js"></script>
 <script th:src="@{static/js/bootstrap.min.js}" src="http://oce4brl1p.bkt.clouddn.com/bootstrap.min.js"></script>
 <script th:src="@{static/js/md2html.js}" src=""></script>
 <script th:src="@{static/js/highlight.min.js}" src="/static/js/highlight.min.js"></script>
 <script th:src="@{static/js/bootstrap-treeview.min.js}" src=""></script>
+<script th:src="@{static/js/diff_match_patch.js}" src=""></script>
+<script th:src="@{static/js/jquery.pretty-text-diff.min.js}" src=""></script>
 <script th:src="@{static/js/app.js}" src=""></script>
 </body>
 </html>
