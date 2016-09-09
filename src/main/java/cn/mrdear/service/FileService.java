@@ -3,9 +3,12 @@ package cn.mrdear.service;
 import com.alibaba.fastjson.JSON;
 
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,13 +26,15 @@ public class FileService {
     private static boolean isFirstFile = true;
     private static final String PATHPRE = "md.path";
     private static final Integer PATH_MAX = 20;
+
+    private Logger logger = LoggerFactory.getLogger(FileService.class);
     /**
      * 递归查找文件夹及其子目录,构造树形菜单
      * @param path
      * @return
      */
     public Category iteratorFile(String path){
-
+        logger.info("配置路径为"+path);
         File file = FileUtils.getFile(path);
         Category category = new Category();
         category.setDir(true);
@@ -37,8 +42,14 @@ public class FileService {
         category.setText(file.getName());
         category.setSelectable(false);
         category.setPath(file.getPath());
+        logger.info("初始化目录:"+file.getName());
 
-        DFS(file.listFiles(),category);
+        try {
+            DFS(file.listFiles(),category);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            logger.error("递归目录出错,编码转换出问题",e);
+        }
         return category;
     }
 
@@ -80,17 +91,18 @@ public class FileService {
      * @param files
      * @param curCategory
      */
-    private void DFS(File[] files,Category curCategory){
+    private void DFS(File[] files,Category curCategory) throws UnsupportedEncodingException {
         if (files == null){
             return ;
         }
         for (File file : files) {
             //统一字段
             Category categoryTemp = new Category();
-            categoryTemp.setText(file.getName());
-            categoryTemp.setPath(file.getPath());
+            categoryTemp.setText(new String(file.getName().getBytes("GBK")));
+            categoryTemp.setPath(new String(file.getPath().getBytes("GBK")));
 
             if (file.isDirectory()){
+                logger.info("找到文件夹:"+file.getName());
                 if (isFirstFile){
                     categoryTemp.setState(new Category.StateBean(false,true));
                 }
@@ -99,6 +111,7 @@ public class FileService {
                 DFS(file.listFiles(),categoryTemp);
             }else {
                 if (file.getName().endsWith("md")){
+                    logger.info("找到文件:"+new String(file.getName().getBytes("GBK")));
                     categoryTemp.setIcon("glyphicon glyphicon-book");
                     categoryTemp.setSelectable(true);
                     if (isFirstFile){

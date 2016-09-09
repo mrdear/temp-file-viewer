@@ -11,10 +11,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"cn.mrdear"})
-public class Application
-{
-    public static void main( String[] args )
-    {
+public class Application{
+
+    public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
     }
 

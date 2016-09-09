@@ -42,16 +42,18 @@ public class IndexController {
      * 前往主页
      * @return
      */
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "/",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String showIndex() throws IOException {
+        logger.info("访问主页");
         return "index";
     }
     /**
      * 前往主页
      * @return
      */
-    @RequestMapping(value = "/article",method = RequestMethod.POST)
+    @RequestMapping(value = "/article",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public @ResponseBody Article showArticle(String path, Model model) throws IOException {
+        logger.info("访问article");
         File file = new File(path);
         String result = "#欢迎使用Markdown View Tools";
         if (path.endsWith("md")){
@@ -68,6 +70,7 @@ public class IndexController {
      */
     @RequestMapping(value = "/categorys",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody JSONArray showCategory(){
+        logger.info("访问categorys");
         ArrayList<String> pathList = fileService.findFilesPath();//存放路径集合
         ArrayList<Category> categories = new ArrayList<>();//存放目录集合
         //遍历,java8的方法
@@ -89,7 +92,7 @@ public class IndexController {
      * @param path
      * @return
      */
-    @RequestMapping(value = "/downloadFile",method = RequestMethod.GET)
+    @RequestMapping(value = "/downloadFile",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public ResponseEntity<byte[]> downloadFile(@RequestParam(required = true) String path) throws IOException {
         if (path.endsWith("md")){
             File file = new File(path);

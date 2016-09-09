@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <title>我的MarkDown</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link th:href="@{static/css/bootstrap.min.css}" href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link th:href="@{static/css/app.css}" href="http://oce4brl1p.bkt.clouddn.com/app.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{http://oce4brl1p.bkt.clouddn.com/markdown/css/app.css}" href="/static/css/app.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div class="row">
@@ -51,13 +51,13 @@
 <!--比较模态框-->
 <div class="modal fade" th:include="fragment/compare :: compare"></div>
 
-<script th:src="@{static/js/jquery.min.js}" src="http://oce4brl1p.bkt.clouddn.com/jquery.min.js"></script>
-<script th:src="@{static/js/bootstrap.min.js}" src="http://oce4brl1p.bkt.clouddn.com/bootstrap.min.js"></script>
-<script th:src="@{static/js/md2html.js}" src=""></script>
-<script th:src="@{static/js/highlight.min.js}" src="/static/js/highlight.min.js"></script>
-<script th:src="@{static/js/bootstrap-treeview.min.js}" src=""></script>
-<script th:src="@{static/js/diff_match_patch.js}" src=""></script>
-<script th:src="@{static/js/jquery.pretty-text-diff.min.js}" src=""></script>
-<script th:src="@{static/js/app.js}" src=""></script>
+<script th:src="@{//cdn.bootcss.com/jquery/2.2.4/jquery.min.js}" src="/static/js/jquery.min.js"></script>
+<script th:src="@{//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js}" src="/static/js/bootstrap.min.js"></script>
+<script th:src="@{http://oce4brl1p.bkt.clouddn.com/markdown/js/md2html.js}" src=""></script>
+<script th:src="@{http://oce4brl1p.bkt.clouddn.com/markdown/js/highlight.min.js}" src="/static/js/highlight.min.js"></script>
+<script th:src="@{http://oce4brl1p.bkt.clouddn.com/markdown/js/bootstrap-treeview.min.js}" src="/static/js/bootstrap-treeview.min.js"></script>
+<script th:src="@{http://oce4brl1p.bkt.clouddn.com/markdown/js/diff_match_patch.js}" src="/static/js/diff_match_patch.js"></script>
+<script th:src="@{http://oce4brl1p.bkt.clouddn.com/markdown/js/jquery.pretty-text-diff.min.js}" src="/static/js/jquery.pretty-text-diff.min.js"></script>
+<script th:src="@{http://oce4brl1p.bkt.clouddn.com/markdown/js/app.js}" src=""></script>
 </body>
 </html>
