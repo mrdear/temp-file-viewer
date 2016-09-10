@@ -44,12 +44,14 @@
         </li>
         <li><span id="refreshFile" class="glyphicon glyphicon-refresh" title="刷新此文档"></span></li>
         <li><span id="downloadFile" class="glyphicon glyphicon-download-alt" title="下载此文档"></span></li>
-        <li><a href="javascript:void(0)" data-toggle="modal" data-target=".modal"><span class="glyphicon glyphicon-pencil" title="比较文档"></span></a></li>
+        <li><a href="javascript:void(0)" data-toggle="modal" data-target="#compareModel"><span class="glyphicon glyphicon-pencil" title="比较文档"></span></a></li>
+        <li><a href="javascript:void(0)" data-toggle="modal" data-target="#updateModel"><span class="glyphicon glyphicon-open" title="上传文档"></span></a></li>
         <li><a href="#top" id="top"><span class="glyphicon glyphicon-arrow-up" title="回到顶部"></span></a></li>
     </ul>
 </div>
 <!--比较模态框-->
-<div class="modal fade" th:include="fragment/compare :: compare"></div>
+<div class="modal fade" id="compareModel" th:include="fragment/compare :: compare"></div>
+<div class="modal fade" id="updateModel" th:include="fragment/update :: update"></div>
 
 <script th:src="@{//cdn.bootcss.com/jquery/2.2.4/jquery.min.js}" src="/static/js/jquery.min.js"></script>
 <script th:src="@{//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js}" src="/static/js/bootstrap.min.js"></script>

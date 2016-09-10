@@ -98,8 +98,8 @@ public class FileService {
         for (File file : files) {
             //统一字段
             Category categoryTemp = new Category();
-            categoryTemp.setText(new String(file.getName().getBytes("GBK")));
-            categoryTemp.setPath(new String(file.getPath().getBytes("GBK")));
+            categoryTemp.setText(new String(file.getName().getBytes("UTF-8")));
+            categoryTemp.setPath(new String(file.getPath().getBytes("UTF-8")));
 
             if (file.isDirectory()){
                 logger.info("找到文件夹:"+file.getName());
@@ -111,7 +111,7 @@ public class FileService {
                 DFS(file.listFiles(),categoryTemp);
             }else {
                 if (file.getName().endsWith("md")){
-                    logger.info("找到文件:"+new String(file.getName().getBytes("GBK")));
+                    logger.info("找到文件:"+new String(file.getName().getBytes("UTF-8")));
                     categoryTemp.setIcon("glyphicon glyphicon-book");
                     categoryTemp.setSelectable(true);
                     if (isFirstFile){
