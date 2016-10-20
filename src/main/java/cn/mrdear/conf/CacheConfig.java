@@ -3,6 +3,7 @@ package cn.mrdear.conf;
 import net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
@@ -13,6 +14,8 @@ import org.springframework.core.io.ClassPathResource;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.MultipartConfigElement;
 
 import cn.mrdear.filter.GzipFilter;
 
@@ -75,4 +78,13 @@ public class CacheConfig {
         return new EhCacheCacheManager(ehCacheManagerFactoryBean.getObject());
     }
 
+    /**
+     * 文件上传临时路径
+     */
+    @Bean
+    MultipartConfigElement multipartConfigElement() {
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        factory.setLocation("/home/web_as/markdown/logs/");
+        return factory.createMultipartConfig();
+    }
 }

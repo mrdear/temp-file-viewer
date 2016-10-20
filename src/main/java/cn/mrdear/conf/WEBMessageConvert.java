@@ -7,10 +7,10 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,25 +33,21 @@ public class WEBMessageConvert {
         FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
         fastJsonConfig.setSerializerFeatures(SerializerFeature.WriteMapNullValue);
-        /*
-          List<MediaType> fastMediaTypes = new ArrayList<>();
-          fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
-          fastConverter.setSupportedMediaTypes(fastMediaTypes);
-        */
+        //设置fastjson只处理该类型
+        List<MediaType> fastMediaTypes = new ArrayList<>();
+        fastMediaTypes.add(MediaType.TEXT_HTML);
+        fastMediaTypes.add(MediaType.APPLICATION_JSON);
+
+        fastConverter.setSupportedMediaTypes(fastMediaTypes);
+
         fastConverter.setFastJsonConfig(fastJsonConfig);
 
         //文件下载使用ByteArrayHttpMessageConverter处理
         ByteArrayHttpMessageConverter byteArrayHttpMessageConverter = new ByteArrayHttpMessageConverter();
-        byteArrayHttpMessageConverter.setDefaultCharset(Charset.forName("UTF-8"));
-        /*
-         //ByteArrayHttpMessageConverter默认处理请求类型就是APPLICATION_OCTET_STREAM
-         List<MediaType> byteMediaTypes = new ArrayList<>();
-         byteMediaTypes.add(MediaType.APPLICATION_OCTET_STREAM);
-         byteArrayHttpMessageConverter.setSupportedMediaTypes(byteMediaTypes);
-         */
+
         List<HttpMessageConverter<?>> converters = new ArrayList<>();
-        converters.add(fastConverter);
         converters.add(byteArrayHttpMessageConverter);
+        converters.add(fastConverter);
 
         return new HttpMessageConverters(converters);
     }

@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
@@ -95,11 +96,14 @@ public class IndexController {
      * @param path
      * @return
      */
-    @RequestMapping(value = "/downloadFile",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/downloadFile",method = RequestMethod.GET,produces = "application/octet-stream;charset=UTF-8")
     public ResponseEntity<byte[]> downloadFile(@RequestParam(required = true) String path) throws IOException {
         if (path.endsWith("md")){
             File file = new File(path);
-            String filename = path.substring(path.lastIndexOf("\\")+1);
+            //解决文件名乱码
+            String filename = URLEncoder.encode(file.getName(),"UTF-8");
+
+            System.out.println(filename);
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
             headers.setContentDispositionFormData("attachment", filename);

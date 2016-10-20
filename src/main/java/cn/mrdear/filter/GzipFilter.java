@@ -80,6 +80,7 @@ public class GzipFilter extends Filter {
      */
     protected void doFilter(final HttpServletRequest request, final HttpServletResponse response, final FilterChain chain)
             throws Exception {
+
         if (!isIncluded(request) && acceptsEncoding(request, "gzip") && !response.isCommitted()) {
             // Client accepts zipped content
             if (LOG.isDebugEnabled()) {
