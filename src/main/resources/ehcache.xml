@@ -1,4 +1,6 @@
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+    <diskStore path="cache" />
     <!--
     name：Cache的唯一标识
     maxElementsInMemory：内存中最大缓存对象数
@@ -14,5 +16,5 @@
     -->
     <defaultCache maxElementsInMemory="1000" maxElementsOnDisk="3600" eternal="false" overflowToDisk="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU"/>
 
-    <cache name="hello" maxElementsInMemory="1000" timeToIdleSeconds="3600" timeToLiveSeconds="86400" eternal="false" overflowToDisk="false" />
+    <cache name="pageCache" maxElementsInMemory="1000" timeToIdleSeconds="3600" timeToLiveSeconds="86400" eternal="false" overflowToDisk="true" />
 </ehcache>  

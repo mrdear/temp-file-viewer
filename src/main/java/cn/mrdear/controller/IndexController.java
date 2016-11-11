@@ -27,39 +27,46 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
+import cn.mrdear.conf.Setting;
 import cn.mrdear.entity.Article;
 import cn.mrdear.entity.Category;
 import cn.mrdear.service.FileService;
 
 /**
+ * 主控制器
  * @author Niu Li
  * @date 2016/8/9
  */
 @Controller
 public class IndexController {
 
-    private Logger logger = LoggerFactory.getLogger(IndexController.class);
-    @Resource(name = "fileService")
+    private static Logger logger = LoggerFactory.getLogger(IndexController.class);
+    @Resource
     private FileService fileService;
+    @Resource
+    private Setting setting;
 
     /**
      * 前往主页
-     * @return
+     * @return 主页
      */
     @RequestMapping(value = "/",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String showIndex() throws IOException {
         logger.info("访问主页");
         return "index";
     }
+
     /**
-     * 前往主页
-     * @return
+     * 获取单篇文章
+     * @param path 该文章路径
+     * @return 该文章实体
+     * @throws IOException 抛出异常
      */
     @RequestMapping(value = "/article",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public @ResponseBody Article showArticle(String path, Model model) throws IOException {
-        logger.info("访问article");
+        logger.debug("访问article页面");
         File file = new File(path);
-        String result = "#欢迎使用Markdown View Tools";
+        String result = setting.getWelecome();
         if (path.endsWith("md")){
             result = FileUtils.readFileToString(file,"UTF-8");
         }
@@ -69,21 +76,24 @@ public class IndexController {
     }
 
     /**
-     * 获取目录
-     * @return
+     * 获取文件目录
+     * @return 获取的文件目录集合
      */
     @RequestMapping(value = "/categorys",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody JSONArray showCategory(){
         logger.info("访问categorys");
-        ArrayList<String> pathList = fileService.findFilesPath();//存放路径集合
         ArrayList<Category> categories = new ArrayList<>();//存放目录集合
         //遍历,java8的方法
-//        pathList.forEach(path->{
+//        setting.getMDPaths().stream().limit(setting.getPATH_MAX()).forEach(path->{
 //            Category category = fileService.iteratorFile(path);
 //            categories.add(category);
 //        });
-        for (String path : pathList) {
-            Category category = fileService.iteratorFile(path);
+        int path_max = Integer.valueOf(setting.getMaxCount());
+        for (int i = 0; i < setting.getMdpath().size(); i++) {
+            if (i > path_max){
+                break;
+            }
+            Category category = fileService.iteratorFile(setting.getMdpath().get(i));
             categories.add(category);
         }
         //定制序列化
@@ -92,9 +102,10 @@ public class IndexController {
     }
 
     /**
-     * 下载文件
-     * @param path
-     * @return
+     * 下载文件请求
+     * @param path 下载文件的路径
+     * @return 该文件的字节流
+     * @throws IOException 抛出异常
      */
     @RequestMapping(value = "/downloadFile",method = RequestMethod.GET,produces = "application/octet-stream;charset=UTF-8")
     public ResponseEntity<byte[]> downloadFile(@RequestParam(required = true) String path) throws IOException {
@@ -102,8 +113,8 @@ public class IndexController {
             File file = new File(path);
             //解决文件名乱码
             String filename = URLEncoder.encode(file.getName(),"UTF-8");
-
-            System.out.println(filename);
+            logger.debug("下载文件名:"+filename);
+            logger.debug("下载路径:"+path);
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
             headers.setContentDispositionFormData("attachment", filename);
@@ -114,14 +125,19 @@ public class IndexController {
 
     /**
      * 文件上传
-     * @return
+     * @param file 上传的文件,form表单提交
+     * @param path 文件上传路径
+     * @return 首页
      */
-    @RequestMapping(value = "/update",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/upload",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public String uploadFile(MultipartFile file,String path){
         try {
             if (!file.isEmpty()){
+                String filename = new String(file.getOriginalFilename().getBytes(),"UTF-8");
+                logger.debug("上传文件名称:"+filename);
+                logger.debug("上传路径:"+path);
                 //使用StreamsAPI方式拷贝文件
-                Streams.copy(file.getInputStream(),new FileOutputStream(path+File.separator+file.getOriginalFilename()),true);
+                Streams.copy(file.getInputStream(),new FileOutputStream(path+File.separator+filename),true);
             }
         } catch (IOException e) {
             e.printStackTrace();

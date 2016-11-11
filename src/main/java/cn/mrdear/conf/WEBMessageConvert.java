@@ -37,14 +37,13 @@ public class WEBMessageConvert {
         List<MediaType> fastMediaTypes = new ArrayList<>();
         fastMediaTypes.add(MediaType.TEXT_HTML);
         fastMediaTypes.add(MediaType.APPLICATION_JSON);
-
         fastConverter.setSupportedMediaTypes(fastMediaTypes);
-
         fastConverter.setFastJsonConfig(fastJsonConfig);
 
         //文件下载使用ByteArrayHttpMessageConverter处理
         ByteArrayHttpMessageConverter byteArrayHttpMessageConverter = new ByteArrayHttpMessageConverter();
 
+        //加入转换器
         List<HttpMessageConverter<?>> converters = new ArrayList<>();
         converters.add(byteArrayHttpMessageConverter);
         converters.add(fastConverter);
