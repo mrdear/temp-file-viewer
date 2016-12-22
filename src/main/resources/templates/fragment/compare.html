@@ -2,44 +2,51 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>比较模态框</title>
-    <link href="/static/css/bootstrap.min.css">
+    <title>对比菜单</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <script src="/static/layui/layui.js"></script>
+    <script src="/static/css/index.css"></script>
 </head>
-<body>
-<div class="modal fade" th:fragment="compare">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">文本比较</h4>
+<body th:fragment="compare">
+    <div style="padding: 10px 10px" class="diff-wrapper">
+        <!--原文本-->
+        <fieldset class="layui-elem-field">
+            <legend>原文本</legend>
+            <div class="layui-field-box">
+                <textarea placeholder="原文本" class="layui-textarea diff-textarea original"  wrap="soft"></textarea>
             </div>
-            <div class="modal-body">
-                <div class="row diff-wrapper">
-                    <div class="col-md-6 compareTo">
-                        <div class="form-group">
-                            <label for="original">原文本:</label>
-                            <textarea class="form-control diff-textarea" id="original" rows="10"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="changed">新文本</label>
-                            <textarea class="form-control diff-textarea" id="changed" rows="10"></textarea>
-                        </div>
-                    </div>
-                    <div class="showCompare">
-                        <label style="margin-left: 10px">比较结果</label>
-                        <p class="diff" style="overflow-y: scroll;max-height: 450px">
+        </fieldset>
+        <!--新文本-->
+        <fieldset class="layui-elem-field">
+            <legend>新文本</legend>
+            <div class="layui-field-box">
+                <textarea placeholder="新文本" class="layui-textarea diff-textarea changed" wrap="soft"></textarea>
+            </div>
+        </fieldset>
+        <!--对比结果-->
+        <fieldset class="layui-elem-field">
+            <legend>对比结果</legend>
+            <div class="layui-field-box comparediff">
+                <div class="diff" style="background-color: #F2F2F2">
 
-                        </p>
-                    </div>
                 </div>
-
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Compare</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </fieldset>
+    </div>
+    <script>var jQuery = layui.jquery;</script>
+    <script src="/static/js/diff_match_patch.js" th:src="@{static/js/diff_match_patch.js}"></script>
+    <script src="/static/js/jquery.pretty-text-diff.min.js" th:src="@{static/js/jquery.pretty-text-diff.min.js}"></script>
+      <script>
+        //文本比较
+        jQuery(".diff-textarea").on('change keyup', function() {
+            jQuery(".diff-wrapper").prettyTextDiff({
+                originalContent: jQuery(".original").val(),
+                changedContent: jQuery(".changed").val(),
+                diffContainer: ".diff",
+                cleanup: true,
+                debug: false
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package cn.mrdear.entity;
 
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -11,32 +10,33 @@ import java.util.TreeSet;
 public class Category implements Comparable<Category>{
 
     public Category() {
-        this.nodes = new TreeSet<Category>();
-        this.state = new StateBean();
+        this.children = new TreeSet<Category>();
     }
 
     /**
-     * text : Parent 1
-     * nodes : [{"text":"Child 1","nodes":[{"text":"Grandchild 1"},{"text":"Grandchild 2"}]},{"text":"Child 2"}]
+     * 节点名
      */
-    private String text;
+    private String name;
+    /**
+     * 节点id
+     */
+    private int id;
+    /**
+     * 节点表示的路径
+     */
     private String path;
-    private String icon;
+    /**
+     * 是否是文件夹
+     */
     private boolean isDir = false;
-    private Set<Category> nodes;
     /**
-     * href : #node-1
-     * selectable : false
-     * state : {"checked":true,"expanded":true}
-     * tags : ["available"]
+     * 节点
      */
-    private boolean selectable;
+    private Set<Category> children;
     /**
-     * checked : true
-     * expanded : true
+     * 是否展开
      */
-    private StateBean state;
-    private List<String> tags;
+    private boolean spread;
 
     public boolean getIsDir() {
         return isDir;
@@ -46,44 +46,12 @@ public class Category implements Comparable<Category>{
         isDir = dir;
     }
 
-    public String getText() {
-        return text;
+    public String getName() {
+        return name;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public boolean isSelectable() {
-        return selectable;
-    }
-
-    public void setSelectable(boolean selectable) {
-        this.selectable = selectable;
-    }
-
-    public StateBean getState() {
-        return state;
-    }
-
-    public void setState(StateBean state) {
-        this.state = state;
-    }
-
-    public List<String> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<String> tags) {
-        this.tags = tags;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPath() {
@@ -94,12 +62,32 @@ public class Category implements Comparable<Category>{
         this.path = path;
     }
 
-    public Set<Category> getNodes() {
-        return nodes;
+    public int getId() {
+        return id;
     }
 
-    public void setNodes(Set<Category> nodes) {
-        this.nodes = nodes;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isDir() {
+        return isDir;
+    }
+
+    public Set<Category> getChildren() {
+        return children;
+    }
+
+    public void setChildren(Set<Category> children) {
+        this.children = children;
+    }
+
+    public boolean isSpread() {
+        return spread;
+    }
+
+    public void setSpread(boolean spread) {
+        this.spread = spread;
     }
 
     /**
@@ -119,33 +107,4 @@ public class Category implements Comparable<Category>{
         //并列的相同类型元素自然序
         return 1;
     }
-
-    public static class StateBean {
-        private boolean checked = false;
-        private boolean expanded = false;
-
-        public StateBean(boolean checked, boolean expanded) {
-            this.checked = checked;
-            this.expanded = expanded;
-        }
-        public StateBean() {
-        }
-
-        public boolean isChecked() {
-            return checked;
-        }
-
-        public void setChecked(boolean checked) {
-            this.checked = checked;
-        }
-
-        public boolean isExpanded() {
-            return expanded;
-        }
-
-        public void setExpanded(boolean expanded) {
-            this.expanded = expanded;
-        }
-    }
-
 }

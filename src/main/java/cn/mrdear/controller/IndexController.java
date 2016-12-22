@@ -2,6 +2,7 @@ package cn.mrdear.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.FileUtils;
@@ -13,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,7 +52,7 @@ public class IndexController {
      * 前往主页
      * @return 主页
      */
-    @RequestMapping(value = "/",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/",method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     public String showIndex() throws IOException {
         logger.info("访问主页");
         return "index";
@@ -70,8 +72,10 @@ public class IndexController {
         if (path.endsWith("md")){
             result = FileUtils.readFileToString(file,"UTF-8");
         }
+        StringBuilder builder = new StringBuilder(result);
+        builder.append("  \r\n  [toc]");
         Article article = new Article();
-        article.setContent(result);
+        article.setContent(builder.toString());
         return article;
     }
 
@@ -113,8 +117,8 @@ public class IndexController {
             File file = new File(path);
             //解决文件名乱码
             String filename = URLEncoder.encode(file.getName(),"UTF-8");
+            logger.debug("下载文件路径:"+path);
             logger.debug("下载文件名:"+filename);
-            logger.debug("下载路径:"+path);
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
             headers.setContentDispositionFormData("attachment", filename);
@@ -125,25 +129,32 @@ public class IndexController {
 
     /**
      * 文件上传
-     * @param file 上传的文件,form表单提交
-     * @param path 文件上传路径
+     * @param mdfile 上传的文件,form表单提交
+     * @param filepath 文件上传路径
      * @return 首页
      */
     @RequestMapping(value = "/upload",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public String uploadFile(MultipartFile file,String path){
+    @ResponseBody
+    public JSONObject uploadFile(MultipartFile mdfile,@CookieValue("filepath") String filepath){
+        JSONObject result = new JSONObject();
         try {
-            if (!file.isEmpty()){
-                String filename = new String(file.getOriginalFilename().getBytes(),"UTF-8");
+            if (!mdfile.isEmpty()){
+                String filename = new String(mdfile.getOriginalFilename().getBytes(),"UTF-8");
+                logger.debug("上传路径:"+filepath);
                 logger.debug("上传文件名称:"+filename);
-                logger.debug("上传路径:"+path);
                 //使用StreamsAPI方式拷贝文件
-                Streams.copy(file.getInputStream(),new FileOutputStream(path+File.separator+filename),true);
+                Streams.copy(mdfile.getInputStream(),new FileOutputStream(filepath+File.separator+filename),true);
             }
         } catch (IOException e) {
             e.printStackTrace();
             logger.error("上传文件出错",e);
+            result.put("status",1);
+            result.put("msg","上传文件出错");
+            return result;
         }
-        return "redirect:/";
+        result.put("status",0);
+        result.put("msg","SUCCESS");
+        return result;
     }
 
 }

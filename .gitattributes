@@ -1,5 +1,5 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Auto detect name files and perform LF normalization
+* name=auto
 
 # Custom for Visual Studio
 *.cs     diff=csharp

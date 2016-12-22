@@ -88,12 +88,21 @@
 
   </dependencies>
   <build>
-    <!--spring boot plugin start-->
     <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
+    <!--spring boot plugin start-->
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <!--配置热部署-->
+          <dependencies>
+            <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>springloaded</artifactId>
+              <version>1.2.6.RELEASE</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      <!--spring boot plugin end-->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>

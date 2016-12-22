@@ -15,14 +15,15 @@ import cn.mrdear.entity.Category;
 import cn.mrdear.util.ListFeature;
 
 /**
- * 文件上传工具类
+ * 查找出列表文件
  * @author Niu Li
  * @date 2016/8/24
  */
 @Service
 public class FileService {
 
-    private static boolean isFirstFile = true;
+    private static int index = 0;
+
 
     private static Logger logger = LoggerFactory.getLogger(FileService.class);
     /**
@@ -35,12 +36,11 @@ public class FileService {
         File file = FileUtils.getFile(path);
         Category category = new Category();
         category.setDir(true);
-        category.setState(new Category.StateBean(false,true));
-        category.setText(file.getName());
-        category.setSelectable(false);
+        category.setSpread(true);
+        category.setName(file.getName());
         category.setPath(file.getPath());
+        category.setId(index++);
         logger.debug("初始化目录:"+file.getName());
-
         try {
             DFS(file.listFiles(),category);
         } catch (UnsupportedEncodingException e) {
@@ -50,10 +50,17 @@ public class FileService {
         return category;
     }
 
+//    public static void main(String[] args) {
+//        FileService fileService = new FileService();
+//        Category category = fileService.iteratorFile("E:\\公司");
+//        List<Category> lists = new ArrayList<>();
+//        lists.add(category);
+//        System.out.println(fileService.toTreeJsonStr(lists));
+//    }
     /**
      * 集合转换为树形菜单需要的json串
-     * @param lists
-     * @return
+     * @param lists 要转换的目录
+     * @return json串
      */
     public String toTreeJsonStr(List<Category> lists){
         ListFeature feature = new ListFeature();
@@ -72,31 +79,21 @@ public class FileService {
         for (File file : files) {
             //统一字段
             Category categoryTemp = new Category();
-            categoryTemp.setText(new String(file.getName().getBytes("UTF-8")));
+            categoryTemp.setName(new String(file.getName().getBytes("UTF-8")));
             categoryTemp.setPath(new String(file.getPath().getBytes("UTF-8")));
-
+            categoryTemp.setId(index++);
             if (file.isDirectory()){
                 logger.debug("找到文件夹:"+file.getName());
-                if (isFirstFile){
-                    categoryTemp.setState(new Category.StateBean(false,true));
-                }
-                categoryTemp.setSelectable(false);
                 categoryTemp.setDir(true);
                 DFS(file.listFiles(),categoryTemp);
             }else {
                 if (file.getName().endsWith("md")){
                     logger.debug("找到文件:"+new String(file.getName().getBytes("UTF-8")));
-                    categoryTemp.setIcon("glyphicon glyphicon-book");
-                    categoryTemp.setSelectable(true);
-                    if (isFirstFile){
-                        categoryTemp.setState(new Category.StateBean(true,true));
-                        isFirstFile = false;
-                    }
                 }else {
                     continue;
                 }
             }
-            curCategory.getNodes().add(categoryTemp);
+            curCategory.getChildren().add(categoryTemp);
         }
     }
 }

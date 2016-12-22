@@ -15,7 +15,7 @@ public class ListFeature implements PropertyPreFilter {
     @Override
     public boolean apply(JSONSerializer serializer, Object object, String name) {
 
-        if (name.equals("nodes")){
+        if (name.equals("children")){
             Category category = (Category) object;
             return category.getIsDir();
         }

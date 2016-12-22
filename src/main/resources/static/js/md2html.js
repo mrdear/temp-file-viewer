@@ -15,6 +15,7 @@
 
 // Markdown.Converter.js
 var Markdown;
+var indexTitle = 0;
 if (typeof exports === "object" && typeof require === "function") {
     Markdown = exports
 } else {
@@ -1424,10 +1425,9 @@ if (typeof exports === "object" && typeof require === "function") {
 
             function createAnchor(element) {
                 var id = element.id || utils.slugify(element.textContent) || 'title';
-                var anchor = id;
-                var index = 0;
+                var anchor = id + "-" + (++indexTitle);
                 while (_has(anchorList, anchor)) {
-                    anchor = id + "-" + (++index);
+                    anchor = id + "-" + (++indexTitle);
                 }
                 anchorList[anchor] = true;
                 // Update the id of the element
@@ -1445,8 +1445,8 @@ if (typeof exports === "object" && typeof require === "function") {
 
         toc.convert = function (previewContentsElt) {
             var tocExp = new RegExp("^\\s*" + toc.config.marker + "\\s*$");
-            //.toc添加和.category添加
-            var tocEltList = document.querySelectorAll('.category, .toc');
+            //.toc添加
+            var tocEltList = document.querySelectorAll('.toc');
             var htmlToc = buildToc(previewContentsElt);
             // Replace toc paragraphs
             _each(previewContentsElt.getElementsByTagName('p'), function (elt) {
@@ -1457,6 +1457,7 @@ if (typeof exports === "object" && typeof require === "function") {
             // Add toc in the TOC button
             _each(tocEltList, function (elt) {
                 elt.innerHTML = htmlToc;
+
             });
         };
 
