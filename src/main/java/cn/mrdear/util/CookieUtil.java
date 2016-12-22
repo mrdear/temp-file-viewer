@@ -1,5 +1,8 @@
 package cn.mrdear.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CookieUtil {
 
+    private static Logger logger = LoggerFactory.getLogger(CookieUtil.class);
     /**
      * 写入cookies
      * @param name 键
@@ -23,7 +27,9 @@ public class CookieUtil {
             name = URLEncoder.encode(name, "UTF-8");
             value = URLEncoder.encode(value, "UTF-8");
             Cookie cookie = new Cookie(name,value);
+            cookie.setPath("/");
             response.addCookie(cookie);
+            logger.debug("写入cookies:"+name+"---值:"+value);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

@@ -73,7 +73,7 @@ public class IndexController {
             result = FileUtils.readFileToString(file,"UTF-8");
         }
         StringBuilder builder = new StringBuilder(result);
-        builder.append("  \r\n  [toc]");
+        builder.append("  \r\n\n\n  [toc]");
         Article article = new Article();
         article.setContent(builder.toString());
         return article;
