@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.thymeleaf.util.StringUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -154,6 +155,27 @@ public class IndexController {
         }
         result.put("status",0);
         result.put("msg","SUCCESS");
+        return result;
+    }
+    /**
+     * 文件删除
+     * @param path 要删除的文件
+     * @return 首页
+     */
+    @RequestMapping(value = "/delete",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public JSONObject uploadFile(String path){
+        JSONObject result = new JSONObject();
+        if (!StringUtils.isEmpty(path)){
+            File file = new File(path);
+            if (file.exists() && file.delete()){
+                result.put("status",0);
+                result.put("msg","SUCCESS");
+            }
+        }else {
+            result.put("status",400);
+            result.put("msg","NOT FOUND");
+        }
         return result;
     }
 

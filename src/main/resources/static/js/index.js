@@ -204,3 +204,40 @@ function freshArticle() {
         getArticle(path,id,name.substr(0,name.length-1));
     }
 }
+
+//删除文章
+function deleteMd() {
+    var $ = layui.jquery;
+    var layer = layui.layer;
+    var confirm;
+    layer.confirm('is not?', function(confirmTitle){
+        var $curTab = $('.layui-tab-title .layui-this');
+        var path = $curTab.prop('title');
+        var index = $curTab.index();
+        if (path.length >0){
+            $.ajax({
+                type: "POST",
+                url: "delete",
+                dataType:'json',
+                data:{path:path},
+                beforeSend:function () {
+                    confirm = layer.load(1); //换了种风格
+                },
+                success:function (data) {
+                    if (data.status == 0){
+                        layui.element().tabDelete('tabfilter', index);
+                        $('.fresh-tree button').click();
+                        layer.msg(data.msg);
+                    }else {
+                        layer.msg(data.msg);
+                    }
+                },
+                complete:function (XMLHttpRequest, textStatus) {
+                    layer.close(confirm);
+                    layer.close(confirmTitle);
+                }
+            });
+        }
+    });
+
+}

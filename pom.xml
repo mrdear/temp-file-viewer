@@ -85,7 +85,15 @@
       <artifactId>spring-boot-configuration-processor</artifactId>
       <optional>true</optional>
     </dependency>
-
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -93,6 +101,12 @@
         <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
+          <configuration>
+            <!--配置编码,不然乱码-->
+            <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+            <!--显示配置,不然dev不生效-->
+            <fork>true</fork>
+          </configuration>
           <!--配置热部署-->
           <dependencies>
             <dependency>
