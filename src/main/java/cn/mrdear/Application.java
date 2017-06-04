@@ -15,10 +15,10 @@ import cn.mrdear.conf.Setting;
 @EnableAutoConfiguration
 @EnableConfigurationProperties({Setting.class})
 @ComponentScan(basePackages = {"cn.mrdear"})
-public class Application{
+public class Application {
 
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(Application.class, args);
-    }
+  public static void main(String[] args) throws Exception {
+    SpringApplication.run(Application.class, args);
+  }
 
 }

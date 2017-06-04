@@ -19,479 +19,166 @@
     max-width: 860px;
 }
 
-.preview-panel a {
-    background-color: transparent;
-    -webkit-text-decoration-skip: objects;
-}
-
-.preview-panel a:active,
-.preview-panel a:hover {
-    outline-width: 0;
-}
-
-.preview-panel strong {
-    font-weight: inherit;
-}
-
-.preview-panel strong {
-    font-weight: bolder;
-}
-
-.preview-panel h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
-}
-
-.preview-panel img {
-    border-style: none;
-}
-
-.preview-panel svg:not(:root) {
+.preview-panel hr{
+    margin: 38px 0;
+    border: none;
+    border-bottom: 1px dashed #e3e3e3;
+    color: #e3e3e3;
+    height: 1px;
+    line-height:1px;
+    font-size:1px;
     overflow: hidden;
 }
 
-.preview-panel code,
-.preview-panel kbd,
-.preview-panel pre {
-    font-family: monospace, monospace;
-    font-size: 1em;
-}
 
-.preview-panel hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
-}
-
-.preview-panel input {
-    font: inherit;
+.preview-panel h1{
+    color: #10a3ee;
+    font-size: 1.7em;
+    text-align: left;
     margin: 0;
-}
-
-.preview-panel input {
-    overflow: visible;
-}
-
-.preview-panel [type="checkbox"] {
-    box-sizing: border-box;
     padding: 0;
+    line-height: 1.6em;
+    margin-top: 0.8em;
+    margin-bottom: 0.6em;
 }
 
-.preview-panel * {
-    box-sizing: border-box;
+.preview-panel h1,.preview-panel  h2,.preview-panel  h3,.preview-panel  h4{
+    color: #10a3ee;
 }
 
-.preview-panel input {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
+.preview-panel  h1,.preview-panel  h2,.preview-panel  h3{
+    font-weight: normal;
 }
 
-.preview-panel a {
-    color: #4078c0;
-    text-decoration: none;
-}
-
-.preview-panel a:hover,
-.preview-panel a:active {
-    text-decoration: underline;
-}
-
-.preview-panel strong {
-    font-weight: 600;
-}
-
-.preview-panel hr {
-    height: 0;
-    margin: 15px 0;
-    overflow: hidden;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.preview-panel hr::before {
-    display: table;
-    content: "";
-}
-
-.preview-panel hr::after {
-    display: table;
-    clear: both;
-    content: "";
-}
-
-.preview-panel table {
-    border-spacing: 0;
-    border-collapse: collapse;
-}
-
-.preview-panel td,
-.preview-panel th {
-    padding: 0;
-}
-
-.preview-panel h1,
-.preview-panel h2,
-.preview-panel h3,
-.preview-panel h4,
-.preview-panel h5,
-.preview-panel h6 {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.preview-panel h1 {
-    font-size: 32px;
-    font-weight: 600;
+.preview-panel h2,.preview-panel  h3{
+    line-height: 1.5em;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
 }
 
 .preview-panel h2 {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 1.45em;
 }
 
 .preview-panel h3 {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 1.25em
 }
 
-.preview-panel h4 {
-    font-size: 16px;
-    font-weight: 600;
-}
 
-.preview-panel h5 {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.preview-panel h6 {
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.preview-panel p {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.preview-panel blockquote {
-    margin: 0;
-}
-
-.preview-panel ul,
 .preview-panel ol {
-    padding-left: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.preview-panel ol ol,
-.preview-panel ul ol {
-    list-style-type: lower-roman;
-}
-
-.preview-panel ul ul ol,
-.preview-panel ul ol ol,
-.preview-panel ol ul ol,
-.preview-panel ol ol ol {
-    list-style-type: lower-alpha;
-}
-
-.preview-panel dd {
-    margin-left: 0;
-}
-
-.preview-panel code {
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 12px;
-}
-
-.preview-panel pre {
-    margin-top: 0;
-    margin-bottom: 0;
-    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
-}
-
-.preview-panel input {
-    -webkit-font-feature-settings: "liga" 0;
-    font-feature-settings: "liga" 0;
-}
-
-.preview-panel::before {
-    display: table;
-    content: "";
-}
-
-.preview-panel::after {
-    display: table;
-    clear: both;
-    content: "";
-}
-
-.preview-panel>*:first-child {
-    margin-top: 0 !important;
-}
-
-.preview-panel>*:last-child {
-    margin-bottom: 0 !important;
-}
-
-.preview-panel a:not([href]) {
-    color: inherit;
-    text-decoration: none;
-}
-
-.preview-panel p,
-.preview-panel blockquote,
-.preview-panel ul,
-.preview-panel ol,
-.preview-panel dl,
-.preview-panel table,
-.preview-panel pre {
-    margin-top: 0;
-    margin-bottom: 16px;
-}
-
-.preview-panel hr {
-    height: 0.25em;
-    padding: 0;
-    margin: 24px 0;
-    background-color: #e7e7e7;
-    border: 0;
-}
-
-.preview-panel blockquote {
-    padding: 0 1em;
-    color: #777;
-    border-left: 0.25em solid #ddd;
-}
-
-.preview-panel blockquote>:first-child {
-    margin-top: 0;
-}
-
-.preview-panel blockquote>:last-child {
-    margin-bottom: 0;
-}
-
-.preview-panel kbd {
-    display: inline-block;
-    padding: 3px 5px;
-    font-size: 11px;
-    line-height: 10px;
-    color: #555;
-    vertical-align: middle;
-    background-color: #fcfcfc;
-    border: solid 1px #ccc;
-    border-bottom-color: #bbb;
-    border-radius: 3px;
-    box-shadow: inset 0 -1px 0 #bbb;
-}
-
-.preview-panel h1,
-.preview-panel h2,
-.preview-panel h3,
-.preview-panel h4,
-.preview-panel h5,
-.preview-panel h6 {
-    font-weight: 600;
-    line-height: 1.25;
-}
-
-.preview-panel h1 {
-    padding-bottom: 0.3em;
-    font-size: 2em;
-    border-bottom: 1px solid #eee;
-}
-
-.preview-panel h2 {
-    padding-bottom: 0.3em;
-    font-size: 1.5em;
-    border-bottom: 1px solid #eee;
-}
-
-.preview-panel h3 {
-    font-size: 1.25em;
-}
-
-.preview-panel h4 {
-    font-size: 1em;
-}
-
-.preview-panel h5 {
-    font-size: 0.875em;
-}
-
-.preview-panel h6 {
-    font-size: 0.85em;
-    color: #777;
+    margin: 0;
 }
 
 .preview-panel ul{
-    padding-left: 2em;
+    padding: 5px 38px;
+    margin: 0;
 }
 
-.preview-panel ul ul,
-.preview-panel ul ol,
-.preview-panel ol ol,
-.preview-panel ol ul {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.preview-panel li>p {
-    margin-top: 16px;
-}
-
-.preview-panel dl {
+.preview-panel ul li,.preview-panel  li{
     padding: 0;
+    margin: 0;
 }
 
-.preview-panel dl dt {
-    padding: 0;
-    margin-top: 16px;
-    font-size: 1em;
-    font-style: italic;
-    font-weight: bold;
+.preview-panel ul p,.preview-panel  ol p{
+    overflow: visible;
 }
 
-.preview-panel dl dd {
-    padding: 0 16px;
-    margin-bottom: 16px;
+.preview-panel blockquote {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 1.6em 0;
+    padding: 0 0 0 1.2em;
+    border-left: 0.4em solid #dddddd;
+    color: #888888;
+    min-height:20px;
+}
+
+.preview-panel blockquote p {
+    margin: 0.8em 0;
+}
+
+.preview-panel blockquote span.md_line {
+    margin-bottom: 0.25em;
+    margin-top: 0.25em;
+}
+
+.preview-panel blockquote ul{
+    padding: 0 15px;
+}
+
+.preview-panel blockquote small {
+    display: inline-block;
+    margin: 0.8em 0 0.8em 1.5em;
+    font-size: 0.9em;
+    color: #ccc;
 }
 
 .preview-panel table {
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #d9d9d9;
+    border-left: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.preview-panel th, td {
+    border-left: 1px solid #d9d9d9;
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #d9d9d9;
+}
+
+.preview-panel code{
+    background: #f5f5f5;
+    padding: 0 5px;
+    margin: 0 2px;
+}
+
+.preview-panel pre{
+    border: 1px solid #e6e6e6;
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    padding: 15px 10px;
     display: block;
-    width: 100%;
     overflow: auto;
-}
-
-.preview-panel table th {
-    font-weight: bold;
-}
-
-.preview-panel table th,
-.preview-panel table td {
-    padding: 6px 13px;
-    border: 1px solid #ddd;
-}
-
-.preview-panel table tr {
-    background-color: #fff;
-    border-top: 1px solid #ccc;
-}
-
-.preview-panel table tr:nth-child(2n) {
-    background-color: #f8f8f8;
-}
-
-.preview-panel img {
-    max-width: 100%;
-    box-sizing: content-box;
-    background-color: #fff;
+    background: #0C0C0C;
+    font-size: 90%;
 }
 
 .preview-panel code {
     padding: 0.2em 0;
-    margin: 0;
+    margin: 0 3px;
     font-size: 85%;
     background-color: rgba(0,0,0,0.04);
     color: #c7254e;
     background-color: #f9f2f4;
-    border-radius: 4px
+    border-radius: 4px;
+}
+.preview-panel p {
+    word-wrap: break-word;
+    overflow: hidden;
+    margin: 1.5em 0;
+}
+.preview-panel a {
+    color: #4083c4;
+    text-decoration: none;
+}
+.preview-panel a:hover{
+    text-decoration: underline;
 }
 
-.preview-panel code::before,
-.preview-panel code::after {
-    letter-spacing: -0.2em;
-    content: "\00a0";
+.preview-panel strong {
+    color: #000000;
+    font-weight: bold;
 }
 
-.preview-panel pre {
-    word-wrap: normal;
-    max-width: 860px;
-}
-
-.preview-panel pre>code {
-    padding: 0;
-    margin: 0;
-    font-size: 100%;
-    word-break: normal;
-    white-space: pre;
-    background: transparent;
-    border: 0;
-}
-
-.preview-panel .highlight {
-    margin-bottom: 16px;
-}
-
-.preview-panel .highlight pre {
-    margin-bottom: 0;
-    word-break: normal;
-}
-
-.preview-panel .highlight pre,
-.preview-panel pre {
-    overflow: auto;
-    font-size: 85%;
-    border-radius: 3px;
-}
-
-.preview-panel pre code {
-    display: inline;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    line-height: inherit;
-    word-wrap: normal;
-    background-color: transparent;
-    border: 0;
-}
-
-.preview-panel pre code::before,
-.preview-panel pre code::after {
-    content: normal;
-}
-
-
-.preview-panel kbd {
-    display: inline-block;
-    padding: 3px 5px;
-    font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    line-height: 10px;
-    color: #555;
-    vertical-align: middle;
-    background-color: #fcfcfc;
-    border: solid 1px #ccc;
-    border-bottom-color: #bbb;
-    border-radius: 3px;
-    box-shadow: inset 0 -1px 0 #bbb;
-}
-
-.preview-panel :checked+.radio-label {
-    position: relative;
-    z-index: 1;
-    border-color: #4078c0;
-}
-
-.preview-panel .task-list-item {
-    list-style-type: none;
-}
-
-.preview-panel .task-list-item+.task-list-item {
-    margin-top: 3px;
-}
-
-.preview-panel .task-list-item input {
-    margin: 0 0.2em 0.25em -1.6em;
-    vertical-align: middle;
-}
-
-.preview-panel hr {
-    border-bottom-color: #eee;
+.layui-code-notepad .layui-code-h3{
+    margin: 0 10px;
+    line-height: 20px;
 }
 
 /*黑*/

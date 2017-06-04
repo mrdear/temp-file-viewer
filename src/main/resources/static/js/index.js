@@ -14,6 +14,9 @@ layui.use(['jquery','tree','element','layer','util','code'], function() {
     element.on('tab(tabfilter)', function(data){
         layer.closeAll();
     });
+
+    $('.layui-tab-content').css('height',$(window).height());
+
     //固定块(树形菜单弹出)
     var contentTree;
     util.fixbar({
@@ -115,7 +118,7 @@ function getArticle(path,id,name) {
 
 
             var $preview = $("#"+s);
-            md2Html(result.content, $preview, function(html) {
+          markdownToHtml(result.content, $preview, function(html) {
                 //toc标题
                 var toc = $('#'+s+'+#content-tree .content-tree');
                 toc.html($('#'+s+' .toc').html());
