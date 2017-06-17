@@ -3,21 +3,21 @@
 学习springboot时写的一个工具,因为我做接口的经常写文档,改文档,前端每次从svn更新下来很不方便,所以写了一个本地md文档读取展示工具,
 前端访问我的ip就能看到相应的文档了
 
-##展示地址
+## 展示地址
 
 [点击查看](http://mrdear.cn:8090)
 
-##现有功能
+## 现有功能
 1. 文档多标签展示
 2. toc目录解析
 3. 文档上传与下载
 4. 文本比较工具
 
-##待完成功能
+## 待完成功能
 1. 文档目录缓存,文章本身就在本地,所以不设缓存
 2. word与PDF展示,最终想做一个全能的文档展示系统
 
-##如何使用?
+## 如何使用?
 
 1. 使用IDEA clone下来
 2. 修改配置文件setting.properties
@@ -52,29 +52,32 @@ md.welecome=#欢迎使用Markdown View Tools
 3. 使用maven打包为jar
 4. 运行java -jar mrdear-1.0.0.jar
 
-效果图如下:
+## 效果图
 
-总效果图:
+1. 总效果图
+
 ![1.jpg](http://upload-images.jianshu.io/upload_images/2148449-e22805b5008ef94f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-文本比较工具:
+2. 文本比较工具
+
 ![2.jpg](http://upload-images.jianshu.io/upload_images/2148449-a2cf45fff3a3b7ce.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-文档上传
+3. 文档上传
+
 ![3.jpg](http://upload-images.jianshu.io/upload_images/2148449-5c846c7315275eed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-##关于乱码问题
+## 关于乱码问题
 布置的时候有一台全新的linux环境出现乱码问题,查找原因是系统编码不对导致(关于查看,vi一个中文文件,保存后,ls查看,如果会乱码则配置有问题)
 解决就是使用`locale -a`查看系统支持的编码,然后`LANG='该编码'`,这里要注意大小写,配置中文UTF-8即可.
 
 
-##更新日志
+## 更新日志
 
-###2017.1.18
+### 2017.1.18
 1. 页面边距调整,目录宽度加大
 2. 新增文件删除功能,对目录无效
 
-####2016.12.20
+#### 2016.12.20
 1. 前端页面使用layui重新设计
 2. 增加多标签显示,很方便的功能
