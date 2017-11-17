@@ -3,19 +3,12 @@
 学习springboot时写的一个工具,因为我做接口的经常写文档,改文档,前端每次从svn更新下来很不方便,所以写了一个本地md文档读取展示工具,
 前端访问我的ip就能看到相应的文档了
 
-## 展示地址
-
-[点击查看](http://mrdear.cn:8090)
 
 ## 现有功能
 1. 文档多标签展示
 2. toc目录解析
 3. 文档上传与下载
 4. 文本比较工具
-
-## 待完成功能
-1. 文档目录缓存,文章本身就在本地,所以不设缓存
-2. word与PDF展示,最终想做一个全能的文档展示系统
 
 ## 如何使用?
 
@@ -33,15 +26,6 @@ md.maxCount=20
 #上传临时目录
 md.uploadTemppath=E://temp/
 
-#GZIP过滤后缀
-md.filter[0]=*.css
-md.filter[1]=*.js
-md.filter[2]=*.json
-md.filter[3]=*.eot
-md.filter[4]=*.svg
-md.filter[5]=*.woff
-md.filter[6]=*.woff2
-
 #页面缓存url
 md.cache[0]=/
 
@@ -51,6 +35,8 @@ md.welecome=#欢迎使用Markdown View Tools
 
 3. 使用maven打包为jar
 4. 运行java -jar mrdear-1.0.0.jar
+
+项目使用了lombok,如果get和set方法报错,则需要对应IDE安装lombok插件.
 
 ## 效果图
 
@@ -73,6 +59,10 @@ md.welecome=#欢迎使用Markdown View Tools
 
 
 ## 更新日志
+
+### 2017.11.17
+1. 升级Spring Boot版本,作为Spring Boot的入门项目很适合.
+2. 修改代码风格,更正之前一些错误的写法.
 
 ### 2017.1.18
 1. 页面边距调整,目录宽度加大

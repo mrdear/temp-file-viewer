@@ -1,5 +1,6 @@
 package cn.mrdear.conf;
 
+import net.sf.ehcache.constructs.web.filter.GzipFilter;
 import net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -10,13 +11,12 @@ import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.MultipartConfigElement;
-
-import cn.mrdear.filter.GzipFilter;
 
 /**
  * 定义一些Filter使用
@@ -31,30 +31,19 @@ public class CacheConfig {
     private Setting setting;
 
     /**
-     * 配置ehcache的Gzip压缩,一般只压缩静态文件,但是不要尝试压缩图片,图片本身传送就会压缩的
-     * @return Gzip过滤器
-     */
-    @Bean
-    public FilterRegistrationBean gzipFilter(){
-        FilterRegistrationBean gzipFilter = new FilterRegistrationBean(new GzipFilter());
-        gzipFilter.setUrlPatterns(setting.getFilter());
-        return gzipFilter;
-    }
-
-    /**
      * Ehcache页面缓存
      * @return Ehcache页面缓存过滤器实例
      */
     @Bean
-    public FilterRegistrationBean helloFilter(){
-        FilterRegistrationBean helloFilter = new FilterRegistrationBean(new SimplePageCachingFilter());
+    public FilterRegistrationBean ehcacheFilter(){
+        FilterRegistrationBean cacheFilter = new FilterRegistrationBean(new SimplePageCachingFilter());
         Map<String,String> maps = new HashMap<>();
         //设置参数
         maps.put("cacheName","pageCache");
-        helloFilter.setInitParameters(maps);
+        cacheFilter.setInitParameters(maps);
         //设置路径
-        helloFilter.setUrlPatterns(setting.getCache());
-        return helloFilter;
+        cacheFilter.setUrlPatterns(setting.getCache());
+        return cacheFilter;
     }
 
     /**

@@ -612,7 +612,7 @@ var Markdown;if(typeof exports==="object"&&typeof require==="function"){Markdown
     // 表示有mathjax?
     // 加载mathJax
     if(mdText.indexOf('$') !== -1) {
-      loadJs("./libs/MathJax/MathJax.js?config=TeX-AMS_HTML", function() {
+      loadJs("https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js", function() {
         if(!m) {
           var m = initMathJax();
         }

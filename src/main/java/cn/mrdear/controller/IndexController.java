@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,161 +21,159 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.util.StringUtils;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-
-import javax.annotation.Resource;
-
 import cn.mrdear.conf.Setting;
 import cn.mrdear.entity.Article;
 import cn.mrdear.entity.Category;
 import cn.mrdear.service.FileService;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
 /**
  * 主控制器
+ *
  * @author Niu Li
- * @date 2016/8/9
+ * @since 2016/8/9
  */
 @Controller
 public class IndexController {
 
-    private static Logger logger = LoggerFactory.getLogger(IndexController.class);
-    @Resource
-    private FileService fileService;
-    @Resource
-    private Setting setting;
+  private static Logger logger = LoggerFactory.getLogger(IndexController.class);
+  @Resource
+  private FileService fileService;
+  @Resource
+  private Setting setting;
 
-    /**
-     * 前往主页
-     * @return 主页
-     */
-    @RequestMapping(value = "/",method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
-    public String showIndex() throws IOException {
-        logger.info("访问主页");
-        return "index";
+  /**
+   * 前往主页
+   *
+   * @return 主页
+   */
+  @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+  public String showIndex() throws IOException {
+    return "index";
+  }
+
+  /**
+   * 获取单篇文章
+   *
+   * @param path 该文章路径
+   * @return 该文章实体
+   * @throws IOException 抛出异常
+   */
+  @RequestMapping(value = "/article", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+  public @ResponseBody
+  Article showArticle(String path) throws IOException {
+    File file = new File(path);
+    String result = setting.getWelecome();
+    if (path.endsWith("md")) {
+      result = FileUtils.readFileToString(file, "UTF-8");
     }
+    StringBuilder builder = new StringBuilder(result);
+    builder.append("  \r\n\n\n  [toc]");
+    Article article = new Article();
+    article.setContent(builder.toString());
+    return article;
+  }
 
-    /**
-     * 获取单篇文章
-     * @param path 该文章路径
-     * @return 该文章实体
-     * @throws IOException 抛出异常
-     */
-    @RequestMapping(value = "/article",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public @ResponseBody Article showArticle(String path, Model model) throws IOException {
-        logger.debug("访问article页面");
-        File file = new File(path);
-        String result = setting.getWelecome();
-        if (path.endsWith("md")){
-            result = FileUtils.readFileToString(file,"UTF-8");
-        }
-        StringBuilder builder = new StringBuilder(result);
-        builder.append("  \r\n\n\n  [toc]");
-        Article article = new Article();
-        article.setContent(builder.toString());
-        return article;
+  /**
+   * 获取文件目录
+   *
+   * @return 获取的文件目录集合
+   */
+  @RequestMapping(value = "/categorys", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+  public @ResponseBody
+  JSONArray showCategory() {
+    //存放目录集合
+    ArrayList<Category> categories = new ArrayList<>();
+    //遍历,java8的方法
+    setting.getMdpath()
+        .stream()
+        .limit(setting.getMaxCount())
+        .collect(() -> categories,(list,v) -> list.add(fileService.iteratorFile(v)), List::addAll);
+    //定制序列化
+    String result = fileService.toTreeJsonStr(categories);
+    return JSON.parseArray(result);
+  }
+
+  /**
+   * 下载文件请求
+   *
+   * @param path 下载文件的路径
+   * @return 该文件的字节流
+   * @throws IOException 抛出异常
+   */
+  @RequestMapping(value = "/downloadFile", method = RequestMethod.GET, produces = "application/octet-stream;charset=UTF-8")
+  public ResponseEntity<byte[]> downloadFile(@RequestParam String path) throws IOException {
+    if (path.endsWith("md")) {
+      File file = new File(path);
+      //解决文件名乱码
+      String filename = URLEncoder.encode(file.getName(), "UTF-8");
+      HttpHeaders headers = new HttpHeaders();
+      headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+      headers.setContentDispositionFormData("attachment", filename);
+      return new ResponseEntity<>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
     }
+    return null;
+  }
 
-    /**
-     * 获取文件目录
-     * @return 获取的文件目录集合
-     */
-    @RequestMapping(value = "/categorys",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public @ResponseBody JSONArray showCategory(){
-        logger.info("访问categorys");
-        ArrayList<Category> categories = new ArrayList<>();//存放目录集合
-        //遍历,java8的方法
-//        setting.getMDPaths().stream().limit(setting.getPATH_MAX()).forEach(path->{
-//            Category category = fileService.iteratorFile(path);
-//            categories.add(category);
-//        });
-        int path_max = Integer.valueOf(setting.getMaxCount());
-        for (int i = 0; i < setting.getMdpath().size(); i++) {
-            if (i > path_max){
-                break;
-            }
-            Category category = fileService.iteratorFile(setting.getMdpath().get(i));
-            categories.add(category);
-        }
-        //定制序列化
-        String result = fileService.toTreeJsonStr(categories);
-        return JSON.parseArray(result);
-    }
-
-    /**
-     * 下载文件请求
-     * @param path 下载文件的路径
-     * @return 该文件的字节流
-     * @throws IOException 抛出异常
-     */
-    @RequestMapping(value = "/downloadFile",method = RequestMethod.GET,produces = "application/octet-stream;charset=UTF-8")
-    public ResponseEntity<byte[]> downloadFile(@RequestParam(required = true) String path) throws IOException {
-        if (path.endsWith("md")){
-            File file = new File(path);
-            //解决文件名乱码
-            String filename = URLEncoder.encode(file.getName(),"UTF-8");
-            logger.debug("下载文件路径:"+path);
-            logger.debug("下载文件名:"+filename);
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            headers.setContentDispositionFormData("attachment", filename);
-            return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),headers, HttpStatus.CREATED);
-        }
-        return null;
-    }
-
-    /**
-     * 文件上传
-     * @param mdfile 上传的文件,form表单提交
-     * @param filepath 文件上传路径
-     * @return 首页
-     */
-    @RequestMapping(value = "/upload",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public JSONObject uploadFile(MultipartFile mdfile,@CookieValue("filepath") String filepath){
-        JSONObject result = new JSONObject();
-        try {
-            if (!mdfile.isEmpty()){
-                String filename = new String(mdfile.getOriginalFilename().getBytes(),"UTF-8");
-                logger.debug("上传路径:"+filepath);
-                logger.debug("上传文件名称:"+filename);
-                //使用StreamsAPI方式拷贝文件
-                Streams.copy(mdfile.getInputStream(),new FileOutputStream(filepath+File.separator+filename),true);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            logger.error("上传文件出错",e);
-            result.put("status",1);
-            result.put("msg","上传文件出错");
-            return result;
-        }
-        result.put("status",0);
-        result.put("msg","SUCCESS");
+  /**
+   * 文件上传
+   *
+   * @param mdfile   上传的文件,form表单提交
+   * @param filepath 文件上传路径
+   * @return 首页
+   */
+  @RequestMapping(value = "/upload", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+  @ResponseBody
+  public JSONObject uploadFile(MultipartFile mdfile, @CookieValue("filepath") String filepath) {
+    JSONObject result = new JSONObject();
+    try {
+      if (!mdfile.isEmpty()) {
+        String filename = new String(mdfile.getOriginalFilename().getBytes(), "UTF-8");
+        logger.debug("上传路径:" + filepath);
+        logger.debug("上传文件名称:" + filename);
+        //使用StreamsAPI方式拷贝文件
+        Streams.copy(mdfile.getInputStream(), new FileOutputStream(filepath + File.separator + filename), true);
+        result.put("status", 0);
+        result.put("msg", "SUCCESS");
         return result;
+      }
+    } catch (IOException e) {
+      logger.error("上传文件出错", e);
     }
-    /**
-     * 文件删除
-     * @param path 要删除的文件
-     * @return 首页
-     */
-    @RequestMapping(value = "/delete",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public JSONObject uploadFile(String path){
-        JSONObject result = new JSONObject();
-        if (!StringUtils.isEmpty(path)){
-            File file = new File(path);
-            if (file.exists() && file.delete()){
-                result.put("status",0);
-                result.put("msg","SUCCESS");
-            }
-        }else {
-            result.put("status",400);
-            result.put("msg","NOT FOUND");
-        }
-        return result;
+    result.put("status", 1);
+    result.put("msg", "上传文件出错");
+    return result;
+  }
+
+  /**
+   * 文件删除
+   *
+   * @param path 要删除的文件
+   * @return 首页
+   */
+  @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+  @ResponseBody
+  public JSONObject uploadFile(String path) {
+    JSONObject result = new JSONObject();
+    if (!StringUtils.isEmpty(path)) {
+      File file = new File(path);
+      if (file.exists() && file.delete()) {
+        result.put("status", 0);
+        result.put("msg", "SUCCESS");
+      }
+    } else {
+      result.put("status", 400);
+      result.put("msg", "NOT FOUND");
     }
+    return result;
+  }
 
 }

@@ -7,14 +7,14 @@
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>mrdear</name>
+  <name>MarkdownViewTools</name>
   <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- set thymeleaf version -->
-    <thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
-    <thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
+    <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
+    <thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
     <!--set java version-->
     <java.version>1.8</java.version>
   </properties>
@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.4.0.RELEASE</version>
+    <version>1.5.8.RELEASE</version>
   </parent>
 
   <dependencies>
@@ -32,10 +32,14 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context-support</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>true</optional>
     </dependency>
     <!--spring boot end-->
 
@@ -80,20 +84,13 @@
       <scope>test</scope>
     </dependency>
     <!--junit end-->
+
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
       <optional>true</optional>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-tomcat</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <optional>true</optional>
-    </dependency>
+
   </dependencies>
   <build>
     <plugins>
@@ -101,27 +98,14 @@
         <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
-          <configuration>
-            <!--配置编码,不然乱码-->
-            <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
-            <!--显示配置,不然dev不生效-->
-            <fork>true</fork>
-          </configuration>
-          <!--配置热部署-->
-          <dependencies>
-            <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>springloaded</artifactId>
-              <version>1.2.6.RELEASE</version>
-            </dependency>
-          </dependencies>
         </plugin>
+
       <!--spring boot plugin end-->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>
