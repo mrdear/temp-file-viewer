@@ -1,0 +1,23 @@
+@import "theme";
+@import "var";
+
+body,html,app-root,.site,mat-drawer-container{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.site {
+  display: flex;
+  flex-direction: column;
+  background-color: $my-dashboard-background;
+}
+
+main {
+  flex: 1;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
