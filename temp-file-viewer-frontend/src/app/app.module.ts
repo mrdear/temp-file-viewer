@@ -1,12 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {Config} from "./domain/config";
 import {environment} from "../environments/environment";
 import {CoreModule} from "./core/core.module";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {SharedModule} from "./shared/shared.module";
+import {UploadModule} from "./upload/upload.module";
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import {SharedModule} from "./shared/shared.module";
   imports: [
     BrowserModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    UploadModule,
   ],
   // 利用CI保证全局唯一
   providers: [
