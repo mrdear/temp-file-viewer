@@ -1,0 +1,10 @@
+mat-list{
+  width: 100%;
+  max-width: 550px;
+}
+
+.list-item{
+  .item-text{
+    text-overflow: ellipsis;
+  }
+}

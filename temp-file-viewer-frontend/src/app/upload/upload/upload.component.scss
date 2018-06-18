@@ -4,6 +4,11 @@ $text: #8793A2;
 
 .hero{
   background: transparent;
+  max-width: 550px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  align-items: center;
+  overflow: hidden;
 }
 
 .upload-box {
@@ -25,7 +30,6 @@ $text: #8793A2;
     .control-circles {
       padding-left: 15px;
       height: 14px;
-
       .circle {
         display: inline-block;
         margin: 0 4px;
@@ -41,7 +45,7 @@ $text: #8793A2;
           background: yellow;
         }
 
-        & .is-red {
+        &.is-red {
           background: red;
         }
       }
@@ -52,19 +56,10 @@ $text: #8793A2;
         font-size: 18px;
         font-weight: 400;
         color: #8793A2;
+        text-align: center;
       }
     }
 
-    .gh-icon {
-      padding-right: 15px;
-      i {
-        font-size: 24px;
-        color: #8793A2;
-        margin-right: 5px;
-        margin-left: 36px;
-        cursor: pointer;
-      }
-    }
   }
 
   .upload-box-content {
@@ -73,16 +68,19 @@ $text: #8793A2;
       height: 150px;
       box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.6);
     }
+
     .drop-container {
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     p {
       font-size: 16px;
       font-weight: 400;
       color: #8793A2;
     }
+
     .upload-button{
       display: inline-block;
       border: none;
@@ -94,11 +92,13 @@ $text: #8793A2;
         display: none;
       }
     }
+
     .upload-item{
       display: flex;
       align-items: center;
       padding: 0 30px;
     }
+
     .upload-item-content{
       width: 100%;
       .filename{
@@ -124,7 +124,7 @@ $text: #8793A2;
         .progress{
           display: block;
           position: relative;
-          width: 100%;
+          width: 90%;
           height: 12px;
           border-radius: 10px;
           background: $upload-box-progress-background;
@@ -158,6 +158,7 @@ $text: #8793A2;
         .speed-and-eta-text{
           font-size: 13px;
           font-weight: 600;
+          margin-right: 20px;
           color: $text;
         }
       }
