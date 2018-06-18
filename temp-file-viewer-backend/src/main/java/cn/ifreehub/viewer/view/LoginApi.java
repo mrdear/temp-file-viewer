@@ -36,7 +36,7 @@ public class LoginApi {
       return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
     }
     String realPwd = EnvironmentContext.getStringValue(AppConstantConfig.ROOT_PASSWORD);
-    if (!Objects.equals(new String(DigestUtils.sha256(realPwd)), passwdsha)) {
+    if (!Objects.equals(DigestUtils.sha256Hex(realPwd), passwdsha)) {
       return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
     }
     // 登录成功,下发token

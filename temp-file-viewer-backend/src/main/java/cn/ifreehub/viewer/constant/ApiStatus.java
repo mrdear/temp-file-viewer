@@ -6,9 +6,13 @@ package cn.ifreehub.viewer.constant;
  * @since 2018/5/31
  */
 public enum ApiStatus {
-
+  /**
+   * 成功标识
+   */
   SUCCESS(2000, "success"),
-
+  /**
+   * 账户无权限
+   */
   NO_AUTHORITY(4001, "未取得认证许可"),
   ;
 

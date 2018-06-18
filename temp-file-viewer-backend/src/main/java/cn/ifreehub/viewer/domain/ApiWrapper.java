@@ -1,5 +1,7 @@
 package cn.ifreehub.viewer.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import cn.ifreehub.viewer.constant.ApiStatus;
 
 import java.io.Serializable;
@@ -22,6 +24,7 @@ public class ApiWrapper<T> implements Serializable {
     this.data = data;
   }
 
+  @JsonIgnore
   public boolean isSuccess() {
     return status == ApiStatus.SUCCESS.code;
   }

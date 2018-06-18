@@ -5,17 +5,28 @@ package cn.ifreehub.viewer.constant;
  * @since 2018/6/13
  */
 public enum AppConstantConfig implements ConfigKey {
-
-  ROOT_USERNAME("${root.username}", String.class, "root用户名"),
-  ROOT_PASSWORD("${root.password}", String.class, "root用户密码"),
-  JWT_SECRET("${jwt_secret}", String.class, "jwt签名秘钥"),
-  ;
+  /**
+   * root用户名
+   */
+  ROOT_USERNAME("${root.username}", String.class),
+  /**
+   * "root用户密码"
+   */
+  ROOT_PASSWORD("${root.password}", String.class),
+  /**
+   * "jwt签名秘钥"
+   */
+  JWT_SECRET("${jwt_secret}", String.class),
+  /**
+   * 上传文件目录
+   */
+  TEMP_FILE_DIST("${temp.file.dist}", String.class);
 
   public final String key;
 
   public final Class valueType;
 
-  AppConstantConfig(String key, Class<?> valueType, String desc) {
+  AppConstantConfig(String key, Class<?> valueType) {
     this.key = key;
     this.valueType = valueType;
   }
