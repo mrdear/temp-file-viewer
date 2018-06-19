@@ -1,0 +1,27 @@
+<div class="login">
+  <mat-card>
+    <mat-card-content>
+      <form class="login-form">
+        <mat-form-field>
+          <input matInput placeholder="username" [formControl]="userFormControl">
+          <mat-error *ngIf="userFormControl.hasError('required')">
+            Username is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="passwd" [formControl]="passFormControl">
+          <mat-error *ngIf="passFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="login-action">
+      <span class="fill-remaining-space"></span>
+      <button mat-button>登录</button>
+      <button mat-button>重置</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

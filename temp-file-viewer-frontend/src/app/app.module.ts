@@ -7,16 +7,20 @@ import {environment} from "../environments/environment";
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import {UploadModule} from "./upload/upload.module";
+import {LoginModule} from "./login/login.module";
+import {AppRoutingModule} from "./app.route";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     SharedModule,
     CoreModule,
     UploadModule,
+    LoginModule,
+    AppRoutingModule,
   ],
   // 利用CI保证全局唯一
   providers: [
