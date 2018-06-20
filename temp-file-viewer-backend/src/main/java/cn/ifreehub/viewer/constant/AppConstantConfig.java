@@ -14,9 +14,13 @@ public enum AppConstantConfig implements ConfigKey {
    */
   ROOT_PASSWORD("${root.password}", String.class),
   /**
+   * 用户头像地址
+   */
+  ROOT_AVATAR("${root.avatar}", String.class),
+  /**
    * "jwt签名秘钥"
    */
-  JWT_SECRET("${jwt_secret}", String.class),
+  JWT_SECRET("${jwt.secret}", String.class),
   /**
    * 上传文件目录
    */

@@ -26,8 +26,7 @@ public class SecurityFilter extends OncePerRequestFilter {
   /**
    * 需要权限验证的接口
    */
-  private static final Set<String> AUTHOR_URI = ImmutableSet.of("api/v1/upload/");
-
+  private static final Set<String> AUTHOR_URI = ImmutableSet.of("api/v1/upload/","api/v1/profile/");
 
   @Override
   protected void doFilterInternal(HttpServletRequest req, HttpServletResponse resp,

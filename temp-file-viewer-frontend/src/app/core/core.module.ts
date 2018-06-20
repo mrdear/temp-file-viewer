@@ -3,10 +3,12 @@ import {SharedModule} from "../shared/shared.module";
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
+import {ServiceModule} from "../service/service.module";
 
 @NgModule({
   imports: [
-    SharedModule
+    SharedModule,
+    ServiceModule.forRoot()
   ],
   declarations: [HeaderComponent, FooterComponent, SidebarComponent],
   exports: [HeaderComponent, FooterComponent, SidebarComponent],

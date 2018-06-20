@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import {
   MatButtonModule, MatCardModule, MatDividerModule, MatFormFieldModule,
   MatIconModule, MatInputModule, MatListModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSnackBarModule,
   MatToolbarModule
 } from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   imports: [
@@ -24,6 +26,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule,
+    MatSnackBarModule,
   ],
   exports: [
     CommonModule,
@@ -39,6 +43,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule,
+    MatSnackBarModule,
   ],
   declarations: []
 })

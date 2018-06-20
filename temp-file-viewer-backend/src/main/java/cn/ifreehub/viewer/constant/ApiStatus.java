@@ -14,6 +14,12 @@ public enum ApiStatus {
    * 账户无权限
    */
   NO_AUTHORITY(4001, "未取得认证许可"),
+  /**
+   * 参数错误
+   */
+  PARAMS_ERROR(4002, "参数错误"),
+
+  FAIL(5001, "服务端错误"),
   ;
 
   public int code;
