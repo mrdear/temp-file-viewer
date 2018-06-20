@@ -1,5 +1,6 @@
 package cn.ifreehub.viewer.view;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class UserApi {
       return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
     }
     String realPwd = EnvironmentContext.getStringValue(AppConstantConfig.ROOT_PASSWORD);
-    if (!Objects.equals(realPwd, passwd)) {
+    if (!Objects.equals(DigestUtils.sha256Hex(realPwd), passwd)) {
       return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
     }
     // 登录成功,下发token

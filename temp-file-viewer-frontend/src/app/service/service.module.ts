@@ -1,9 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
 import {UserService} from "./user.service";
+import {FileService} from "./file.service";
+import {ToastService} from "./toast.service";
 
 export {
-  UserService
+  UserService,
+  FileService,
+  ToastService
 }
 
 @NgModule()
@@ -15,7 +18,9 @@ export class ServiceModule {
     return {
       ngModule: ServiceModule,
       providers: [
-        UserService
+        UserService,
+        FileService,
+        ToastService
       ]
     };
   }

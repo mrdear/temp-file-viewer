@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FileItem} from "../../domain/file-item";
 
 @Component({
   selector: 'app-upload-files',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadFilesComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  fileItems: FileItem[] = [];
+
+  @Output()
+  deleteFile: EventEmitter<string> = new EventEmitter<string>();
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  delete(fileMd5: string) {
+    this.deleteFile.emit(fileMd5);
   }
 
 }

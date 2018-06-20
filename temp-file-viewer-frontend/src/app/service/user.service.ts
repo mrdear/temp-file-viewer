@@ -4,10 +4,10 @@ import {User} from "../domain/user";
 import {Config} from "../domain/config";
 import {map, tap} from "rxjs/operators";
 import {Observable} from "rxjs/internal/Observable";
-import {MatSnackBar} from "@angular/material";
 import {ApiWrapper} from "../domain/api-wrapper";
 import {Subject} from "rxjs/internal/Subject";
 import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
+import {sha256} from "js-sha256";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,7 @@ export class UserService {
   private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
   constructor(private httpClient: HttpClient,
-              private config: Config,
-              private snackBar: MatSnackBar) {
+              private config: Config) {
     // BehaviorSubject能保存旧值,因此这里先订阅一下
     this.profile().subscribe(x => {
       this.userSubject.next(x);
@@ -38,24 +37,25 @@ export class UserService {
           params:
             {
               'username': username,
-              'passwd': passwd
+              'passwd': sha256(passwd)
             }
         })
       .pipe(
         map(resp => resp as ApiWrapper),
         tap(x => {
-          if (x.status == 2000) {
-            this.profile()
-              .subscribe(x => this.userSubject.next(x))
+            if (x.status == 2000) {
+              this.profile()
+                .subscribe(x => this.userSubject.next(x))
+            }
           }
-        })
+        )
       )
   }
 
   /**
    * 订阅用户
    */
-  subscriseUser(): Subject<User>{
+  subscriseUser(): Subject<User> {
     return this.userSubject;
   }
 

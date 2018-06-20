@@ -1,5 +1,9 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UploaderOptions, UploadFile, UploadInput, UploadOutput, UploadStatus} from "ngx-uploader";
+import {Config} from "../../domain/config";
+import {FileItem} from "../../domain/file-item";
+import {ApiWrapper} from "../../domain/api-wrapper";
+import {ToastService} from "../../service/toast.service";
 
 @Component({
   selector: 'app-upload',
@@ -7,15 +11,22 @@ import {UploaderOptions, UploadFile, UploadInput, UploadOutput, UploadStatus} fr
   styleUrls: ['./upload.component.scss']
 })
 export class UploadComponent implements OnInit {
+  /**
+   * 上传成功事件
+   */
+  @Output()
+  uploadSuccess: EventEmitter<FileItem> = new EventEmitter<FileItem>();
 
-
-  formData: FormData;
   files: UploadFile[];
+
   uploadInput: EventEmitter<UploadInput>;
+
   dragOver: boolean;
+
   options: UploaderOptions;
 
-  constructor() {
+  constructor(private config: Config,
+              private toast: ToastService) {
     this.options = { concurrency: 1 };
     this.files = [];
     this.uploadInput = new EventEmitter<UploadInput>();
@@ -25,12 +36,11 @@ export class UploadComponent implements OnInit {
     if (output.type === 'allAddedToQueue') {
       const event: UploadInput = {
         type: 'uploadAll',
-        url: 'https://ngx-uploader.com/upload',
+        headers: { "Access-Control-Allow-Origin": document.location.host },
+        url: this.config.uploadFilesUrl,
         method: 'POST',
-        data: { foo: 'bar' }
       };
-
-      this.uploadInput.emit(event);
+      setTimeout(() => this.uploadInput.emit(event), 1000);
     } else if (output.type === 'addedToQueue' && typeof output.file !== 'undefined') {
       this.files.push(output.file);
     } else if (output.type === 'uploading' && typeof output.file !== 'undefined') {
@@ -46,20 +56,16 @@ export class UploadComponent implements OnInit {
       this.dragOver = false;
     } else if (output.type === 'rejected' && typeof output.file !== 'undefined') {
       console.log(output.file.name + ' rejected');
+    } else if (output.type === 'done') {
+      let resp = output.file.response as ApiWrapper;
+      if (resp.status == 2000) {
+        this.uploadSuccess.emit(resp.data as FileItem);
+      } else {
+        this.toast.toast(resp.message);
+      }
     }
 
     this.files = this.files.filter(file => file.progress.status !== UploadStatus.Done);
-  }
-
-  startUpload(): void {
-    const event: UploadInput = {
-      type: 'uploadAll',
-      url: 'https://ngx-uploader.com/upload',
-      method: 'POST',
-      data: { foo: 'bar' }
-    };
-
-    this.uploadInput.emit(event);
   }
 
   cancelUpload(id: string): void {

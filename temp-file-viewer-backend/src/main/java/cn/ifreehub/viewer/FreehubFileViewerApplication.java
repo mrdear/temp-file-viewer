@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationListener;
 
 import cn.ifreehub.viewer.config.EnvironmentContext;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.util.Collections;
 
 @SpringBootApplication
+@ServletComponentScan(basePackages = "cn.ifreehub.viewer.config")
 public class FreehubFileViewerApplication {
 
   private static Logger logger = LoggerFactory.getLogger(FreehubFileViewerApplication.class);

@@ -20,7 +20,7 @@ import java.util.Date;
  * @author Quding Ding
  * @since 2018/6/13
  */
-public class FileIndexReference implements Serializable {
+public class FileIndexReference implements Serializable, Comparable<FileIndexReference> {
   /**
    * 文件md5名
    */
@@ -73,6 +73,14 @@ public class FileIndexReference implements Serializable {
   private static String caleAbsolutePath(FileIndexReference reference) {
     return EnvironmentContext.getFolderPath(AppConstantConfig.TEMP_FILE_DIST)
         + reference.md5Name + reference.fileType.sufix;
+  }
+
+  @Override
+  public int compareTo(FileIndexReference reference) {
+    if (null == reference) {
+      return 1;
+    }
+    return reference.getExpireDate().compareTo(this.expireDate);
   }
 
   // --------- get
