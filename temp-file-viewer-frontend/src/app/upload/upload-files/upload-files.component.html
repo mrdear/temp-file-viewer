@@ -8,7 +8,7 @@
         <span>{{item.fileName}}</span>
       </div>
       <button mat-icon-button (click)="delete(item.md5Name)"><mat-icon>delete</mat-icon></button>
-      <button mat-icon-button><mat-icon>share</mat-icon></button>
+      <button mat-icon-button (click)="openFile(item)"><mat-icon>share</mat-icon></button>
     </mat-list-item>
     <mat-divider></mat-divider>
   </div>

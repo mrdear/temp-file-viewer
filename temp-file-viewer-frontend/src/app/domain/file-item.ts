@@ -12,10 +12,15 @@ export class FileItem {
 
   fileContent: string;
 
-  getFilePath(): string {
-    switch (this.fileType) {
+  /**
+   * 改成非静态的一直报错...不知道为什么
+   * @param {FileItem} item
+   * @returns {string}
+   */
+  static getFilePath(item: FileItem): string {
+    switch (item.fileType) {
       case '.md':
-        return `${this.frontRoute}?name=${this.fileName}&passwd=${this.passwd}`;
+        return `${item.frontRoute}/${item.md5Name}/${item.passwd}/`;
     }
   }
 

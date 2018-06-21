@@ -17,7 +17,6 @@ export class MarkdownComponent implements OnInit {
   constructor(private fileService: FileService,
               private route: ActivatedRoute,
               private toast: ToastService) {
-
   }
 
   ngOnInit(): void {

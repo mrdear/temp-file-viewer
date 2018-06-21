@@ -24,4 +24,8 @@ export class UploadFilesComponent implements OnInit {
     this.deleteFile.emit(fileMd5);
   }
 
+  openFile(item: FileItem) {
+    let filePath = FileItem.getFilePath(item);
+    window.open(filePath);
+  }
 }
