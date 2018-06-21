@@ -29,5 +29,9 @@ export class Config {
    * 上传文件
    */
   uploadFilesUrl: string = this.base_url + '/api/v1/file/upload/';
+  /**
+   * 读取markdown文件
+   */
+  mdFileReadUrl: string = this.base_url + '/api/v1/md/';
 
 }

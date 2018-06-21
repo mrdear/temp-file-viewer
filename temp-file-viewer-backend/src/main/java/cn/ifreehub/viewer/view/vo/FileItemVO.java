@@ -21,6 +21,8 @@ public class FileItemVO {
 
   private String passwd;
 
+  private String fileType;
+
 
   public static FileItemVO newInstance(FileIndexReference reference) {
     FileItemVO fileItemVO = new FileItemVO();
@@ -28,6 +30,7 @@ public class FileItemVO {
     fileItemVO.setMd5Name(reference.getMd5Name());
     fileItemVO.setFrontRoute(reference.getFileType().frontRoute);
     fileItemVO.setPasswd(reference.getPasswd());
+    fileItemVO.setFileType(reference.getFileType().sufix);
     return fileItemVO;
   }
 
@@ -39,6 +42,15 @@ public class FileItemVO {
         .collect(Collectors.toList());
   }
 
+
+  public String getFileType() {
+    return fileType;
+  }
+
+  public FileItemVO setFileType(String fileType) {
+    this.fileType = fileType;
+    return this;
+  }
 
   public String getFileName() {
     return fileName;

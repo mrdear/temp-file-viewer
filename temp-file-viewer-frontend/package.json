@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build",
+    "build": "ng build --prod --aot --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -24,7 +24,9 @@
     "@angular/router": "^6.0.3",
     "core-js": "^2.5.4",
     "js-sha256": "^0.9.0",
+    "ngx-markdown": "^6.0.1",
     "ngx-uploader": "^6.0.0",
+    "prismjs": "^1.15.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

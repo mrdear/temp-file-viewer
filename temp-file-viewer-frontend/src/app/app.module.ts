@@ -9,6 +9,7 @@ import {SharedModule} from "./shared/shared.module";
 import {UploadModule} from "./upload/upload.module";
 import {LoginModule} from "./login/login.module";
 import {AppRoutingModule} from "./app.route";
+import {DisplayModule} from "./display/display.module";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {AppRoutingModule} from "./app.route";
     UploadModule,
     LoginModule,
     AppRoutingModule,
+    DisplayModule,
   ],
   // 利用CI保证全局唯一
   providers: [
@@ -48,5 +50,7 @@ export class AppModule {
       return new Config();
     }
   }
+
+
 
 }

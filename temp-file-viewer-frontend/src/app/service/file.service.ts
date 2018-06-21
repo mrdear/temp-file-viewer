@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {Config} from "../domain/config";
 import {map} from "rxjs/operators";
 import {ApiWrapper} from "../domain/api-wrapper";
+import {ToastService} from "./toast.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ import {ApiWrapper} from "../domain/api-wrapper";
 export class FileService {
 
   constructor(private httpClient: HttpClient,
-              private config: Config) { }
+              private config: Config,
+              private toast: ToastService) { }
 
   /**
    * 得到上传列表
@@ -30,6 +32,23 @@ export class FileService {
     return this.httpClient
       .post(this.config.deleteFilesUrl,null,{params:{'fileMd5':fileMd5}})
       .pipe(map(resp => resp as ApiWrapper))
+  }
+
+  /**
+   * 读取文件
+   */
+  readMdFile(fileMd5: string,passwd: string): Observable<FileItem> {
+    return this.httpClient
+      .post(this.config.mdFileReadUrl,null,{params:{'fileMd5':fileMd5,'passwd':passwd}})
+      .pipe(map(resp => resp as ApiWrapper),
+        map(data => {
+          if (data.status != 2000) {
+            this.toast.toast(data.message);
+          } else {
+            return data.data as FileItem;
+          }
+        }))
+
   }
 
 

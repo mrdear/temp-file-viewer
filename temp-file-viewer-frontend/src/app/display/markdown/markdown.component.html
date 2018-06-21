@@ -1,0 +1,15 @@
+<article class="article" *ngIf="fileItem">
+
+  <header class="article-title">
+    <h1>{{fileItem.fileName}}</h1>
+  </header>
+
+  <!--<markdown [src]="'/assets/article.md'">-->
+
+  <!--</markdown>-->
+
+  <markdown [data]="fileItem.fileContent">
+
+  </markdown>
+
+</article>

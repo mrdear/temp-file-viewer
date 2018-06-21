@@ -26,9 +26,9 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("api/v1/file/")
-public class FileOperateApi {
+public class FileOperateAdminApi {
 
-  private static Logger logger = LoggerFactory.getLogger(FileOperateApi.class);
+  private static Logger logger = LoggerFactory.getLogger(FileOperateAdminApi.class);
 
   @Resource
   private FileApplicationService fileApplicationService;
