@@ -11,6 +11,16 @@
 
 1. markdown √
 
+## 使用
+
+待提供docker镜像
+
+
+## 技术
+
+1. Spring Boot
+2. Angular6
+
 
 ## 示意图
 
