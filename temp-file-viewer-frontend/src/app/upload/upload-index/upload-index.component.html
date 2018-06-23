@@ -1,0 +1,8 @@
+<div class="upload-index">
+  <!--上传组件框-->
+  <app-upload (uploadSuccess)="uploadSuccess($event)"></app-upload>
+
+  <mat-divider></mat-divider>
+  <!--上传列表-->
+  <app-upload-files [fileItems]="fileItems" (deleteFile)="delete($event)"></app-upload-files>
+</div>

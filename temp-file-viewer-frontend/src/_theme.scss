@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+
+@include mat-core()
+
+// light主题
+$my-light-primary: mat-palette($mat-blue-gray);
+$my-light-accent: mat-palette($mat-cyan);
+$my-light-warn: mat-palette($mat-red);
+$my-light-theme: mat-light-theme($my-light-primary,$my-light-accent,$my-light-warn);
+
+//应用主题
+@include angular-material-theme($my-light-theme)
+

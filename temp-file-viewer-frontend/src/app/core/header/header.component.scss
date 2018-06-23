@@ -1,0 +1,32 @@
+@import "../../../var";
+
+.header-toolbar{
+  padding-top: 20px;
+  background-color: $my-dashboard-background;
+}
+
+.sign-in{
+  background-color: $my-dashboard-background;
+  box-shadow: none;
+}
+
+.avatar-container {
+  min-width: 70px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: .3s ease-in-out;
+
+  &:hover{
+    height: 55px;
+    width: 55px;
+    border-radius: 55px;
+    transition: .2s all ease-in;
+  }
+}
