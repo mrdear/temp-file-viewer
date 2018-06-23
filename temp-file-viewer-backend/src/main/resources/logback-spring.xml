@@ -9,12 +9,12 @@
     </appender>
 
     <appender name="MainLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/tmp/logs/usr/temp-file/main.log</file>
+        <file>logs/main.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%class{16} %line] - %msg%n</Pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <FileNamePattern>/tmp/logs/usr/temp-file/main.%i.log.zip</FileNamePattern>
+            <FileNamePattern>logs/main.%i.log.zip</FileNamePattern>
             <MinIndex>1</MinIndex>
             <MaxIndex>10</MaxIndex>
         </rollingPolicy>
