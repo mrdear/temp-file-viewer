@@ -2,19 +2,14 @@ package cn.ifreehub.viewer.config.mvc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.ifreehub.viewer.constant.ApiStatus;
 import cn.ifreehub.viewer.domain.ApiWrapper;
-import cn.ifreehub.viewer.util.JsonUtils;
-
-import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Spring MVC全局异常处理
@@ -28,9 +23,8 @@ public class ExceptionResolverConfig {
 
   @ExceptionHandler(value = {IllegalArgumentException.class, IllegalStateException.class,NullPointerException.class})
   @ResponseBody
-  public void paramsException(Exception ex,HttpServletResponse response) throws IOException {
-    ApiWrapper<Object> fail = ApiWrapper.fail(ApiStatus.PARAMS_ERROR, ex.getMessage());
-    response.sendError(HttpStatus.BAD_REQUEST.value(), JsonUtils.writeString(fail));
+  public ApiWrapper paramsException(Exception ex) {
+    return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, ex.getMessage());
   }
 
   /**
@@ -38,10 +32,9 @@ public class ExceptionResolverConfig {
    */
   @ExceptionHandler(value = Exception.class)
   @ResponseBody
-  public void exception(Exception ex, HttpServletRequest request,HttpServletResponse response) throws IOException {
+  public ApiWrapper exception(Exception ex, HttpServletRequest request) {
     logger.warn("request fail, uri is {}",request.getRequestURI(), ex);
-    ApiWrapper<Object> apiWrapper = ApiWrapper.fail(ApiStatus.FAIL);
-    response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), JsonUtils.writeString(apiWrapper));
+    return ApiWrapper.fail(ApiStatus.FAIL);
   }
 
 }

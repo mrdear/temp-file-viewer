@@ -3,35 +3,31 @@
  */
 export class Config {
 
-  base_url: string = 'http://localhost:4200';
-
-  constructor(base_url?: string) {
-    this.base_url = base_url;
-  }
+  base_url: string = '';
 
   /**
    * 登录请求
    */
-  loginUrl: string = this.base_url + '/api/v1/login/';
+  loginUrl: string = `/api/v1/login/`;
   /**
    * 用户信息
    */
-  profileUrl: string = this.base_url + '/api/v1/profile/';
+  profileUrl: string = `/api/v1/profile/`;
   /**
    * 得到上传文件列表
    */
-  allFilesUrl: string = this.base_url + '/api/v1/file/list/';
+  allFilesUrl: string = `/api/v1/file/list/`;
   /**
    * 删除文件
    */
-  deleteFilesUrl: string = this.base_url + '/api/v1/file/delete/';
+  deleteFilesUrl: string = `/api/v1/file/delete/`;
   /**
    * 上传文件
    */
-  uploadFilesUrl: string = this.base_url + '/api/v1/file/upload/';
+  uploadFilesUrl: string = `/api/v1/file/upload/`;
   /**
    * 读取markdown文件
    */
-  mdFileReadUrl: string = this.base_url + '/api/v1/md/';
+  mdFileReadUrl: string = `/api/v1/md/`;
 
 }

@@ -16,6 +16,7 @@ import cn.ifreehub.viewer.view.vo.UserProfileVO;
 
 import java.util.Objects;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -32,7 +33,7 @@ public class UserApi {
    * @param passwd 用户密码sha256结果
    */
   @PostMapping("login/")
-  public ApiWrapper login(String username, String passwd, HttpServletResponse response) {
+  public ApiWrapper login(String username, String passwd, HttpServletResponse response,HttpServletRequest request) {
     String realUsername = EnvironmentContext.getStringValue(AppConstantConfig.ROOT_USERNAME);
     if (!Objects.equals(username, realUsername)) {
       return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
@@ -42,7 +43,7 @@ public class UserApi {
       return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
     }
     // 登录成功,下发token
-    JwtTokenUtils.create(realUsername, realPwd, JwtTokenType.DEFAULT, response);
+    JwtTokenUtils.create(realUsername, JwtTokenType.DEFAULT, response);
     return ApiWrapper.success();
   }
 

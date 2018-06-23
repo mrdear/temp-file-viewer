@@ -30,7 +30,7 @@ public class FileItemVO {
     fileItemVO.setMd5Name(reference.getMd5Name());
     fileItemVO.setFrontRoute(reference.getFileType().frontRoute);
     fileItemVO.setPasswd(reference.getPasswd());
-    fileItemVO.setFileType(reference.getFileType().sufix);
+    fileItemVO.setFileType(reference.getFileType().identity);
     return fileItemVO;
   }
 

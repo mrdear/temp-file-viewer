@@ -3,6 +3,7 @@ import {FileService} from "../../service/file.service";
 import {FileItem} from "../../domain/file-item";
 import {ActivatedRoute} from "@angular/router";
 import {ToastService} from "../../service/toast.service";
+import {MarkdownService} from "ngx-markdown";
 
 @Component({
   selector: 'app-markdown',
@@ -16,8 +17,14 @@ export class MarkdownComponent implements OnInit {
 
   constructor(private fileService: FileService,
               private route: ActivatedRoute,
-              private toast: ToastService) {
+              private toast: ToastService,
+              private markdownService: MarkdownService) {
+
+    this.markdownService.renderer.link = (href, title, text) => {
+      return `<a target="_blank" rel="nofollow" href="${href}" title="${title}">${text}</a>`
+    };
   }
+
 
   ngOnInit(): void {
     let fileName = this.route.snapshot.paramMap.get('name');

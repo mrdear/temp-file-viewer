@@ -26,7 +26,7 @@ public class FileDetailVO {
     detailVO.setMd5Name(reference.getMd5Name());
     detailVO.setFrontRoute(reference.getFileType().frontRoute);
     detailVO.setPasswd(reference.getPasswd());
-    detailVO.setFileType(reference.getFileType().sufix);
+    detailVO.setFileType(reference.getFileType().identity);
     detailVO.setFileContent(fileContent);
     return detailVO;
   }

@@ -1,8 +1,25 @@
 @import "../../../var";
 @import "~prismjs/themes/prism-okaidia.css";
 
+@media screen and (min-width: 1280px) {
+  .article {
+    width: 1250px;
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .article{
+    width: 950px;
+  }
+}
+
+article{
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 .article {
-  max-width: 1100px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 2;
@@ -11,7 +28,7 @@
 
   .article-title {
     width: 100%;
-    h1{
+    h1 {
       text-align: center;
     }
   }
@@ -55,7 +72,7 @@
   p {
     margin-bottom: 21px;
 
-    &>code {
+    & > code {
       padding: 2px 4px;
       word-wrap: break-all;
       color: #0063C5;
@@ -63,7 +80,7 @@
       font-size: 14px;
       font-weight: 500;
       margin: 0;
-      background-color: rgba(27,31,35,.05);
+      background-color: rgba(27, 31, 35, .05);
       word-break: break-all;
       &:before {
         content: '`';
@@ -74,7 +91,7 @@
     }
   }
 
-  pre{
+  pre {
     font-size: 12px;
     line-height: 2;
   }
@@ -89,6 +106,7 @@
 
   img {
     margin-top: 20px;
+    width: 100%;
   }
 
 }

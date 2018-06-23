@@ -24,7 +24,16 @@ public enum AppConstantConfig implements ConfigKey {
   /**
    * 上传文件目录
    */
-  TEMP_FILE_DIST("${temp.file.dist}", String.class);
+  TEMP_FILE_DIST("${temp.file.dist}", String.class),
+  /**
+   * spring环境
+   */
+  SPRING_PROFILES_ACTIVE("${spring.profiles.active}", String.class),
+  /**
+   * 临时主机名
+   */
+  TEMP_HOSTNAME("${temp.hostname}", String.class)
+  ;
 
   public final String key;
 

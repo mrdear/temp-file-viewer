@@ -9,11 +9,13 @@
   <span class="fill-remaining-space"></span>
 
   <div class="avatar-container">
-    <button class="avatar" mat-icon-button *ngIf="user">
+    <button class="avatar" (click)="toLogin()" mat-icon-button *ngIf="user">
       <img style="height: 100%;width: 100%" [src]="user.avatar">
     </button>
 
-    <button *ngIf="!user" mat-raised-button class="sign-in" style="box-shadow: none">Sign In</button>
+    <button *ngIf="!user" mat-raised-button class="sign-in"
+            style="box-shadow: none" (click)="toLogin()">
+      Sign In</button>
 
   </div>
 </mat-toolbar>

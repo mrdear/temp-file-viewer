@@ -41,15 +41,19 @@ public class FileReadApi {
   public ApiWrapper detail(@RequestParam String fileMd5, @RequestParam String passwd) {
     UserConfig config = configApplicationService.getUserConfig();
     FileIndexReference reference = config.getFiles().get(fileMd5);
+
     if (null == reference) {
       return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
     }
     if (!StringUtils.equals(passwd, reference.getPasswd())) {
       return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "密码错误");
     }
+
     try (FileReader reader = new FileReader(new File(reference.getFileAbsolutePath()))) {
+
       String content = FileCopyUtils.copyToString(reader);
       return ApiWrapper.success(FileDetailVO.newInstance(reference, content));
+
     } catch (IOException e) {
       logger.warn("file can't read,file md5name is {}", fileMd5, e);
       return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");

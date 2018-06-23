@@ -18,9 +18,8 @@ import cn.ifreehub.viewer.constant.AppConstantConfig;
 import cn.ifreehub.viewer.constant.JwtTokenType;
 import cn.ifreehub.viewer.domain.ApiWrapper;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -75,11 +74,17 @@ public class JwtTokenUtils {
    * 创建token并写入到cookie中
    * @param response 响应流
    */
-  public static void create(String username, String password, JwtTokenType tokenType, HttpServletResponse response) {
-    String token = create(username, password, tokenType);
+  public static void create(String username, JwtTokenType tokenType, HttpServletResponse response) {
+    String token = create(username, tokenType);
     Cookie cookie = new Cookie(FILE_VIEWER_AUTH, token);
     cookie.setHttpOnly(true);
+    if ("dev".equals(EnvironmentContext.getStringValue(AppConstantConfig.SPRING_PROFILES_ACTIVE))) {
+      cookie.setDomain("localhost");
+    } else {
+      cookie.setDomain(EnvironmentContext.getStringValue(AppConstantConfig.TEMP_HOSTNAME));
+    }
     cookie.setMaxAge(Math.toIntExact(tokenType.expireTime / 1000));
+    cookie.setPath("/");
     response.addCookie(cookie);
   }
 
@@ -87,11 +92,10 @@ public class JwtTokenUtils {
    * 生成一个jwtToken
    *
    * @param username  登录用户名
-   * @param password  登录用户密码
    * @param tokenType token类型
    * @return token
    */
-  public static String create(String username, String password, JwtTokenType tokenType) {
+  public static String create(String username, JwtTokenType tokenType) {
     return Jwts.builder()
         .setExpiration(new Date(System.currentTimeMillis() + tokenType.expireTime))
         .setSubject(username)
@@ -101,21 +105,18 @@ public class JwtTokenUtils {
         .compact();
   }
 
+  /**
+   * 秘钥大多时候不需要配置,每次重启后自动生成新的,保证root的安全
+   */
+  private static final String TEMP_SECRET = UUID.randomUUID().toString();
+
   private static String getSecret() {
-    return EnvironmentContext.getStringValue(AppConstantConfig.JWT_SECRET);
+    String value = EnvironmentContext.getStringValue(AppConstantConfig.JWT_SECRET);
+    if (StringUtils.isEmpty(value) || StringUtils.equals(value, AppConstantConfig.JWT_SECRET.key)) {
+      value = TEMP_SECRET;
+    }
+    return value;
   }
 
-
-  public static String urlEncode(String str) {
-    if (StringUtils.isBlank(str)) {
-      return StringUtils.EMPTY;
-    }
-    try {
-      return URLEncoder.encode(str, "UTF-8");
-    } catch (UnsupportedEncodingException e) {
-      // do nothing
-    }
-    return StringUtils.EMPTY;
-  }
 
 }

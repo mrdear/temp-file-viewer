@@ -18,7 +18,17 @@ body, html, app-root, .site, mat-drawer-container {
 
 main {
   flex: 1;
+  overflow: hidden;
+  router-outlet{
+    width: 0;
+  }
+  >*{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
+
 
 .fill-remaining-space {
   flex: 1 1 auto;

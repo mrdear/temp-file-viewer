@@ -19,7 +19,7 @@ export class FileItem {
    */
   static getFilePath(item: FileItem): string {
     switch (item.fileType) {
-      case '.md':
+      case 'md':
         return `${item.frontRoute}/${item.md5Name}/${item.passwd}/`;
     }
   }

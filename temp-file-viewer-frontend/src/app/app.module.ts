@@ -11,6 +11,17 @@ import {LoginModule} from "./login/login.module";
 import {AppRoutingModule} from "./app.route";
 import {DisplayModule} from "./display/display.module";
 
+export let baseConfig = () => {
+  console.log(environment.production);
+  let config = new Config();
+  if (environment.production) {
+    config.base_url = '/';
+  } else {
+    config.base_url = 'http://localhost:4200';
+  }
+  return config;
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +39,7 @@ import {DisplayModule} from "./display/display.module";
   providers: [
     {
       provide: Config,
-      useFactory: () => {return AppModule.baseConfig()},
+      useFactory: baseConfig,
       deps: []
     }
   ],
@@ -39,18 +50,6 @@ import {DisplayModule} from "./display/display.module";
  * https://github.com/angular/angular-cli/wiki/stories
  */
 export class AppModule {
-
-  /**
-   * 返回网站配置
-   */
-  static baseConfig(): Config {
-    if (environment.production) {
-      return new Config('//api.ifreehub.cn')
-    } else {
-      return new Config();
-    }
-  }
-
 
 
 }

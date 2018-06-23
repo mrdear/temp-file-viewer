@@ -72,7 +72,7 @@ public class FileIndexReference implements Serializable, Comparable<FileIndexRef
    */
   private static String caleAbsolutePath(FileIndexReference reference) {
     return EnvironmentContext.getFolderPath(AppConstantConfig.TEMP_FILE_DIST)
-        + reference.md5Name + reference.fileType.sufix;
+        + reference.md5Name + reference.fileType.getSuffix();
   }
 
   @Override

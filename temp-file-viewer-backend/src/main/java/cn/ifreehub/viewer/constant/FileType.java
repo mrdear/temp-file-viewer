@@ -11,17 +11,17 @@ public enum FileType {
   /**
    * markdown格式
    */
-  MARKDOWN(".md", "/md")
+  MARKDOWN("md", "/md")
   ;
 
-  public final String sufix;
+  public final String identity;
   /**
    * 对应的前端路由地址
    */
   public final String frontRoute;
 
-  FileType(String sufix, String frontRoute) {
-    this.sufix = sufix;
+  FileType(String identity, String frontRoute) {
+    this.identity = identity;
     this.frontRoute = frontRoute;
   }
 
@@ -38,4 +38,12 @@ public enum FileType {
         throw new IllegalArgumentException("can't support this file:" + fullFileName);
     }
   }
+
+  /**
+   * 得到后缀
+   */
+  public String getSuffix() {
+    return '.' + this.identity;
+  }
+
 }

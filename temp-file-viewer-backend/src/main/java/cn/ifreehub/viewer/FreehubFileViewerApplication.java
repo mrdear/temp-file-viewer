@@ -11,6 +11,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationListener;
 
 import cn.ifreehub.viewer.config.EnvironmentContext;
+import cn.ifreehub.viewer.constant.AppConstantConfig;
 import cn.ifreehub.viewer.util.JsonUtils;
 
 import java.io.File;
@@ -48,15 +49,23 @@ public class FreehubFileViewerApplication {
 
       File file = new File(configFilePath);
       if (!file.exists()) {
-
-        try (FileWriter writer = new FileWriter(file)) {
+        try {
+          // 创建文件
           FileUtils.forceMkdirParent(file);
+          FileWriter writer = new FileWriter(file);
+
           writer.write(JsonUtils.writeString(new cn.ifreehub.viewer.domain.UserConfig()
               .setFiles(Collections.emptyMap())));
           writer.flush();
+          writer.close();
           logger.info("file config path create success");
 
+          // 修改权限,禁止执行权限
+          String distPath = EnvironmentContext.getFolderPath(AppConstantConfig.TEMP_FILE_DIST);
+          File distFile = new File(distPath);
+          distFile.setExecutable(true, false);
         } catch (IOException e) {
+          e.printStackTrace();
           throw new Error("config创建失败");
         }
       }

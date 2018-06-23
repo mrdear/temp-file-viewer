@@ -14,7 +14,8 @@ export class FileService {
 
   constructor(private httpClient: HttpClient,
               private config: Config,
-              private toast: ToastService) { }
+              private toast: ToastService) {
+  }
 
   /**
    * 得到上传列表

@@ -26,7 +26,9 @@ export class UploadIndexComponent implements OnInit {
   getAllFiles() {
     this.fileService.getAllFiles()
       .subscribe(x => {
-        this.fileItems = [...x];
+        if (x) {
+          this.fileItems = [...x];
+        }
       });
   }
 
