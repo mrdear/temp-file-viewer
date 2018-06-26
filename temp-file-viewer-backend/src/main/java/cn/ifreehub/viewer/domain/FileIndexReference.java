@@ -52,19 +52,46 @@ public class FileIndexReference implements Serializable, Comparable<FileIndexRef
    * @param file 上传文件
    * @return 文件索引
    */
-  public static FileIndexReference newIntance(MultipartFile file) {
+  public static FileIndexReference newInstance(MultipartFile file) {
     Assert.notNull(file, "upload file shouldn't null");
     Assert.notNull(file.getOriginalFilename(), "upload file shouldn't null");
 
     FileIndexReference reference = new FileIndexReference();
-    reference.fileName = new String(file.getOriginalFilename().getBytes(), Charset.forName("UTF-8"));
-    reference.md5Name = DigestUtils.md5Hex(reference.fileName);
+    String utf8FileName = new String(file.getOriginalFilename().getBytes(), Charset.forName("UTF-8"));
+    // 文件名不包括扩展名
+    reference.md5Name = DigestUtils.md5Hex(utf8FileName);
     reference.fileType = FileType.selectByFile(file.getOriginalFilename());
+    reference.fileName = reference.fileType.getFileNameWithoutSuffix(utf8FileName);
     // 默认过期时间为一周
     reference.expireDate = DateUtils.addWeeks(new Date(), 1);
     reference.fileAbsolutePath = caleAbsolutePath(reference);
     reference.passwd = ShortPasswdUtil.generateShareKey(reference.md5Name);
     return reference;
+  }
+
+  /**
+   * 修改文件密码
+   * @param passwd 密码
+   */
+  public void modifyPasswd(String passwd) {
+    this.passwd = passwd;
+  }
+
+  /**
+   * 修改文件名
+   * @param fileName 文件名
+   */
+  public void modifyFileName(String fileName) {
+    this.fileName = fileName;
+  }
+
+  /**
+   * 是否有效
+   * @return true有效
+   */
+  public boolean valid() {
+    long current = System.currentTimeMillis();
+    return this.expireDate.getTime() > current;
   }
 
   /**

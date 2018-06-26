@@ -7,8 +7,22 @@
       <div matLine class="item-text">
         <span>{{item.fileName}}</span>
       </div>
-      <button mat-icon-button (click)="delete(item.md5Name)"><mat-icon>delete</mat-icon></button>
-      <button mat-icon-button (click)="openFile(item)"><mat-icon>share</mat-icon></button>
+      <button mat-icon-button (click)="openFile(item)">
+        <mat-icon>share</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" [class]="'dashboard-background'">
+        <button mat-menu-item (click)="update(item)">
+          <mat-icon>details</mat-icon>
+          <span>update</span>
+        </button>
+        <button mat-menu-item (click)="delete(item.md5Name)">
+          <mat-icon>delete</mat-icon>
+          <span>delete</span>
+        </button>
+      </mat-menu>
     </mat-list-item>
     <mat-divider></mat-divider>
   </div>

@@ -22,6 +22,10 @@ export class Config {
    */
   deleteFilesUrl: string = `/api/v1/file/delete/`;
   /**
+   * 修改文件
+   */
+  modifyFilesUrl: string = `/api/v1/file/modify/`;
+  /**
    * 上传文件
    */
   uploadFilesUrl: string = `/api/v1/file/upload/`;

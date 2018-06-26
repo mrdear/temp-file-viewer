@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  MatButtonModule, MatCardModule, MatDividerModule, MatFormFieldModule,
-  MatIconModule, MatInputModule, MatListModule,
+  MatButtonModule, MatCardModule, MatDialogModule, MatDividerModule, MatFormFieldModule,
+  MatIconModule, MatInputModule, MatListModule, MatMenuModule,
   MatSidenavModule, MatSnackBarModule,
   MatToolbarModule
 } from "@angular/material";
@@ -28,6 +28,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatInputModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatMenuModule,
+    MatDialogModule,
   ],
   exports: [
     CommonModule,
@@ -45,6 +47,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatInputModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatMenuModule,
+    MatDialogModule,
   ],
   declarations: []
 })

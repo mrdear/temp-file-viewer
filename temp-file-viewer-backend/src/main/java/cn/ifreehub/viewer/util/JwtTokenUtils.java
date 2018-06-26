@@ -1,6 +1,7 @@
 package cn.ifreehub.viewer.util;
 
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -38,7 +39,7 @@ public class JwtTokenUtils {
    * 验证token
    *
    * @param request 请求
-   * @return 包装结果, 只有status为success时可用
+   * @return 包装结果, 只有status为success时可用,另外data标识是否需要刷新token
    */
   public static ApiWrapper<Boolean> verifyToken(HttpServletRequest request) {
     // 获取token
@@ -57,17 +58,21 @@ public class JwtTokenUtils {
     }
     // 检验token
     try {
-      Jwts.parser()
+      Claims claims = Jwts.parser()
           .setSigningKey(getSecret())
           .parseClaimsJws(token)
           .getBody();
+      JwtTokenType tokenType = JwtTokenType.valueOf(String.valueOf(claims.get("type")));
+      if (tokenType.needRenewal(claims.getExpiration())) {
+        return ApiWrapper.success(true);
+      }
     } catch (UnsupportedJwtException | MalformedJwtException | SignatureException | ExpiredJwtException e) {
       return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
     } catch (Exception e) {
       logger.error("parse token fail,token is {}", token, e);
       return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
     }
-    return ApiWrapper.success(true);
+    return ApiWrapper.success(false);
   }
 
   /**
@@ -101,6 +106,7 @@ public class JwtTokenUtils {
         .setSubject(username)
         //先占坑
         .claim("version", 1)
+        .claim("type", tokenType.name())
         .signWith(SignatureAlgorithm.HS256, getSecret())
         .compact();
   }

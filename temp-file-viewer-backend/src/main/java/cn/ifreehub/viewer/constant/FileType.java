@@ -25,6 +25,14 @@ public enum FileType {
     this.frontRoute = frontRoute;
   }
 
+  /**
+   * 去除了后缀的文件名
+   * @param fullFileName 包含后缀的文件名
+   * @return 去除了后缀的文件名
+   */
+  public String getFileNameWithoutSuffix(String fullFileName) {
+    return fullFileName.substring(0, fullFileName.lastIndexOf('.'));
+  }
 
   public static FileType selectByFile(String fullFileName) {
     Assert.state(StringUtils.isNoneEmpty(fullFileName), "fullFileName can't be null");

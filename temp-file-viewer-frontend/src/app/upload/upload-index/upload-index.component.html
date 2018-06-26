@@ -4,5 +4,9 @@
 
   <mat-divider></mat-divider>
   <!--上传列表-->
-  <app-upload-files [fileItems]="fileItems" (deleteFile)="delete($event)"></app-upload-files>
+  <app-upload-files [fileItems]="fileItems"
+                    (deleteFile)="delete($event)"
+                    (updateFile)="update($event)">
+  </app-upload-files>
+
 </div>

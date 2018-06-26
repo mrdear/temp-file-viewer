@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>File Overview</h1>
+
+<mat-dialog-content>
+  <form #form="ngForm" class="file-form">
+    <mat-form-field>
+      <input matInput placeholder="文件名"  name="filename"
+             [(ngModel)]="file.fileName" [required]="true">
+      <span matSuffix>.{{file.fileType}}</span>
+      <mat-error>
+        File Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="访问密码" name="passwd"
+             [(ngModel)]="file.passwd" [required]="true">
+      <mat-error>
+        File Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]>Cancel</button>
+  <button mat-button (click)="update(form,$event)">Ok</button>
+</mat-dialog-actions>
