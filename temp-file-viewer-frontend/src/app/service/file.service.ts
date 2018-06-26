@@ -52,5 +52,18 @@ export class FileService {
 
   }
 
+  /**
+   * 更新文件
+   */
+  updateFile(file: FileItem): Observable<ApiWrapper> {
+    return this.httpClient.post(this.config.modifyFilesUrl, null, {
+      params: {
+        fileMd5:file.md5Name,
+        fileName:file.fileName,
+        passwd: file.passwd
+      }
+    }).pipe(map(resp => resp as ApiWrapper));
+  }
+
 
 }

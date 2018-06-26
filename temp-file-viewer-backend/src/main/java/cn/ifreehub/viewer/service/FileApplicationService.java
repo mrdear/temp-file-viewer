@@ -89,4 +89,13 @@ public class FileApplicationService {
     Collections.sort(references);
     return references;
   }
+
+  /**
+   * 更新文件信息
+   * @param reference 文件信息
+   * @return true成功
+   */
+  public boolean updateFileReference(FileIndexReference reference) {
+    return configRepo.addFileIndexConfig(reference);
+  }
 }

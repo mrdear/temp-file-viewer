@@ -14,6 +14,7 @@ import cn.ifreehub.viewer.domain.ApiWrapper;
 import cn.ifreehub.viewer.domain.FileIndexReference;
 import cn.ifreehub.viewer.domain.UserConfig;
 import cn.ifreehub.viewer.service.ConfigApplicationService;
+import cn.ifreehub.viewer.service.FileApplicationService;
 import cn.ifreehub.viewer.view.vo.FileDetailVO;
 
 import java.io.File;
@@ -36,6 +37,8 @@ public class FileReadApi {
 
   @Resource
   private ConfigApplicationService configApplicationService;
+  @Resource
+  private FileApplicationService fileApplicationService;
 
   @PostMapping("md/")
   public ApiWrapper detail(@RequestParam String fileMd5, @RequestParam String passwd) {
@@ -45,10 +48,18 @@ public class FileReadApi {
     if (null == reference) {
       return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
     }
+
+    // 文件过期则删除
+    if (!reference.valid()) {
+      fileApplicationService.removeFileIndex(reference);
+      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
+    }
+
     if (!StringUtils.equals(passwd, reference.getPasswd())) {
       return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "密码错误");
     }
 
+    // 读取文件
     try (FileReader reader = new FileReader(new File(reference.getFileAbsolutePath()))) {
 
       String content = FileCopyUtils.copyToString(reader);

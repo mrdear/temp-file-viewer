@@ -29,6 +29,14 @@ main {
   }
 }
 
+.dashboard-background {
+  background: $my-dashboard-background;
+}
+
+.mat-dialog-container{
+  background: $my-dashboard-background;
+}
+
 
 .fill-remaining-space {
   flex: 1 1 auto;

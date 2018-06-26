@@ -2,6 +2,7 @@ package cn.ifreehub.viewer.view;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +41,15 @@ public class FileOperateAdminApi {
    */
   @PostMapping("upload/")
   public ApiWrapper upload(MultipartFile file) {
-    FileIndexReference reference = FileIndexReference.newIntance(file);
+    FileIndexReference reference = FileIndexReference.newInstance(file);
     logger.info("upload file {}", reference);
+    UserConfig config = configApplicationService.getUserConfig();
+
+    // 重新上传则不改变密码
+    FileIndexReference oldReference = config.getFiles().get(reference.getMd5Name());
+    if (null != oldReference) {
+      reference.modifyPasswd(oldReference.getPasswd());
+    }
 
     fileApplicationService.addFileIndex(reference, file);
 
@@ -51,13 +59,13 @@ public class FileOperateAdminApi {
 
   /**
    * 删除一个文件
+   *
    * @param fileMd5 文件名
    * @return 删除文件
    */
   @PostMapping("delete/")
   public ApiWrapper deleteFile(String fileMd5) {
-    UserConfig userConfig = configApplicationService.getUserConfig();
-    Map<String, FileIndexReference> fileMaps = userConfig.getFiles();
+    Map<String, FileIndexReference> fileMaps = configApplicationService.getFiles();
     fileApplicationService.removeFileIndex(fileMaps.get(fileMd5));
     return ApiWrapper.success();
   }
@@ -69,6 +77,25 @@ public class FileOperateAdminApi {
   public ApiWrapper listFile() {
     List<FileIndexReference> references = fileApplicationService.queryAllFile();
     return ApiWrapper.success(FileItemVO.newInstance(references));
+  }
+
+  /**
+   * 文件信息更改,因为关系已经建立,因此文件名密码都是允许修改的选项
+   * 另外更改文件名并不会重新生成MD5值
+   * @param fileMd5 文件标识
+   * @param fileName 文件名
+   * @param passwd 密码
+   */
+  @PostMapping("modify/")
+  public ApiWrapper modifyPasswd(String fileMd5, String fileName, String passwd) {
+    Map<String, FileIndexReference> referenceMap = configApplicationService.getFiles();
+    FileIndexReference targetFile = referenceMap.get(fileMd5);
+    Assert.notNull(targetFile, "文件不存在");
+
+    targetFile.modifyPasswd(passwd);
+    targetFile.modifyFileName(fileName);
+    boolean result = fileApplicationService.updateFileReference(targetFile);
+    return ApiWrapper.success(result);
   }
 
 }

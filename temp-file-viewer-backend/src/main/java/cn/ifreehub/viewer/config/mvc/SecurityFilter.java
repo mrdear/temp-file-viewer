@@ -4,6 +4,9 @@ import com.google.common.collect.ImmutableSet;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import cn.ifreehub.viewer.config.EnvironmentContext;
+import cn.ifreehub.viewer.constant.AppConstantConfig;
+import cn.ifreehub.viewer.constant.JwtTokenType;
 import cn.ifreehub.viewer.domain.ApiWrapper;
 import cn.ifreehub.viewer.util.JsonUtils;
 import cn.ifreehub.viewer.util.JwtTokenUtils;
@@ -30,7 +33,7 @@ public class SecurityFilter extends OncePerRequestFilter {
    * 需要权限验证的接口
    */
   private static final Set<String> AUTHOR_URI = ImmutableSet.of("/api/v1/file/upload/",
-      "/api/v1/file/delete/","/api/v1/file/list/", "/api/v1/profile/");
+      "/api/v1/file/delete/","/api/v1/file/modify/","/api/v1/file/list/", "/api/v1/profile/");
 
   @Override
   protected void doFilterInternal(HttpServletRequest req, HttpServletResponse resp,
@@ -41,6 +44,11 @@ public class SecurityFilter extends OncePerRequestFilter {
       if (!apiWrapper.isSuccess()) {
         resp.getWriter().write(JsonUtils.writeString(apiWrapper));
         return;
+      }
+      // 到这里说明验证成功了,因此判断是否需要刷新token
+      if (apiWrapper.getData()) {
+        String realUsername = EnvironmentContext.getStringValue(AppConstantConfig.ROOT_USERNAME);
+        JwtTokenUtils.create(realUsername, JwtTokenType.DEFAULT, resp);
       }
     }
     chain.doFilter(req, resp);

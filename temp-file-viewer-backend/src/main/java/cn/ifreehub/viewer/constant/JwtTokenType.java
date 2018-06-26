@@ -1,5 +1,7 @@
 package cn.ifreehub.viewer.constant;
 
+import java.util.Date;
+
 /**
  * @author Quding Ding
  * @since 2017/10/13
@@ -22,6 +24,17 @@ public enum JwtTokenType {
   JwtTokenType(long expireTime, long renewalTime) {
     this.expireTime = expireTime;
     this.renewalTime = renewalTime;
+  }
+
+  /**
+   * 是否需要刷新
+   */
+  public boolean needRenewal(Date expireDate) {
+    if (null == expireDate) {
+      return false;
+    }
+    long expireTime = expireDate.getTime();
+    return expireTime - System.currentTimeMillis() < this.renewalTime;
   }
 
 }

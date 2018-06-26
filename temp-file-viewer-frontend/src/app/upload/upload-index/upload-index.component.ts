@@ -60,4 +60,25 @@ export class UploadIndexComponent implements OnInit {
         })
     }
   }
+
+  /**
+   * 修改文件
+   */
+  update(file: FileItem) {
+    let fileItem = this.fileItems
+      .filter(x => x.md5Name == file.md5Name)
+      .pop();
+    if (!fileItem) {
+      this.toast.toast("文件已被删除");
+      return;
+    }
+    this.fileService.updateFile(file)
+      .subscribe(resp => {
+        if (resp.status == 2000) {
+          Object.assign(fileItem, file);
+        } else {
+          this.toast.toast(resp.message);
+        }
+      })
+  }
 }
