@@ -41,7 +41,7 @@ public class JwtTokenUtilsTest {
         .thenReturn(new Cookie[]{cookie});
 
     ApiWrapper<Boolean> wrapper = JwtTokenUtils.verifyToken(request);
-    Assert.assertTrue(wrapper.isSuccess() && wrapper.getData());
+    Assert.assertTrue(wrapper.isSuccess());
   }
 
   @Test

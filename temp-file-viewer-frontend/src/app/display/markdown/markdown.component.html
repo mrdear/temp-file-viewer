@@ -1,11 +1,13 @@
 <article class="article" *ngIf="fileItem">
 
   <header class="article-title">
-    <h1>{{fileItem.fileName}}</h1>
+    <h1>{{fileItem.fileName}}.{{fileItem.fileType}}</h1>
   </header>
 
-  <markdown [data]="fileItem.fileContent">
+  <div class="article-content">
+    <markdown [data]="fileItem.fileContent">
 
-  </markdown>
+    </markdown>
+  </div>
 
 </article>
