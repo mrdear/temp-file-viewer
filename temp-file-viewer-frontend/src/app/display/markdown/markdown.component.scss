@@ -25,6 +25,7 @@ article{
   line-height: 2;
   font-size: 16px;
   font-weight: 400;
+  font-family: inherit;
 
   .article-title {
     width: 100%;
@@ -33,9 +34,13 @@ article{
     }
   }
 
+  .article-content{
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
   markdown{
     width: 100%;
-    padding: 5px;
   }
 
   // custom scss start
@@ -77,12 +82,12 @@ article{
   p {
     margin-bottom: 21px;
 
-    & > code {
+    &>code {
       padding: 2px 4px;
       word-wrap: break-all;
       color: #0063C5;
       border-radius: 3px;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       margin: 0;
       background-color: rgba(27, 31, 35, .05);
@@ -111,7 +116,7 @@ article{
 
   img {
     margin-top: 20px;
-    width: 100%;
+    max-width: 100%;
   }
 
 }
