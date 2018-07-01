@@ -17,6 +17,10 @@ public class FileDetailVO {
   private String passwd;
 
   private String fileType;
+  /**
+   * 文件后缀
+   */
+  private String fileSuffix;
 
   private String fileContent;
 
@@ -27,6 +31,7 @@ public class FileDetailVO {
     detailVO.setFrontRoute(reference.getFileType().frontRoute);
     detailVO.setPasswd(reference.getPasswd());
     detailVO.setFileType(reference.getFileType().identity);
+    detailVO.setFileSuffix(reference.getFileType().suffix);
     detailVO.setFileContent(fileContent);
     return detailVO;
   }
@@ -83,6 +88,15 @@ public class FileDetailVO {
 
   public FileDetailVO setFileContent(String fileContent) {
     this.fileContent = fileContent;
+    return this;
+  }
+
+  public String getFileSuffix() {
+    return fileSuffix;
+  }
+
+  public FileDetailVO setFileSuffix(String fileSuffix) {
+    this.fileSuffix = fileSuffix;
     return this;
   }
 }

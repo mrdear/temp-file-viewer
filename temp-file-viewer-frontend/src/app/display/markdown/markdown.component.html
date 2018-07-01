@@ -5,9 +5,13 @@
   </header>
 
   <div class="article-content">
-    <markdown [data]="fileItem.fileContent">
-
+    <markdown *ngIf="fileItem.fileType == 'markdown'"
+              [data]="fileItem.fileContent">
     </markdown>
+    <markdown *ngIf="fileItem.fileType != 'markdown'"
+              [data]="fileItem.fileContent | language : fileItem.fileType">
+    </markdown>
+
   </div>
 
 </article>
