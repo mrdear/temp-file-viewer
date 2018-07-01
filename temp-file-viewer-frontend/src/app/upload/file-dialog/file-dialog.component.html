@@ -5,7 +5,7 @@
     <mat-form-field>
       <input matInput placeholder="文件名"  name="filename"
              [(ngModel)]="file.fileName" [required]="true">
-      <span matSuffix>.{{file.fileType}}</span>
+      <span matSuffix>.{{file.fileSuffix}}</span>
       <mat-error>
         File Name is <strong>required</strong>
       </mat-error>

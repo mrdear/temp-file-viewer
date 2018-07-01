@@ -11,6 +11,10 @@ export class FileItem {
   fileType: string;
 
   fileContent: string;
+  /**
+   * 文件后缀
+   */
+  fileSuffix: string;
 
   /**
    * 改成非静态的一直报错...不知道为什么
@@ -18,10 +22,7 @@ export class FileItem {
    * @returns {string}
    */
   static getFilePath(item: FileItem): string {
-    switch (item.fileType) {
-      case 'md':
-        return `${item.frontRoute}/${item.md5Name}/${item.passwd}/`;
-    }
+    return `${item.frontRoute}/${item.md5Name}/${item.passwd}/`;
   }
 
 }

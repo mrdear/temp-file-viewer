@@ -11,22 +11,40 @@ public enum FileType {
   /**
    * markdown格式
    */
-  MARKDOWN("md", "/md")
+  MARKDOWN("md", "markdown", "/md"),
+  JAVA("java", "java", "/md"),
+  JSON("json", "json", "/md"),
+  XML("xml", "xml", "/md"),
+  TYPESCRIPT("ts", "typescript", "/md"),
+  PHP("php", "php", "/md"),
+  C("c", "C", "/md"),
+  C_PLUS("cpp", "C++", "/md"),
+  JAVASCRIPT("js", "javascript", "/md"),
+  PYTHON("py", "python", "/md"),
   ;
 
+  /**
+   * 后缀
+   */
+  public final String suffix;
+  /**
+   * 文件标识
+   */
   public final String identity;
   /**
    * 对应的前端路由地址
    */
   public final String frontRoute;
 
-  FileType(String identity, String frontRoute) {
+  FileType(String suffix, String identity, String frontRoute) {
+    this.suffix = suffix;
     this.identity = identity;
     this.frontRoute = frontRoute;
   }
 
   /**
    * 去除了后缀的文件名
+   *
    * @param fullFileName 包含后缀的文件名
    * @return 去除了后缀的文件名
    */
@@ -36,15 +54,14 @@ public enum FileType {
 
   public static FileType selectByFile(String fullFileName) {
     Assert.state(StringUtils.isNoneEmpty(fullFileName), "fullFileName can't be null");
-    String suffix = fullFileName.substring(fullFileName.lastIndexOf("."));
+    String suffix = fullFileName.substring(fullFileName.lastIndexOf(".")+1);
 
-    switch (suffix.toLowerCase()) {
-      case ".md":
-      case ".markdown":
-        return MARKDOWN;
-      default:
-        throw new IllegalArgumentException("can't support this file:" + fullFileName);
+    for (FileType fileType : FileType.values()) {
+      if (fileType.suffix.equals(suffix)) {
+        return fileType;
+      }
     }
+    throw new IllegalArgumentException("can't support this file:" + fullFileName);
   }
 
   /**

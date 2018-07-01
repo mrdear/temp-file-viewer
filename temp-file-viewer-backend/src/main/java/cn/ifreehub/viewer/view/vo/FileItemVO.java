@@ -22,6 +22,10 @@ public class FileItemVO {
   private String passwd;
 
   private String fileType;
+  /**
+   * 文件后缀
+   */
+  private String fileSuffix;
 
 
   public static FileItemVO newInstance(FileIndexReference reference) {
@@ -31,6 +35,7 @@ public class FileItemVO {
     fileItemVO.setFrontRoute(reference.getFileType().frontRoute);
     fileItemVO.setPasswd(reference.getPasswd());
     fileItemVO.setFileType(reference.getFileType().identity);
+    fileItemVO.setFileSuffix(reference.getFileType().suffix);
     return fileItemVO;
   }
 
@@ -85,6 +90,15 @@ public class FileItemVO {
 
   public FileItemVO setPasswd(String passwd) {
     this.passwd = passwd;
+    return this;
+  }
+
+  public String getFileSuffix() {
+    return fileSuffix;
+  }
+
+  public FileItemVO setFileSuffix(String fileSuffix) {
+    this.fileSuffix = fileSuffix;
     return this;
   }
 }

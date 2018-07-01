@@ -10,6 +10,7 @@
 ## 功能
 
 1. markdown √
+2. json,xml,java,c,cpp,php,python等 √
 
 ## 使用
 
