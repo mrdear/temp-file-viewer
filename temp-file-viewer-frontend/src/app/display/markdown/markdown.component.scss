@@ -8,12 +8,12 @@
 }
 
 @media screen and (min-width: 980px) {
-  .article{
+  .article {
     width: 950px;
   }
 }
 
-article{
+article {
   width: 100%;
   padding-left: 5px;
   padding-right: 5px;
@@ -34,12 +34,12 @@ article{
     }
   }
 
-  .article-content{
+  .article-content {
     padding-left: 5px;
     padding-right: 5px;
   }
 
-  markdown{
+  markdown {
     width: 100%;
   }
 
@@ -81,33 +81,39 @@ article{
 
   p {
     margin-bottom: 21px;
+  }
 
-    &>code {
-      padding: 2px 4px;
-      word-wrap: break-all;
-      color: #0063C5;
-      border-radius: 3px;
-      font-size: 15px;
-      font-weight: 500;
-      margin: 0;
-      background-color: rgba(27, 31, 35, .05);
-      word-break: break-all;
-      &:before {
-        content: '`';
-      }
-      &:after {
-        content: '`';
-      }
+  p >code,li > code {
+    padding: 2px 4px;
+    word-wrap: break-word;
+    color: #0063C5;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+    background-color: rgba(27, 31, 35, .05);
+    word-break: break-all;
+    &:before {
+      content: '`';
+    }
+    &:after {
+      content: '`';
     }
   }
 
   pre {
     font-size: 12px;
     line-height: 2;
+    code {
+      font-size: inherit;
+    }
   }
 
   blockquote {
     font-family: Roboto, "Helvetica Neue", "Segoe UI", Verdana, Tahoma, BiauKai, Kai, KaiTi, sans-serif;
+    p {
+      color: rgba(0, 0, 0, .735);
+    }
   }
 
   strong {

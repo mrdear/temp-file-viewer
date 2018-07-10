@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,6 +41,12 @@ public class FileReadApi {
   @Resource
   private FileApplicationService fileApplicationService;
 
+  /**
+   * 读取md的内容
+   * @param fileMd5 文件标识
+   * @param passwd 密码
+   * @return 内容
+   */
   @PostMapping("md/")
   public ApiWrapper detail(@RequestParam String fileMd5, @RequestParam String passwd) {
     UserConfig config = configApplicationService.getUserConfig();
@@ -69,6 +76,27 @@ public class FileReadApi {
       logger.warn("file can't read,file md5name is {}", fileMd5, e);
       return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
     }
+  }
+
+  /**
+   * 密码检查
+   */
+  @GetMapping("check/passwd/")
+  public ApiWrapper checkPass(@RequestParam String fileMd5, @RequestParam String passwd) {
+    UserConfig config = configApplicationService.getUserConfig();
+    FileIndexReference reference = config.getFiles().get(fileMd5);
+
+    // 文件过期则删除
+    if (!reference.valid()) {
+      fileApplicationService.removeFileIndex(reference);
+      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
+    }
+
+    // 密码校验
+    if (!StringUtils.equals(passwd, reference.getPasswd())) {
+      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "密码错误");
+    }
+    return ApiWrapper.success();
   }
 
 
