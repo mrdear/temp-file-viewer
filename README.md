@@ -22,6 +22,9 @@
 1. Spring Boot
 2. Angular6
 
+## 开发
+
+[如何运行项目?](doc/run.md)
 
 ## 示意图
 
