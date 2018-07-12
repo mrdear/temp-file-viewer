@@ -14,7 +14,28 @@
 
 ## 使用
 
-待提供docker镜像
+```bash
+
+docker pull push ifreehub/temp-file-viewer:1.0
+
+docker run -d -p 8081:8081 docker.io/ifreehub/temp-file-viewer:1.0
+
+```
+
+访问 ip:8081 即可.
+
+
+**配置**
+
+使用环境变量配置参数,可以使用`-Dspring.config.location`复写应用的配置.
+
+```bash
+# 应用参数
+APP_OPTS="-Dspring.config.location=file:/application.properties -Dspring.profiles.active=prod"  
+
+# 虚拟机参数
+JVM_OPTS="-server -server -Xms256m -Xmx256m"
+```
 
 
 ## 技术

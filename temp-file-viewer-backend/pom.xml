@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>temp-file-viewer-backend</name>
-	<description>Demo project for Spring Boot</description>
+	<description>临时文件分享展示工具站</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
