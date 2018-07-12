@@ -83,11 +83,13 @@ public class JwtTokenUtils {
     String token = create(username, tokenType);
     Cookie cookie = new Cookie(FILE_VIEWER_AUTH, token);
     cookie.setHttpOnly(true);
-    if ("dev".equals(EnvironmentContext.getStringValue(AppConstantConfig.SPRING_PROFILES_ACTIVE))) {
-      cookie.setDomain("localhost");
-    } else {
-      cookie.setDomain(EnvironmentContext.getStringValue(AppConstantConfig.TEMP_HOSTNAME));
+
+    String hostname = EnvironmentContext.getStringValue(AppConstantConfig.TEMP_HOSTNAME);
+    if (!"dev".equals(EnvironmentContext.getStringValue(AppConstantConfig.SPRING_PROFILES_ACTIVE))
+        && StringUtils.isNotEmpty(hostname)) {
+      cookie.setDomain(hostname);
     }
+
     cookie.setMaxAge(Math.toIntExact(tokenType.expireTime / 1000));
     cookie.setPath("/");
     response.addCookie(cookie);

@@ -35,7 +35,6 @@ public class FreehubFileViewerApplication {
     application.run(args);
   }
 
-
   /**
    * 容器准备准备后执行的操作
    */

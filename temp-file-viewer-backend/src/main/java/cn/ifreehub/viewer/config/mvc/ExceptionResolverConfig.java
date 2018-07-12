@@ -27,6 +27,7 @@ public class ExceptionResolverConfig {
     return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, ex.getMessage());
   }
 
+
   /**
    * 上述无法处理时转向的错误,需要记录
    */
@@ -36,5 +37,6 @@ public class ExceptionResolverConfig {
     logger.warn("request fail, uri is {}",request.getRequestURI(), ex);
     return ApiWrapper.fail(ApiStatus.FAIL);
   }
+
 
 }
