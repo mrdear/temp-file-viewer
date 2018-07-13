@@ -5,11 +5,18 @@
 
 	<groupId>cn.ifreehub</groupId>
 	<artifactId>freehub-file-viewer</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>temp-file-viewer-backend</name>
 	<description>临时文件分享展示工具站</description>
+
+	<developers>
+		<developer>
+			<name>quding</name>
+			<email>niudear@foxmail.com</email>
+		</developer>
+	</developers>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
