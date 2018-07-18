@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 import {UploaderOptions, UploadFile, UploadInput, UploadOutput, UploadStatus} from "ngx-uploader";
 import {Config} from "../../domain/config";
 import {FileItem} from "../../domain/file-item";
@@ -27,7 +27,7 @@ export class UploadComponent implements OnInit {
 
   constructor(private config: Config,
               private toast: ToastService) {
-    this.options = { concurrency: 1 };
+    this.options = {concurrency: 1};
     this.files = [];
     this.uploadInput = new EventEmitter<UploadInput>();
   }
@@ -36,7 +36,7 @@ export class UploadComponent implements OnInit {
     if (output.type === 'allAddedToQueue') {
       const event: UploadInput = {
         type: 'uploadAll',
-        headers: { "Access-Control-Allow-Origin": document.location.host },
+        headers: {"Access-Control-Allow-Origin": document.location.host},
         url: this.config.uploadFilesUrl,
         method: 'POST',
       };
@@ -60,6 +60,7 @@ export class UploadComponent implements OnInit {
       let resp = output.file.response as ApiWrapper;
       if (resp.status == 2000) {
         this.uploadSuccess.emit(resp.data as FileItem);
+        this.files = [];
       } else {
         this.toast.toast(resp.message);
       }
@@ -69,15 +70,15 @@ export class UploadComponent implements OnInit {
   }
 
   cancelUpload(id: string): void {
-    this.uploadInput.emit({ type: 'cancel', id: id });
+    this.uploadInput.emit({type: 'cancel', id: id});
   }
 
   removeFile(id: string): void {
-    this.uploadInput.emit({ type: 'remove', id: id });
+    this.uploadInput.emit({type: 'remove', id: id});
   }
 
   removeAllFiles(): void {
-    this.uploadInput.emit({ type: 'removeAll' });
+    this.uploadInput.emit({type: 'removeAll'});
   }
 
   ngOnInit(): void {

@@ -16,9 +16,9 @@ import cn.ifreehub.viewer.repo.ConfigRepo;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
@@ -85,9 +85,17 @@ public class FileApplicationService {
 
     ArrayList<FileIndexReference> references = Lists.newArrayList(files.values());
 
-    // 根据过期时间排序
-    Collections.sort(references);
-    return references;
+    return references.stream()
+        // 过滤掉过期文件
+        .filter(x -> {
+          if (!x.valid()) {
+            configRepo.removeFileIndex(x);
+            return false;
+          }
+          return true;
+        })
+        .sorted()
+        .collect(Collectors.toList());
   }
 
   /**

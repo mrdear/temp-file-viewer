@@ -22,7 +22,7 @@ export class FileItem {
    * @returns {string}
    */
   static getFilePath(item: FileItem): string {
-    return `${item.frontRoute}/${item.md5Name}/${item.passwd}/`;
+    return `${item.frontRoute}/${item.md5Name}/${item.passwd}`;
   }
 
 }

@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FileItem} from "../../domain/file-item";
 import {MatDialog} from "@angular/material";
 import {FileDialogComponent} from "../file-dialog/file-dialog.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-upload-files',
@@ -18,7 +19,8 @@ export class UploadFilesComponent implements OnInit {
   @Output()
   updateFile: EventEmitter<FileItem> = new EventEmitter<FileItem>();
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog,
+              private route: Router) {
   }
 
   ngOnInit() {
@@ -36,7 +38,7 @@ export class UploadFilesComponent implements OnInit {
    */
   openFile(item: FileItem) {
     let filePath = FileItem.getFilePath(item);
-    window.open(filePath);
+    this.route.navigateByUrl(filePath);
   }
 
   /**
