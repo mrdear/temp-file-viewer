@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {User} from "../../domain/user";
 import {UserService} from "../../service/user.service";
 import {Router} from "@angular/router";
@@ -11,6 +11,11 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
 
   user: User;
+
+  @Output('openSidebar')
+  private sidebar = new EventEmitter<any>();
+
+
 
   constructor(private userService: UserService,
               private route: Router) {
@@ -29,5 +34,12 @@ export class HeaderComponent implements OnInit {
     } else {
       this.route.navigateByUrl("login");
     }
+  }
+
+  /**
+   * 触发侧边栏
+   */
+  triggerSideBar() {
+    this.sidebar.emit();
   }
 }

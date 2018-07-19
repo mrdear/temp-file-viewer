@@ -1,5 +1,12 @@
+@import "../var";
 
-main{
+main {
   display: flex;
   justify-content: center;
+}
+
+.sidenav {
+  background-color: $my-dashboard-background;
+  border-right: 1px solid deepskyblue;
+  min-width: 200px;
 }

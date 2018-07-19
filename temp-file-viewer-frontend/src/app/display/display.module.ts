@@ -3,7 +3,7 @@ import {SharedModule} from "../shared/shared.module";
 import {MarkdownComponent} from './markdown/markdown.component';
 import {DisplayRoutingModule} from "./display.route";
 import {HttpClient} from "@angular/common/http";
-import {MarkdownModule, MarkdownService, MarkedOptions, MarkedRenderer} from "ngx-markdown";
+import {MarkdownModule, MarkedOptions} from "ngx-markdown";
 import {MarkdownModuleConfig} from "ngx-markdown/src/markdown.module";
 
 @NgModule({

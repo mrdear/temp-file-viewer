@@ -1,3 +1,17 @@
-<p>
-  sidebar works!
-</p>
+<mat-nav-list>
+
+  <h3 mat-subheader>Menus</h3>
+  <mat-list-item *ngFor="let menu of mainSideMenus" (click)="redirectPath(menu)">
+    <mat-icon mat-list-icon>{{menu.icon}}</mat-icon>
+    <h4 mat-line>{{menu.name}}</h4>
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+  <h3 mat-subheader>About</h3>
+  <mat-list-item *ngFor="let menu of aboutSideMenus" (click)="redirectPath(menu)">
+    <mat-icon mat-list-icon>{{menu.icon}}</mat-icon>
+    <h4 mat-line>{{menu.name}}</h4>
+  </mat-list-item>
+
+</mat-nav-list>

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {UserService} from "../../service/user.service";
-import {MatSnackBar} from "@angular/material";
 import {Router} from "@angular/router";
 import {ToastService} from "../../service/toast.service";
 
