@@ -1,0 +1,27 @@
+.picture {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+@media screen and (min-width: 1280px) {
+  .picture-content {
+    width: 1250px;
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .picture-content {
+    width: 950px;
+  }
+}
+
+.picture-content {
+  margin: 5px;
+  overflow: hidden;
+  text-align: center;
+  img{
+    max-width: 100%;
+  }
+}
+

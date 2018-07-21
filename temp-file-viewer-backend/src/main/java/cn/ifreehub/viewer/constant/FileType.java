@@ -1,7 +1,11 @@
 package cn.ifreehub.viewer.constant;
 
+import com.google.common.collect.Maps;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
+
+import java.util.Map;
 
 /**
  * @author Quding Ding
@@ -9,7 +13,7 @@ import org.springframework.util.Assert;
  */
 public enum FileType {
   /**
-   * markdown格式
+   * 文本类型
    */
   MARKDOWN("md", "markdown", "/md"),
   JAVA("java", "java", "/md"),
@@ -21,7 +25,27 @@ public enum FileType {
   C_PLUS("cpp", "C++", "/md"),
   JAVASCRIPT("js", "javascript", "/md"),
   PYTHON("py", "python", "/md"),
+  CSS("css", "css", "/md"),
+  TXT("txt", "txt", "/md"),
+  HTML("html", "html", "/md"),
+  GO("go", "go", "/md"),
+
+  /**
+   * 图片类型
+   */
+  PNG("png", "png", "/img"),
+  JPG("jpg", "jpg", "/img"),
+  JPEG("jpeg", "jpeg", "/img"),
+  GIF("gif", "gif", "/img"),
   ;
+
+  private static final Map<String, FileType> ALL_FILE_TYPES = Maps.newHashMap();
+
+  static {
+    for (FileType fileType : FileType.values()) {
+      ALL_FILE_TYPES.put(fileType.suffix, fileType);
+    }
+  }
 
   /**
    * 后缀
@@ -54,14 +78,13 @@ public enum FileType {
 
   public static FileType selectByFile(String fullFileName) {
     Assert.state(StringUtils.isNoneEmpty(fullFileName), "fullFileName can't be null");
-    String suffix = fullFileName.substring(fullFileName.lastIndexOf(".")+1);
+    String suffix = fullFileName.substring(fullFileName.lastIndexOf(".") + 1);
 
-    for (FileType fileType : FileType.values()) {
-      if (fileType.suffix.equals(suffix)) {
-        return fileType;
-      }
+    FileType fileType = ALL_FILE_TYPES.get(StringUtils.lowerCase(suffix));
+    if (null == fileType) {
+      throw new IllegalArgumentException("can't support this file:" + fullFileName);
     }
-    throw new IllegalArgumentException("can't support this file:" + fullFileName);
+    return fileType;
   }
 
   /**

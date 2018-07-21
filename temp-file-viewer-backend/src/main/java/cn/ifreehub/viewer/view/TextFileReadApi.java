@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,16 +24,15 @@ import java.io.IOException;
 import javax.annotation.Resource;
 
 /**
- * 文件跳转
- *
+ * 文本类型文件返回
  * @author Quding Ding
  * @since 2018/6/18
  */
 @RestController
-@RequestMapping("api/v1/")
-public class FileReadApi {
+@RequestMapping("api/v1/text/")
+public class TextFileReadApi {
 
-  private static Logger logger = LoggerFactory.getLogger(FileReadApi.class);
+  private static Logger logger = LoggerFactory.getLogger(TextFileReadApi.class);
 
   @Resource
   private ConfigApplicationService configApplicationService;
@@ -77,27 +75,5 @@ public class FileReadApi {
       return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
     }
   }
-
-  /**
-   * 密码检查
-   */
-  @GetMapping("check/passwd/")
-  public ApiWrapper checkPass(@RequestParam String fileMd5, @RequestParam String passwd) {
-    UserConfig config = configApplicationService.getUserConfig();
-    FileIndexReference reference = config.getFiles().get(fileMd5);
-
-    // 文件过期则删除
-    if (!reference.valid()) {
-      fileApplicationService.removeFileIndex(reference);
-      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
-    }
-
-    // 密码校验
-    if (!StringUtils.equals(passwd, reference.getPasswd())) {
-      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "密码错误");
-    }
-    return ApiWrapper.success();
-  }
-
 
 }

@@ -13,6 +13,7 @@
 
 1. markdown √
 2. json,xml,java,c,cpp,php,python等 √
+3. jpg,jpeg,png,gif √  (大图片展示取决于服务器带宽)
 
 ## 使用
 
@@ -20,7 +21,7 @@
 
 docker pull push ifreehub/temp-file-viewer:1.0
 
-docker run -d -p 8081:8081 -e APP_OPTS="-Dspring.profiles.active=prod" docker.io/ifreehub/temp-file-viewer:1.0
+docker run -d -p 8081:8081 -e APP_OPTS="-Dspring.profiles.active=prod" docker.io/ifreehub/temp-file-viewer:1.1
 
 ```
 

@@ -5,7 +5,7 @@
 
 	<groupId>cn.ifreehub</groupId>
 	<artifactId>freehub-file-viewer</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<packaging>jar</packaging>
 
 	<name>temp-file-viewer-backend</name>

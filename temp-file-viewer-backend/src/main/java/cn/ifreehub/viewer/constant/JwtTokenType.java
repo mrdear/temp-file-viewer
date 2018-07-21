@@ -8,9 +8,9 @@ import java.util.Date;
  */
 public enum JwtTokenType {
   /**
-   * 24小时有效期,小于12小时续期
+   * 7 * 24小时有效期,小于24小时续期
    */
-  DEFAULT(24 * 60 * 60 * 1000L, 12 * 60 * 60 * 1000L);
+  DEFAULT(7 * 24 * 60 * 60 * 1000L, 24 * 60 * 60 * 1000L);
 
   /**
    * 过期时间

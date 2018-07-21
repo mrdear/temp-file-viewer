@@ -1,10 +1,12 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {MarkdownComponent} from "./markdown/markdown.component";
+import {PictureComponent} from "./picture/picture.component";
 
 
 const routes: Routes = [
   {path: 'md/:name/:passwd', component: MarkdownComponent},
+  {path: 'img/:name/:passwd', component: PictureComponent},
 ];
 
 

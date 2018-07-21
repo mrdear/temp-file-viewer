@@ -32,6 +32,10 @@ export class Config {
   /**
    * 读取markdown文件
    */
-  mdFileReadUrl: string = `/api/v1/md/`;
+  mdFileReadUrl: string = `/api/v1/text/md/`;
+  /**
+   * 读取图片文件
+   */
+  pictureFileReadUrl: string = `/api/v1/img/`;
 
 }

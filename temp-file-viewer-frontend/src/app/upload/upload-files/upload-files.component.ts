@@ -42,6 +42,16 @@ export class UploadFilesComponent implements OnInit {
   }
 
   /**
+   * 选择展示的icon
+   */
+  selectIcon(item: FileItem): string {
+    if (item.frontRoute == '/img') {
+      return "image";
+    }
+    return "note";
+  }
+
+  /**
    * 打开文件详情框
    */
   update(item: FileItem) {

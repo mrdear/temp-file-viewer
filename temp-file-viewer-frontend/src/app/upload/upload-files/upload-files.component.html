@@ -3,7 +3,7 @@
 
   <div *ngFor="let item of fileItems">
     <mat-list-item class="list-item">
-      <mat-icon matListIcon>note</mat-icon>
+      <mat-icon matListIcon>{{selectIcon(item)}}</mat-icon>
       <div matLine class="item-text">
         <span>{{item.fileName}}.{{item.fileSuffix}}</span>
       </div>
