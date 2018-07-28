@@ -1,8 +1,24 @@
 @import "../var";
 
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding-bottom: 10px;
+  width: inherit;
+}
+
 main {
   display: flex;
   justify-content: center;
+}
+
+mat-drawer {
+  position: fixed;
+}
+
+mat-drawer-content{
+  height: 100vh;
 }
 
 .sidenav {

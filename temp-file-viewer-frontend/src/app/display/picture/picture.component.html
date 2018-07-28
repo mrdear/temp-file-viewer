@@ -1,6 +1,13 @@
-<article class="picture" *ngIf="fileItem">
+<article class="picture">
 
-  <div class="picture-content">
+  <!--没有图片时展示进度条-->
+  <mat-progress-spinner *ngIf="!fileItem"
+                        class="example-margin" color="primary"
+                        mode="indeterminate" [value]="0">
+  </mat-progress-spinner>
+
+  <!--有图片则展示图片-->
+  <div class="picture-content" *ngIf="fileItem">
     <img [src]="fileItem.fileContent">
   </div>
 

@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableSet;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import cn.ifreehub.viewer.config.EnvironmentContext;
-import cn.ifreehub.viewer.constant.AppConstantConfig;
+import cn.ifreehub.viewer.constant.AppConfig;
 import cn.ifreehub.viewer.constant.JwtTokenType;
 import cn.ifreehub.viewer.domain.ApiWrapper;
 import cn.ifreehub.viewer.util.JsonUtils;
@@ -47,7 +47,7 @@ public class SecurityFilter extends OncePerRequestFilter {
       }
       // 到这里说明验证成功了,因此判断是否需要刷新token
       if (apiWrapper.getData()) {
-        String realUsername = EnvironmentContext.getStringValue(AppConstantConfig.ROOT_USERNAME);
+        String realUsername = EnvironmentContext.getStringValue(AppConfig.ROOT_USERNAME);
         JwtTokenUtils.create(realUsername, JwtTokenType.DEFAULT, resp);
       }
     }

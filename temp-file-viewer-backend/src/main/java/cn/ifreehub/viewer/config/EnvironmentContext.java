@@ -6,7 +6,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import cn.ifreehub.viewer.constant.AppConstantConfig;
+import cn.ifreehub.viewer.constant.AppConfig;
 import cn.ifreehub.viewer.constant.ConfigKey;
 
 import java.io.File;
@@ -42,6 +42,16 @@ public class EnvironmentContext implements EnvironmentAware, InitializingBean {
   }
 
   /**
+   * 得到boolean值
+   * @param key 值对应的key
+   * @return 结果
+   */
+  public static boolean getBooleanValue(ConfigKey key) {
+    String value = environment.resolvePlaceholders(key.key());
+    return Boolean.valueOf(value);
+  }
+
+  /**
    * 得到文件夹路径
    * @param key 文件夹配置对应的key
    * @return 文件夹路径
@@ -59,7 +69,7 @@ public class EnvironmentContext implements EnvironmentAware, InitializingBean {
    * @return 配置文件
    */
   public static String getConfigFilePath() {
-    String distPath = EnvironmentContext.getFolderPath(AppConstantConfig.TEMP_FILE_DIST);
+    String distPath = EnvironmentContext.getFolderPath(AppConfig.TEMP_FILE_DIST);
     return distPath + "config" + File.separator + "config.json";
   }
 }

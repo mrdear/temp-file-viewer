@@ -3,18 +3,20 @@
     <app-sidebar></app-sidebar>
   </mat-drawer>
 
-  <div class="site">
-    <header>
-      <app-header (openSidebar)="sidenav.toggle()"></app-header>
-    </header>
+  <mat-drawer-content>
+    <div class="site">
+      <header>
+        <app-header (openSidebar)="sidenav.toggle()"></app-header>
+      </header>
 
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
 
-    <footer>
-      <app-footer></app-footer>
-    </footer>
-  </div>
+      <footer>
+        <app-footer></app-footer>
+      </footer>
+    </div>
+  </mat-drawer-content>
 
 </mat-drawer-container>

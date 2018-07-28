@@ -31,9 +31,20 @@
 		<java.version>1.8</java.version>
 		<jjwt.version>0.9.0</jjwt.version>
 		<guava.version>24.0-jre</guava.version>
+		<okhttp.version>3.9.1</okhttp.version>
 	</properties>
 
 	<dependencies>
+		<!--custom start-->
+		<dependency>
+			<groupId>io.github.mrdear</groupId>
+			<artifactId>tinify-sdk</artifactId>
+			<scope>system</scope>
+			<version>0.0.1</version>
+			<systemPath>${basedir}/lib/tinify-sdk-0.0.1.jar</systemPath>
+		</dependency>
+		<!--custom end-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
@@ -71,6 +82,11 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>${okhttp.version}</version>
 		</dependency>
 		<!--util end-->
 

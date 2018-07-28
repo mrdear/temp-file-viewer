@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatButtonModule, MatCardModule, MatDialogModule, MatDividerModule, MatFormFieldModule,
-  MatIconModule, MatInputModule, MatListModule, MatMenuModule,
+  MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatProgressSpinnerModule,
   MatSidenavModule, MatSnackBarModule,
   MatToolbarModule
 } from "@angular/material";
@@ -49,6 +49,7 @@ import {HttpClientModule} from "@angular/common/http";
     MatSnackBarModule,
     MatMenuModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
   ],
   declarations: []
 })

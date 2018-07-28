@@ -6,7 +6,7 @@ import org.springframework.util.Assert;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.ifreehub.viewer.config.EnvironmentContext;
-import cn.ifreehub.viewer.constant.AppConstantConfig;
+import cn.ifreehub.viewer.constant.AppConfig;
 import cn.ifreehub.viewer.constant.FileType;
 import cn.ifreehub.viewer.util.ShortPasswdUtil;
 
@@ -98,7 +98,7 @@ public class FileIndexReference implements Serializable, Comparable<FileIndexRef
    * 计算文件绝对路径
    */
   private static String caleAbsolutePath(FileIndexReference reference) {
-    return EnvironmentContext.getFolderPath(AppConstantConfig.TEMP_FILE_DIST)
+    return EnvironmentContext.getFolderPath(AppConfig.TEMP_FILE_DIST)
         + reference.md5Name + reference.fileType.getSuffix();
   }
 
