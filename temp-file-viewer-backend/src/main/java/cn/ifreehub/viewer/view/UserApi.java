@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.ifreehub.viewer.config.EnvironmentContext;
 import cn.ifreehub.viewer.constant.ApiStatus;
-import cn.ifreehub.viewer.constant.AppConstantConfig;
+import cn.ifreehub.viewer.constant.AppConfig;
 import cn.ifreehub.viewer.constant.JwtTokenType;
 import cn.ifreehub.viewer.domain.ApiWrapper;
 import cn.ifreehub.viewer.util.JwtTokenUtils;
@@ -34,11 +34,11 @@ public class UserApi {
    */
   @PostMapping("login/")
   public ApiWrapper login(String username, String passwd, HttpServletResponse response,HttpServletRequest request) {
-    String realUsername = EnvironmentContext.getStringValue(AppConstantConfig.ROOT_USERNAME);
+    String realUsername = EnvironmentContext.getStringValue(AppConfig.ROOT_USERNAME);
     if (!Objects.equals(username, realUsername)) {
       return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
     }
-    String realPwd = EnvironmentContext.getStringValue(AppConstantConfig.ROOT_PASSWORD);
+    String realPwd = EnvironmentContext.getStringValue(AppConfig.ROOT_PASSWORD);
     if (!Objects.equals(DigestUtils.sha256Hex(realPwd), passwd)) {
       return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
     }
@@ -52,8 +52,8 @@ public class UserApi {
    */
   @GetMapping("profile/")
   public ApiWrapper profile() {
-    String username = EnvironmentContext.getStringValue(AppConstantConfig.ROOT_USERNAME);
-    String avatar = EnvironmentContext.getStringValue(AppConstantConfig.ROOT_AVATAR);
+    String username = EnvironmentContext.getStringValue(AppConfig.ROOT_USERNAME);
+    String avatar = EnvironmentContext.getStringValue(AppConfig.ROOT_AVATAR);
     return ApiWrapper.success(new UserProfileVO(username, avatar));
   }
 

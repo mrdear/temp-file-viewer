@@ -13,7 +13,7 @@
 
 1. markdown √
 2. json,xml,java,c,cpp,php,python等 √
-3. jpg,jpeg,png,gif √  (大图片展示取决于服务器带宽)
+3. jpg,jpeg,png,gif √  (大图片展示取决于服务器带宽,另外提供TinyPNG压缩选项)
 
 ## 使用
 
@@ -65,6 +65,11 @@ jwt.secret=123456
 temp.file.dist=/quding/data/file
 # 对外访问域名，cookie会设置到该域名下,不设置则默认是当前response,对于nginx代理的可能会出问题
 temp.hostname=
+
+# 启用图片压缩,依赖第三方tinypng的服务  https://tinypng.com/developers
+temp.picture.tinypng.enable=true
+temp.picture.tinypng.apikey=JKwWUnDJK2TsriXiBXzoKzziSnKHk3lh
+
 ```
 
 ## 技术

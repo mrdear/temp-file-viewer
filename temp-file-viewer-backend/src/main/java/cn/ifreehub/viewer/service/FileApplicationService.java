@@ -12,6 +12,7 @@ import cn.ifreehub.viewer.domain.FileIndexReference;
 import cn.ifreehub.viewer.domain.UserConfig;
 import cn.ifreehub.viewer.exception.ServiceException;
 import cn.ifreehub.viewer.repo.ConfigRepo;
+import cn.ifreehub.viewer.repo.TinifyPngRepo;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,12 +31,12 @@ import javax.annotation.Resource;
  */
 @Service
 public class FileApplicationService {
+  private static Logger logger = LoggerFactory.getLogger(FileApplicationService.class);
 
   @Resource
   private ConfigRepo configRepo;
-
-  private static Logger logger = LoggerFactory.getLogger(FileApplicationService.class);
-
+  @Resource
+  private TinifyPngRepo tinifyPngRepo;
   /**
    * 添加一个文件
    *
@@ -47,6 +48,7 @@ public class FileApplicationService {
       // 保存文件
       try {
         file.transferTo(new File(reference.getFileAbsolutePath()));
+        tinifyPngRepo.asyncShrinkPicture(reference);
       } catch (IOException e) {
         logger.error("save file fail, file is {}", reference, e);
         throw new ServiceException(e);

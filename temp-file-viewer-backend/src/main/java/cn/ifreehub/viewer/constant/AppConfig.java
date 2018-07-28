@@ -4,7 +4,7 @@ package cn.ifreehub.viewer.constant;
  * @author Quding Ding
  * @since 2018/6/13
  */
-public enum AppConstantConfig implements ConfigKey {
+public enum AppConfig implements ConfigKey {
   /**
    * root用户名
    */
@@ -32,14 +32,22 @@ public enum AppConstantConfig implements ConfigKey {
   /**
    * 临时主机名
    */
-  TEMP_HOSTNAME("${temp.hostname}", String.class)
+  TEMP_HOSTNAME("${temp.hostname}", String.class),
+  /**
+   * 是否启用图片压缩
+   */
+  TINYPNG_ENABLE("${temp.picture.tinypng.enable}", Boolean.class),
+  /**
+   * 图片压缩key
+   */
+  TINYPNG_APIKEY("${temp.picture.tinypng.apikey}", String.class),
   ;
 
   public final String key;
 
   public final Class valueType;
 
-  AppConstantConfig(String key, Class<?> valueType) {
+  AppConfig(String key, Class<?> valueType) {
     this.key = key;
     this.valueType = valueType;
   }

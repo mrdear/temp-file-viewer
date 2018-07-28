@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import cn.ifreehub.viewer.config.EnvironmentContext;
 import cn.ifreehub.viewer.constant.ApiStatus;
-import cn.ifreehub.viewer.constant.AppConstantConfig;
+import cn.ifreehub.viewer.constant.AppConfig;
 import cn.ifreehub.viewer.constant.JwtTokenType;
 import cn.ifreehub.viewer.domain.ApiWrapper;
 
@@ -84,8 +84,8 @@ public class JwtTokenUtils {
     Cookie cookie = new Cookie(FILE_VIEWER_AUTH, token);
     cookie.setHttpOnly(true);
 
-    String hostname = EnvironmentContext.getStringValue(AppConstantConfig.TEMP_HOSTNAME);
-    if (!"dev".equals(EnvironmentContext.getStringValue(AppConstantConfig.SPRING_PROFILES_ACTIVE))
+    String hostname = EnvironmentContext.getStringValue(AppConfig.TEMP_HOSTNAME);
+    if (!"dev".equals(EnvironmentContext.getStringValue(AppConfig.SPRING_PROFILES_ACTIVE))
         && StringUtils.isNotEmpty(hostname)) {
       cookie.setDomain(hostname);
     }
@@ -119,8 +119,8 @@ public class JwtTokenUtils {
   private static final String TEMP_SECRET = UUID.randomUUID().toString();
 
   private static String getSecret() {
-    String value = EnvironmentContext.getStringValue(AppConstantConfig.JWT_SECRET);
-    if (StringUtils.isEmpty(value) || StringUtils.equals(value, AppConstantConfig.JWT_SECRET.key)) {
+    String value = EnvironmentContext.getStringValue(AppConfig.JWT_SECRET);
+    if (StringUtils.isEmpty(value) || StringUtils.equals(value, AppConfig.JWT_SECRET.key)) {
       value = TEMP_SECRET;
     }
     return value;
