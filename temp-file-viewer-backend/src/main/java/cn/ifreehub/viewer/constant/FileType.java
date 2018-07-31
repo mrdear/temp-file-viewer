@@ -37,6 +37,16 @@ public enum FileType {
   JPG("jpg", "jpg", "/img"),
   JPEG("jpeg", "jpeg", "/img"),
   GIF("gif", "gif", "/img"),
+
+  /**
+   * office
+   */
+  DOCX("docx", "docx", "/office"),
+  DOC("doc", "doc", "/office"),
+  XLSX("xlsx", "xlsx", "/office"),
+  XLS("xls", "xls", "/office"),
+  PPTX("pptx", "pptx", "/office"),
+  PPT("ppt", "ppt", "/office"),
   ;
 
   private static final Map<String, FileType> ALL_FILE_TYPES = Maps.newHashMap();

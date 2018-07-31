@@ -4,15 +4,15 @@
   align-content: center;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 980px) {
   .picture-content {
-    width: 1250px;
+    max-width: 950px;
   }
 }
 
-@media screen and (min-width: 980px) {
+@media screen and (min-width: 1280px) {
   .picture-content {
-    width: 950px;
+    max-width: 1250px;
   }
 }
 

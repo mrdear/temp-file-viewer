@@ -7,4 +7,4 @@
 (cd temp-file-viewer-backend && mvn clean package)
 
 # 构建docker
-(docker build -t ifreehub/temp-file-viewer:1.2 .)
+(docker build -t ifreehub/temp-file-viewer .)

@@ -1,12 +1,14 @@
 package cn.ifreehub.viewer.config;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Quding Ding
@@ -15,40 +17,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Configuration
 public class ThreadPoolConfig {
 
+  /**
+   * 处理一些异步任务,单线程池足矣
+   */
   @Bean
   public ExecutorService taskExecutor() {
-    return Executors.newSingleThreadExecutor(new NamedThreadFactory("temp-file-backtask"));
+    return new ThreadPoolExecutor(1, 1,
+        0L, TimeUnit.MILLISECONDS,
+        new LinkedBlockingQueue<>(20),
+        new ThreadFactoryBuilder().setNameFormat("temp-file-backtask").build(),
+        new ThreadPoolExecutor.CallerRunsPolicy());
   }
 
-
-  /**
-   * The default thread factory
-   */
-  static class NamedThreadFactory implements ThreadFactory {
-    private static final AtomicInteger poolNumber = new AtomicInteger(1);
-    private final ThreadGroup group;
-    private final AtomicInteger threadNumber = new AtomicInteger(1);
-    private final String namePrefix;
-
-    NamedThreadFactory(String name) {
-      SecurityManager s = System.getSecurityManager();
-      group = (s != null) ? s.getThreadGroup() :
-          Thread.currentThread().getThreadGroup();
-      namePrefix = name +
-          poolNumber.getAndIncrement() +
-          "-thread-";
-    }
-
-    @Override
-    public Thread newThread(Runnable r) {
-      Thread t = new Thread(group, r,
-          namePrefix + threadNumber.getAndIncrement(),
-          0);
-      if (t.isDaemon())
-        t.setDaemon(false);
-      if (t.getPriority() != Thread.NORM_PRIORITY)
-        t.setPriority(Thread.NORM_PRIORITY);
-      return t;
-    }
-  }
 }

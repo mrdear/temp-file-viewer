@@ -1,0 +1,28 @@
+.office {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.office-content {
+  margin: 5px;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  iframe{
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .office-content {
+    width: 950px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .office-content {
+    width: 1250px;
+  }
+}

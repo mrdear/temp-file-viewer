@@ -2,7 +2,6 @@ package cn.ifreehub.viewer.view;
 
 import com.google.common.collect.Maps;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +16,7 @@ import cn.ifreehub.viewer.domain.FileIndexReference;
 import cn.ifreehub.viewer.domain.UserConfig;
 import cn.ifreehub.viewer.service.ConfigApplicationService;
 import cn.ifreehub.viewer.service.FileApplicationService;
+import cn.ifreehub.viewer.view.valid.FileValidService;
 import cn.ifreehub.viewer.view.vo.FileDetailVO;
 
 import java.io.File;
@@ -33,7 +33,7 @@ import javax.annotation.Resource;
  * @since 2018/7/20
  */
 @RestController
-@RequestMapping("api/v1/img/")
+@RequestMapping("api/v1/picture/")
 public class PictureFileReadApi {
 
   private static Logger logger = LoggerFactory.getLogger(PictureFileReadApi.class);
@@ -42,6 +42,8 @@ public class PictureFileReadApi {
   private ConfigApplicationService configApplicationService;
   @Resource
   private FileApplicationService fileApplicationService;
+  @Resource
+  private FileValidService fileValidService;
   /**
    *
    * 文件对应的base64前缀
@@ -61,22 +63,17 @@ public class PictureFileReadApi {
    * @param passwd 文件密码
    * @return 结果
    */
-  @PostMapping("")
+  @PostMapping("img/")
   public ApiWrapper showImage(@RequestParam String fileMd5, @RequestParam String passwd) {
     UserConfig config = configApplicationService.getUserConfig();
     FileIndexReference reference = config.getFiles().get(fileMd5);
-    if (null == reference) {
-      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
-    }
-    // 文件过期则删除
-    if (!reference.valid()) {
-      fileApplicationService.removeFileIndex(reference);
-      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
+
+    try {
+      fileValidService.validFile(reference, passwd, "/img");
+    } catch (Exception e) {
+      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, e.getMessage());
     }
 
-    if (!StringUtils.equals(passwd, reference.getPasswd())) {
-      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "密码错误");
-    }
     // 到这读取文件,转换为base64格式
     try (FileInputStream inputStream = new FileInputStream(new File(reference.getFileAbsolutePath()))) {
       byte[] data = new byte[inputStream.available()];
