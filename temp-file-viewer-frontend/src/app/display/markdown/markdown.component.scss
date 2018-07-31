@@ -1,17 +1,6 @@
 @import "../../../var";
 @import "~prismjs/themes/prism-okaidia.css";
 
-@media screen and (min-width: 1280px) {
-  .article {
-    width: 1250px;
-  }
-}
-
-@media screen and (min-width: 980px) {
-  .article {
-    width: 950px;
-  }
-}
 
 article {
   width: 100%;
@@ -20,6 +9,7 @@ article {
 }
 
 .article {
+  max-width: 950px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 2;

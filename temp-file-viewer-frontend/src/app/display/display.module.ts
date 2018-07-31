@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {MarkdownModule, MarkedOptions} from "ngx-markdown";
 import {MarkdownModuleConfig} from "ngx-markdown/src/markdown.module";
 import { PictureComponent } from './picture/picture.component';
+import { OfficeComponent } from './office/office.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { PictureComponent } from './picture/picture.component';
     DisplayRoutingModule,
     MarkdownModule.forRoot(DisplayModule.markdownConfig()),
   ],
-  declarations: [MarkdownComponent, PictureComponent]
+  declarations: [MarkdownComponent, PictureComponent, OfficeComponent]
 })
 /**
  * 用于展示文件的项目

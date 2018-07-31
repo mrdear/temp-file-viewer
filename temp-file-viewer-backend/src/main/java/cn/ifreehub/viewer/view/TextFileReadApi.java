@@ -1,6 +1,5 @@
 package cn.ifreehub.viewer.view;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
@@ -15,6 +14,7 @@ import cn.ifreehub.viewer.domain.FileIndexReference;
 import cn.ifreehub.viewer.domain.UserConfig;
 import cn.ifreehub.viewer.service.ConfigApplicationService;
 import cn.ifreehub.viewer.service.FileApplicationService;
+import cn.ifreehub.viewer.view.valid.FileValidService;
 import cn.ifreehub.viewer.view.vo.FileDetailVO;
 
 import java.io.File;
@@ -25,6 +25,7 @@ import javax.annotation.Resource;
 
 /**
  * 文本类型文件返回
+ *
  * @author Quding Ding
  * @since 2018/6/18
  */
@@ -38,30 +39,24 @@ public class TextFileReadApi {
   private ConfigApplicationService configApplicationService;
   @Resource
   private FileApplicationService fileApplicationService;
+  @Resource
+  private FileValidService fileValidService;
 
   /**
    * 读取md的内容
+   *
    * @param fileMd5 文件标识
-   * @param passwd 密码
+   * @param passwd  密码
    * @return 内容
    */
   @PostMapping("md/")
   public ApiWrapper detail(@RequestParam String fileMd5, @RequestParam String passwd) {
     UserConfig config = configApplicationService.getUserConfig();
     FileIndexReference reference = config.getFiles().get(fileMd5);
-
-    if (null == reference) {
-      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
-    }
-
-    // 文件过期则删除
-    if (!reference.valid()) {
-      fileApplicationService.removeFileIndex(reference);
-      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
-    }
-
-    if (!StringUtils.equals(passwd, reference.getPasswd())) {
-      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "密码错误");
+    try {
+      fileValidService.validFile(reference, passwd, "/md");
+    } catch (Exception e) {
+      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, e.getMessage());
     }
 
     // 读取文件

@@ -68,6 +68,22 @@ export class FileService {
   }
 
   /**
+   * 读取office文件
+   */
+  readOfficeFile(fileMd5: string,passwd: string): Observable<FileItem> {
+    return this.httpClient
+      .post(this.config.officeFileReadUrl,null,{params:{'fileMd5':fileMd5,'passwd':passwd}})
+      .pipe(map(resp => resp as ApiWrapper),
+        map(data => {
+          if (data.status != 2000) {
+            this.toast.toast(data.message);
+          } else {
+            return data.data as FileItem;
+          }
+        }))
+  }
+
+  /**
    * 更新文件
    */
   updateFile(file: FileItem): Observable<ApiWrapper> {

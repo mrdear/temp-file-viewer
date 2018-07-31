@@ -14,14 +14,15 @@
 1. markdown √
 2. json,xml,java,c,cpp,php,python等 √
 3. jpg,jpeg,png,gif √  (大图片展示取决于服务器带宽,另外提供TinyPNG压缩选项)
+4. doc,docx,xls,xlsx,ppt,pptx √ (尝试了不少方案,poi+itext,最后还是微软的在线预览体验最好,当然也实现最简单)
 
 ## 使用
 
 ```bash
 
-docker pull push ifreehub/temp-file-viewer:1.0
+docker pull push ifreehub/temp-file-viewer:1.3
 
-docker run -d -p 8081:8081 -e APP_OPTS="-Dspring.profiles.active=prod" docker.io/ifreehub/temp-file-viewer:1.2
+docker run -d -p 8081:8081 -e APP_OPTS="-Dspring.profiles.active=prod" docker.io/ifreehub/temp-file-viewer:1.4
 
 ```
 

@@ -36,6 +36,10 @@ export class Config {
   /**
    * 读取图片文件
    */
-  pictureFileReadUrl: string = `/api/v1/img/`;
+  pictureFileReadUrl: string = `/api/v1/picture/img/`;
+  /**
+   * 读office
+   */
+  officeFileReadUrl: string = `/api/v1/office/info/`;
 
 }
