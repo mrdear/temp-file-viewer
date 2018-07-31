@@ -22,7 +22,7 @@
 
 docker pull push ifreehub/temp-file-viewer:1.3
 
-docker run -d -p 8081:8081 -e APP_OPTS="-Dspring.profiles.active=prod" docker.io/ifreehub/temp-file-viewer:1.4
+docker run -d -p 8081:8081 -e APP_OPTS="-Dspring.profiles.active=prod" docker.io/ifreehub/temp-file-viewer:1.3
 
 ```
 
