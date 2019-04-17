@@ -1,5 +1,6 @@
 package cn.ifreehub.viewer.config.mvc;
 
+import cn.ifreehub.viewer.constant.CurrentUserHolder;
 import cn.ifreehub.viewer.model.Token;
 import com.google.common.collect.ImmutableSet;
 
@@ -40,6 +41,10 @@ public class SecurityFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest req, HttpServletResponse resp,
       FilterChain chain) throws ServletException, IOException {
     String requestURI = req.getRequestURI();
+    Token token = JwtTokenUtils.getTokenFromRequest(req);
+    if (token != null){
+      CurrentUserHolder.setUserName(token.getUserName());
+    }
     if (AUTHOR_URI.contains(requestURI)) {
       ApiWrapper<Boolean> apiWrapper = JwtTokenUtils.verifyToken(req);
       if (!apiWrapper.isSuccess()) {
@@ -48,10 +53,11 @@ public class SecurityFilter extends OncePerRequestFilter {
       }
       // 到这里说明验证成功了,因此判断是否需要刷新token
       if (apiWrapper.getData()) {
-        Token token = JwtTokenUtils.getTokenFromRequest(req);
         JwtTokenUtils.create(token.getUserName(), JwtTokenType.DEFAULT, resp);
       }
     }
+
+
     chain.doFilter(req, resp);
   }
 

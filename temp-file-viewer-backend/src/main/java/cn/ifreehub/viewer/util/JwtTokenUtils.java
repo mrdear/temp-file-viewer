@@ -53,7 +53,6 @@ public class JwtTokenUtils {
         try {
 
             JwtTokenType tokenType = JwtTokenType.valueOf(token.getType());
-            CurrentUserHolder.setUserName(token.getUserName());
             if (tokenType.needRenewal(token.getExpire())) {
                 return ApiWrapper.success(true);
             }

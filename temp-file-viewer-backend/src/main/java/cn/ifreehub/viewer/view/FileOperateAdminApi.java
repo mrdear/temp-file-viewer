@@ -4,11 +4,14 @@ import cn.ifreehub.viewer.constant.ApiStatus;
 import cn.ifreehub.viewer.constant.CurrentUserHolder;
 import cn.ifreehub.viewer.model.User;
 import cn.ifreehub.viewer.repo.UserRepo;
+import cn.ifreehub.viewer.view.vo.FileDetailVO;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.Assert;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,10 +25,12 @@ import cn.ifreehub.viewer.service.ConfigApplicationService;
 import cn.ifreehub.viewer.service.FileApplicationService;
 import cn.ifreehub.viewer.view.vo.FileItemVO;
 
+import java.io.*;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Quding Ding
@@ -86,6 +91,46 @@ public class FileOperateAdminApi {
     Map<String, FileIndexReference> fileMaps = configApplicationService.getFiles();
     fileApplicationService.removeFileIndex(fileMaps.get(fileMd5));
     return ApiWrapper.success();
+  }
+
+  /**
+   * 下载一个文件
+   *
+   * @param fileMd5 文件名
+   * @return
+   */
+  @GetMapping("download/")
+  public ApiWrapper downloadFile(String fileMd5, HttpServletResponse response) {
+    UserConfig config = configApplicationService.getUserConfig();
+    FileIndexReference reference = config.getFiles().get(fileMd5);
+
+    // 读取文件
+    try {
+      try {
+        //打开本地文件流
+        InputStream inputStream = new FileInputStream(reference.getFileAbsolutePath());
+        //激活下载操作
+        OutputStream os = response.getOutputStream();
+
+        //循环写入输出流
+        byte[] b = new byte[2048];
+        int length;
+        while ((length = inputStream.read(b)) > 0) {
+          os.write(b, 0, length);
+        }
+
+        // 这里主要关闭。
+        os.close();
+        inputStream.close();
+      } catch (Exception e){
+        throw e;
+      }
+      return ApiWrapper.success();
+
+    } catch (IOException e) {
+      logger.warn("file can't read,file md5name is {}", fileMd5, e);
+      return ApiWrapper.fail(ApiStatus.PARAMS_ERROR, "文件已过期或已删除");
+    }
   }
 
   /**

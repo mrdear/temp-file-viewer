@@ -1,10 +1,7 @@
 package cn.ifreehub.viewer.constant;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class CurrentUserHolder {
-    public static ThreadLocal<Map<String, String>> current = new ThreadLocal<>();
+    public static ThreadLocal<String> currentUserName = new ThreadLocal<>();
 
     /**
      * 设置登录用户名
@@ -12,14 +9,8 @@ public class CurrentUserHolder {
      * @param userName
      */
     public static void setUserName(String userName) {
-        Map<String, String> map = current.get();
-        if (map == null) {
-            map = new HashMap<>();
-            map.put("userName", userName);
-            current.set(map);
-        } else {
-            map.put("userName", userName);
-        }
+        currentUserName.set(userName);
+
     }
 
     /**
@@ -29,11 +20,7 @@ public class CurrentUserHolder {
      */
     public static String getUserName() {
 
-        Map<String, String> map = current.get();
-        if (map == null) {
-            return null;
-        }
-        return map.get("userName");
+        return currentUserName.get();
     }
 
 }
