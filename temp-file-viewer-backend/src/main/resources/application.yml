@@ -5,7 +5,7 @@ temp:
   picture:
     tinypng:
       apikey: JKwWUnDJK2TsriXiBXzoKzziSnKHk3lh
-      enable: true
+      enable: false
 jwt:
   secret: 123456
 root:
