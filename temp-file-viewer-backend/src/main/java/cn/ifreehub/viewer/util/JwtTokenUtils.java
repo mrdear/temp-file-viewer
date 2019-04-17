@@ -1,6 +1,7 @@
 package cn.ifreehub.viewer.util;
 
 
+import cn.ifreehub.viewer.constant.CurrentUserHolder;
 import cn.ifreehub.viewer.model.Token;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -52,6 +53,7 @@ public class JwtTokenUtils {
         try {
 
             JwtTokenType tokenType = JwtTokenType.valueOf(token.getType());
+            CurrentUserHolder.setUserName(token.getUserName());
             if (tokenType.needRenewal(token.getExpire())) {
                 return ApiWrapper.success(true);
             }

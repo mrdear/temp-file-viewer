@@ -1,5 +1,7 @@
 package cn.ifreehub.viewer.config;
 
+import cn.ifreehub.viewer.util.JsonUtils;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
@@ -10,6 +12,9 @@ import cn.ifreehub.viewer.constant.AppConfig;
 import cn.ifreehub.viewer.constant.ConfigKey;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Collections;
 
 
 /**
@@ -71,5 +76,33 @@ public class EnvironmentContext implements EnvironmentAware, InitializingBean {
   public static String getConfigFilePath() {
     String distPath = EnvironmentContext.getFolderPath(AppConfig.TEMP_FILE_DIST);
     return distPath + "config" + File.separator + "config.json";
+  }
+
+  public static void createUserConfig() {
+
+    String configFilePath = EnvironmentContext.getConfigFilePath();
+
+    File file = new File(configFilePath);
+    if (!file.exists()) {
+      try {
+        // 创建文件
+        FileUtils.forceMkdirParent(file);
+        FileWriter writer = new FileWriter(file);
+
+        writer.write(JsonUtils.writeString(new cn.ifreehub.viewer.domain.UserConfig()
+                .setFiles(Collections.emptyMap())));
+        writer.flush();
+        writer.close();
+
+        // 修改权限,禁止执行权限
+
+        String distPath = EnvironmentContext.getFolderPath(AppConfig.TEMP_FILE_DIST);
+        File distFile = new File(distPath);
+        distFile.setExecutable(true, false);
+      } catch (IOException e) {
+        e.printStackTrace();
+        throw new Error("config创建失败");
+      }
+    }
   }
 }

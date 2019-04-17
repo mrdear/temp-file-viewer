@@ -49,6 +49,7 @@ public class UserApi {
                 return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
             }
             username = adminUserName;
+
         } else {
             User user = userRepo.findUserByUserName(username);
             if (user != null) { //如果存在就校验
@@ -60,6 +61,7 @@ public class UserApi {
                 user.setUserName(username);
                 user.setPassword(passwd);
                 userRepo.save(user);
+                EnvironmentContext.createUserConfig();
             }
 
         }
