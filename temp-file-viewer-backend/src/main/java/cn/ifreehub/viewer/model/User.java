@@ -1,12 +1,15 @@
 package cn.ifreehub.viewer.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
 @Table(name="user")
 public class User {
+    @Id
     private Integer id;
     private String userName;
     private String password;

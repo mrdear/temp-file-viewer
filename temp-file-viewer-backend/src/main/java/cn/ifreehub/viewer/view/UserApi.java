@@ -43,9 +43,9 @@ public class UserApi {
     @PostMapping("login/")
     public ApiWrapper login(String username, String passwd, HttpServletResponse response, HttpServletRequest request) {
         String adminUserName = EnvironmentContext.getStringValue(AppConfig.ROOT_USERNAME);
-        if (!Objects.equals(username, adminUserName)) {
+        if (Objects.equals(username, adminUserName)) {
             String realPwd = EnvironmentContext.getStringValue(AppConfig.ROOT_PASSWORD);
-            if (Objects.equals(DigestUtils.sha256Hex(realPwd), passwd)) {
+            if (!Objects.equals(DigestUtils.sha256Hex(realPwd), passwd)) {
                 return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
             }
             username = adminUserName;
