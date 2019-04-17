@@ -1,5 +1,6 @@
 package cn.ifreehub.viewer.config;
 
+import cn.ifreehub.viewer.constant.CurrentUserHolder;
 import cn.ifreehub.viewer.util.JsonUtils;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.InitializingBean;
@@ -63,10 +64,11 @@ public class EnvironmentContext implements EnvironmentAware, InitializingBean {
    */
   public static String getFolderPath(ConfigKey key) {
     String value = getStringValue(key);
+    String suffix = CurrentUserHolder.getUserName() + File.separator;
     if (value.endsWith(File.separator)) {
-      return value;
+      return value + suffix;
     }
-    return value + File.separator;
+    return value + File.separator +suffix;
   }
 
   /**
