@@ -101,7 +101,7 @@ public class JwtTokenUtils {
                 .getBody();
         Token token = new Token();
         token.setExpire(claims.getExpiration());
-        token.setType(String.valueOf(claims.get("token")));
+        token.setType(String.valueOf(claims.get("type")));
         token.setVersion(String.valueOf(claims.get("version")));
         token.setUserName(claims.getSubject());
         return token;

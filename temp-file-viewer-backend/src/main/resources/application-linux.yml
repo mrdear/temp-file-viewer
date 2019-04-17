@@ -1,0 +1,4 @@
+temp:
+  hostname:
+  file:
+    dist: /var/tempfile
