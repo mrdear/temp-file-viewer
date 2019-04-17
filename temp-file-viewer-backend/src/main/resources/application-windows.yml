@@ -2,3 +2,5 @@ temp:
   hostname:
   file:
     dist: D:\\tmp\\files
+    # 普通用户运行上传的大小 单位为M
+    normalSize: 50

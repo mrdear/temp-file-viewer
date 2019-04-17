@@ -1,7 +1,13 @@
 package cn.ifreehub.viewer.view;
 
+import cn.ifreehub.viewer.constant.ApiStatus;
+import cn.ifreehub.viewer.constant.CurrentUserHolder;
+import cn.ifreehub.viewer.model.User;
+import cn.ifreehub.viewer.repo.UserRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,11 +42,23 @@ public class FileOperateAdminApi {
   @Resource
   private ConfigApplicationService configApplicationService;
 
+  @Autowired
+  private UserRepo userRepo;
+
+  @Value("${temp.file.normalSize:10}")
+  private Integer normalSize;
+
   /**
    * 文件上传接口
    */
   @PostMapping("upload/")
   public ApiWrapper upload(MultipartFile file) {
+    if (file.getSize()/1048576 > normalSize){
+      User user = userRepo.findUserByUserName(CurrentUserHolder.getUserName());
+      if (user!=null && user.getRole() != 0){
+        return ApiWrapper.fail(ApiStatus.FILE_TOO_LARGE);
+      }
+    }
     FileIndexReference reference = FileIndexReference.newInstance(file);
     logger.info("upload file {}", reference);
     UserConfig config = configApplicationService.getUserConfig();

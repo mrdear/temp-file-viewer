@@ -9,10 +9,26 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
+    /**
+     * 用户名
+     */
     private String userName;
     private String password;
     private Integer isDelete;
+    /**
+     * 角色:0:管理员,1:普通用户
+     */
+    private Integer role;
     private Date createDate;
+
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
 
     public Integer getId() {
         return id;

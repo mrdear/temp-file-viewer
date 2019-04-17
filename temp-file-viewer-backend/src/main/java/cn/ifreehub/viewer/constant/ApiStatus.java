@@ -20,6 +20,8 @@ public enum ApiStatus {
   PARAMS_ERROR(4002, "参数错误"),
 
   FAIL(5001, "服务端错误"),
+
+  FILE_TOO_LARGE(6001,"文件太大")
   ;
 
   public int code;
