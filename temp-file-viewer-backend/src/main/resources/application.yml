@@ -10,7 +10,7 @@ jwt:
   secret: 123456
 root:
   password: 123456
-  avatar: https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=27ac483e40a7d933bfa8e3759570b62e/5882b2b7d0a20cf419b28cf574094b36acaf99fd.jpg
+  avatar: /favicon.ico
   username: admin
 
 spring:
