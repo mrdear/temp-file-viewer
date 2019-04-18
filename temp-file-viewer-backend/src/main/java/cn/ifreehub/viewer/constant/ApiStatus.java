@@ -21,7 +21,9 @@ public enum ApiStatus {
 
   FAIL(5001, "服务端错误"),
 
-  FILE_TOO_LARGE(6001,"文件太大")
+  FILE_TOO_LARGE(4003,"文件太大"),
+
+  USER_ALREADY_EXISTS(4005,"要注册的用户已存在")
   ;
 
   public int code;

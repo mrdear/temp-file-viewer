@@ -6,6 +6,7 @@ import cn.ifreehub.viewer.domain.User;
 import cn.ifreehub.viewer.repo.UserRepo;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,13 +58,7 @@ public class UserApi {
                     return ApiWrapper.fail(ApiStatus.NO_AUTHORITY);
                 }
             } else {//如果不存在就注册,暂时妥协
-                user = new User();
-                user.setUserName(username);
-                user.setPassword(passwd);
-                user.setRole(1);
-                user.setCreateDate(new Date());
-                user.setIsDelete(0);
-                userRepo.save(user);
+               regist(username,passwd);
             }
         }
 
@@ -86,6 +81,30 @@ public class UserApi {
             userName = token.getUserName();
         }
         return ApiWrapper.success(new UserProfileVO(userName, avatar));
+    }
+
+    /**
+     * 注册用户
+     * @param username
+     * @param passwd
+     * @return
+     */
+    @PostMapping("regist")
+    public ApiWrapper regist(String username,String passwd){
+
+        User user = new User();
+        user.setUserName(username);
+        user.setPassword(passwd);
+        // 已注册的用户不走这里
+        if(userRepo.exists(Example.of(user))){
+            return ApiWrapper.fail(ApiStatus.USER_ALREADY_EXISTS);
+        }
+
+        user.setRole(1);
+        user.setCreateDate(new Date());
+        user.setIsDelete(0);
+        userRepo.save(user);
+        return ApiWrapper.success();
     }
 
 }
