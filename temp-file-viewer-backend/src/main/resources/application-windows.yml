@@ -15,3 +15,9 @@ spring:
     hibernate:
       ddl-auto: update  # 建表策略
     show-sql: true  #显示SQL语句
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        web-allow-others: true

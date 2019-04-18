@@ -1,8 +1,7 @@
 package cn.ifreehub.viewer.util;
 
 
-import cn.ifreehub.viewer.constant.CurrentUserHolder;
-import cn.ifreehub.viewer.model.Token;
+import cn.ifreehub.viewer.domain.Token;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

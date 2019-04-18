@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import cn.ifreehub.viewer.domain.FileIndexReference;
 import cn.ifreehub.viewer.domain.UserConfig;
 import cn.ifreehub.viewer.exception.ServiceException;
-import cn.ifreehub.viewer.repo.ConfigRepo;
 import cn.ifreehub.viewer.repo.TinifyPngRepo;
 
 import java.io.File;
@@ -34,7 +33,7 @@ public class FileApplicationService {
   private static Logger logger = LoggerFactory.getLogger(FileApplicationService.class);
 
   @Resource
-  private ConfigRepo configRepo;
+  private FileIndexReferenceService fileIndexReferenceService;
   @Resource
   private TinifyPngRepo tinifyPngRepo;
   /**
@@ -44,7 +43,7 @@ public class FileApplicationService {
    */
   public void addFileIndex(FileIndexReference reference, MultipartFile file) {
     // 保存config
-    if (configRepo.addFileIndexConfig(reference)) {
+    if (fileIndexReferenceService.addFileIndexConfig(reference)) {
       // 保存文件
       try {
         file.transferTo(new File(reference.getFileAbsolutePath()));
@@ -63,7 +62,7 @@ public class FileApplicationService {
    */
   public void removeFileIndex(FileIndexReference reference) {
     // 删除文件成功,清理磁盘
-    if (configRepo.removeFileIndex(reference)) {
+    if (fileIndexReferenceService.removeFileIndex(reference)) {
       try {
         FileUtils.forceDelete(new File(reference.getFileAbsolutePath()));
         return;
@@ -82,7 +81,7 @@ public class FileApplicationService {
    * @return 结果
    */
   public List<FileIndexReference> queryAllFile() {
-    UserConfig userConfig = configRepo.getUserConfig();
+    UserConfig userConfig = fileIndexReferenceService.getUserConfig();
     Map<String, FileIndexReference> files = userConfig.getFiles();
 
     ArrayList<FileIndexReference> references = Lists.newArrayList(files.values());
@@ -91,7 +90,7 @@ public class FileApplicationService {
         // 过滤掉过期文件
         .filter(x -> {
           if (!x.valid()) {
-            configRepo.removeFileIndex(x);
+            fileIndexReferenceService.removeFileIndex(x);
             return false;
           }
           return true;
@@ -106,6 +105,6 @@ public class FileApplicationService {
    * @return true成功
    */
   public boolean updateFileReference(FileIndexReference reference) {
-    return configRepo.addFileIndexConfig(reference);
+    return fileIndexReferenceService.addFileIndexConfig(reference);
   }
 }

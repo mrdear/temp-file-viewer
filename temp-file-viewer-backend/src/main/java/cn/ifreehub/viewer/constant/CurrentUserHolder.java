@@ -23,4 +23,11 @@ public class CurrentUserHolder {
         return currentUserName.get();
     }
 
+    /**
+     * 清除线程用户名,防止线程池回收导致的bug
+     */
+    public static void clear(){
+        currentUserName.remove();
+    }
+
 }

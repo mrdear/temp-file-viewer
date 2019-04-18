@@ -2,16 +2,13 @@ package cn.ifreehub.viewer.view;
 
 import cn.ifreehub.viewer.constant.ApiStatus;
 import cn.ifreehub.viewer.constant.CurrentUserHolder;
-import cn.ifreehub.viewer.model.User;
+import cn.ifreehub.viewer.domain.User;
 import cn.ifreehub.viewer.repo.UserRepo;
-import cn.ifreehub.viewer.view.vo.FileDetailVO;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.Assert;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

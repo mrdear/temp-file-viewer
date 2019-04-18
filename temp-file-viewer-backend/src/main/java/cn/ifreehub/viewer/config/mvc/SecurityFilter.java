@@ -1,13 +1,11 @@
 package cn.ifreehub.viewer.config.mvc;
 
 import cn.ifreehub.viewer.constant.CurrentUserHolder;
-import cn.ifreehub.viewer.model.Token;
+import cn.ifreehub.viewer.domain.Token;
 import com.google.common.collect.ImmutableSet;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import cn.ifreehub.viewer.config.EnvironmentContext;
-import cn.ifreehub.viewer.constant.AppConfig;
 import cn.ifreehub.viewer.constant.JwtTokenType;
 import cn.ifreehub.viewer.domain.ApiWrapper;
 import cn.ifreehub.viewer.util.JsonUtils;
@@ -56,9 +54,8 @@ public class SecurityFilter extends OncePerRequestFilter {
         JwtTokenUtils.create(token.getUserName(), JwtTokenType.DEFAULT, resp);
       }
     }
-
-
     chain.doFilter(req, resp);
+    CurrentUserHolder.clear();
   }
 
 }

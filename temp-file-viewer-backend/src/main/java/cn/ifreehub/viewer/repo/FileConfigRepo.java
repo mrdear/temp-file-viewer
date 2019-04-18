@@ -1,5 +1,6 @@
 package cn.ifreehub.viewer.repo;
 
+import cn.ifreehub.viewer.service.IConfigService;
 import com.google.common.collect.Maps;
 
 import org.slf4j.Logger;
@@ -25,10 +26,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Quding Ding
  * @since 2018/6/20
  */
-@Repository
-public class ConfigRepo {
+public class FileConfigRepo implements IConfigService {
 
-  private static Logger logger = LoggerFactory.getLogger(ConfigRepo.class);
+  private static Logger logger = LoggerFactory.getLogger(FileConfigRepo.class);
   /**
    * 控制配置更新的读写锁,由使用方控制
    */
@@ -39,8 +39,9 @@ public class ConfigRepo {
    *
    * @return 全部文件
    */
+  @Override
   public UserConfig getUserConfig() {
-    Lock readLock = ConfigRepo.CONFIG_LOCK.readLock();
+    Lock readLock = FileConfigRepo.CONFIG_LOCK.readLock();
     readLock.lock();
     try {
       String configPath = EnvironmentContext.getConfigFilePath();
@@ -55,8 +56,9 @@ public class ConfigRepo {
    *
    * @return true 成功
    */
+  @Override
   public boolean addFileIndexConfig(FileIndexReference reference) {
-    Lock writeLock = ConfigRepo.CONFIG_LOCK.writeLock();
+    Lock writeLock = FileConfigRepo.CONFIG_LOCK.writeLock();
     writeLock.lock();
     try {
       // 添加新文件
@@ -76,8 +78,9 @@ public class ConfigRepo {
    * @param reference 文件索引
    * @return true删除成功
    */
+  @Override
   public boolean removeFileIndex(FileIndexReference reference) {
-    Lock writeLock = ConfigRepo.CONFIG_LOCK.writeLock();
+    Lock writeLock = FileConfigRepo.CONFIG_LOCK.writeLock();
     writeLock.lock();
     try {
       UserConfig userConfig = getUserConfig();

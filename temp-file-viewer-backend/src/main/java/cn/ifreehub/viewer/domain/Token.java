@@ -1,4 +1,4 @@
-package cn.ifreehub.viewer.model;
+package cn.ifreehub.viewer.domain;
 
 import java.util.Date;
 

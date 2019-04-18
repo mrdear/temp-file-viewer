@@ -1,8 +1,8 @@
 package cn.ifreehub.viewer.view;
 
 import cn.ifreehub.viewer.constant.CurrentUserHolder;
-import cn.ifreehub.viewer.model.Token;
-import cn.ifreehub.viewer.model.User;
+import cn.ifreehub.viewer.domain.Token;
+import cn.ifreehub.viewer.domain.User;
 import cn.ifreehub.viewer.repo.UserRepo;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +19,9 @@ import cn.ifreehub.viewer.domain.ApiWrapper;
 import cn.ifreehub.viewer.util.JwtTokenUtils;
 import cn.ifreehub.viewer.view.vo.UserProfileVO;
 
+import java.util.Date;
 import java.util.Objects;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -60,11 +60,14 @@ public class UserApi {
                 user = new User();
                 user.setUserName(username);
                 user.setPassword(passwd);
+                user.setRole(1);
+                user.setCreateDate(new Date());
+                user.setIsDelete(0);
                 userRepo.save(user);
             }
         }
+
         CurrentUserHolder.setUserName(username);
-        EnvironmentContext.createUserConfig();
 
         // 登录成功,下发token
         JwtTokenUtils.create(username, JwtTokenType.DEFAULT, response);
