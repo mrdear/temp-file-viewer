@@ -1,11 +1,11 @@
 package cn.ifreehub.viewer.config.mvc;
 
+import cn.ifreehub.viewer.constant.CurrentUserHolder;
+import cn.ifreehub.viewer.domain.Token;
 import com.google.common.collect.ImmutableSet;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import cn.ifreehub.viewer.config.EnvironmentContext;
-import cn.ifreehub.viewer.constant.AppConfig;
 import cn.ifreehub.viewer.constant.JwtTokenType;
 import cn.ifreehub.viewer.domain.ApiWrapper;
 import cn.ifreehub.viewer.util.JsonUtils;
@@ -39,6 +39,10 @@ public class SecurityFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest req, HttpServletResponse resp,
       FilterChain chain) throws ServletException, IOException {
     String requestURI = req.getRequestURI();
+    Token token = JwtTokenUtils.getTokenFromRequest(req);
+    if (token != null){
+      CurrentUserHolder.setUserName(token.getUserName());
+    }
     if (AUTHOR_URI.contains(requestURI)) {
       ApiWrapper<Boolean> apiWrapper = JwtTokenUtils.verifyToken(req);
       if (!apiWrapper.isSuccess()) {
@@ -47,11 +51,11 @@ public class SecurityFilter extends OncePerRequestFilter {
       }
       // 到这里说明验证成功了,因此判断是否需要刷新token
       if (apiWrapper.getData()) {
-        String realUsername = EnvironmentContext.getStringValue(AppConfig.ROOT_USERNAME);
-        JwtTokenUtils.create(realUsername, JwtTokenType.DEFAULT, resp);
+        JwtTokenUtils.create(token.getUserName(), JwtTokenType.DEFAULT, resp);
       }
     }
     chain.doFilter(req, resp);
+    CurrentUserHolder.clear();
   }
 
 }

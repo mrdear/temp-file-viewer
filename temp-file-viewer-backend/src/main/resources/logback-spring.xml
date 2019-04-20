@@ -33,6 +33,7 @@
     <springProfile name="!dev">
         <root level="INFO">
             <appender-ref ref="MainLog"/>
+            <appender-ref ref="CONSOLE"/>
         </root>
     </springProfile>
 

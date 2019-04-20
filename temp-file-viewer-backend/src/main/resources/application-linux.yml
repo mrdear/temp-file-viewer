@@ -1,0 +1,17 @@
+temp:
+  hostname:
+  file:
+    dist: /var/temp-file-viewer/files
+    # 普通用户运行上传的大小 单位为M
+    normalSize: 50
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:file:~/h2home/h2/tempfile
+    username: root
+    password: root
+  jpa:
+    datebase: h2
+    hibernate:
+      ddl-auto: update  # 建表策略
+    show-sql: true  #显示SQL语句

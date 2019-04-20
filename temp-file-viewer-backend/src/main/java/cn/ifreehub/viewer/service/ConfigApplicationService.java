@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import cn.ifreehub.viewer.domain.FileIndexReference;
 import cn.ifreehub.viewer.domain.UserConfig;
-import cn.ifreehub.viewer.repo.ConfigRepo;
 
 import java.util.Map;
 import java.util.Optional;
@@ -21,14 +20,14 @@ import javax.annotation.Resource;
 public class ConfigApplicationService {
 
   @Resource
-  private ConfigRepo configRepo;
+  private FileIndexReferenceService fileIndexReferenceService;
 
   /**
    * 拿到全局配置
    * @return 配置
    */
   public UserConfig getUserConfig() {
-    return configRepo.getUserConfig();
+    return fileIndexReferenceService.getUserConfig();
   }
 
   /**
@@ -36,7 +35,7 @@ public class ConfigApplicationService {
    * @return 已上传文件集合
    */
   public Map<String, FileIndexReference> getFiles() {
-    return Optional.ofNullable(configRepo.getUserConfig().getFiles())
+    return Optional.ofNullable(fileIndexReferenceService.getUserConfig().getFiles())
         .orElse(Maps.newHashMapWithExpectedSize(2));
   }
 

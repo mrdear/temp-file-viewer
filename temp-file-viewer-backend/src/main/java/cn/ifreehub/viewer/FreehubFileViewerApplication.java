@@ -28,47 +28,9 @@ public class FreehubFileViewerApplication {
   public static void main(String[] args) {
     SpringApplication application = new SpringApplicationBuilder()
         .sources(FreehubFileViewerApplication.class)
-        // 启动监听事件
-        .listeners(new AppInitListener())
         .build();
 
     application.run(args);
   }
 
-  /**
-   * 容器准备准备后执行的操作
-   */
-  private static class AppInitListener implements ApplicationListener<ApplicationReadyEvent> {
-
-    @Override
-    public void onApplicationEvent(ApplicationReadyEvent event) {
-      logger.info("AppInitListener start exec");
-
-      String configFilePath = EnvironmentContext.getConfigFilePath();
-
-      File file = new File(configFilePath);
-      if (!file.exists()) {
-        try {
-          // 创建文件
-          FileUtils.forceMkdirParent(file);
-          FileWriter writer = new FileWriter(file);
-
-          writer.write(JsonUtils.writeString(new cn.ifreehub.viewer.domain.UserConfig()
-              .setFiles(Collections.emptyMap())));
-          writer.flush();
-          writer.close();
-          logger.info("file config path create success");
-
-          // 修改权限,禁止执行权限
-          String distPath = EnvironmentContext.getFolderPath(AppConfig.TEMP_FILE_DIST);
-          File distFile = new File(distPath);
-          distFile.setExecutable(true, false);
-        } catch (IOException e) {
-          e.printStackTrace();
-          throw new Error("config创建失败");
-        }
-      }
-    }
   }
-
-}

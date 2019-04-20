@@ -1,0 +1,30 @@
+
+server:
+  port: 8081
+temp:
+  picture:
+    tinypng:
+      apikey: JKwWUnDJK2TsriXiBXzoKzziSnKHk3lh
+      enable: false
+jwt:
+  secret: 123456
+root:
+  password: 123456
+  avatar: /favicon.ico
+  username: admin
+
+spring:
+  profiles:
+    active: windows
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      file-size-threshold: 1
+  http:
+    encoding:
+      force-response: true
+      force-request: true
+      charset: utf-8
+      force: true
+
+

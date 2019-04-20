@@ -10,6 +10,10 @@ import cn.ifreehub.viewer.constant.AppConfig;
 import cn.ifreehub.viewer.constant.FileType;
 import cn.ifreehub.viewer.util.ShortPasswdUtil;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.util.Date;
@@ -20,7 +24,15 @@ import java.util.Date;
  * @author Quding Ding
  * @since 2018/6/13
  */
+@Entity
 public class FileIndexReference implements Serializable, Comparable<FileIndexReference> {
+  @Id
+  @GeneratedValue(strategy= GenerationType.IDENTITY)
+  private Integer id;
+  /**
+   * 用户的id
+   */
+  private Integer userId;
   /**
    * 文件md5名
    */
@@ -82,6 +94,7 @@ public class FileIndexReference implements Serializable, Comparable<FileIndexRef
    * @param fileName 文件名
    */
   public void modifyFileName(String fileName) {
+
     this.fileName = fileName;
   }
 
@@ -132,8 +145,25 @@ public class FileIndexReference implements Serializable, Comparable<FileIndexRef
     return passwd;
   }
 
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
   public Date getExpireDate() {
+
     return expireDate;
+  }
+
+  public Integer getUserId() {
+    return userId;
+  }
+
+  public void setUserId(Integer userId) {
+    this.userId = userId;
   }
 
   @Override
