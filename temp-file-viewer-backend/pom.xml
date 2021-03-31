@@ -30,7 +30,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<jjwt.version>0.9.0</jjwt.version>
-		<guava.version>24.0-jre</guava.version>
+		<guava.version>29.0-jre</guava.version>
 		<okhttp.version>3.9.1</okhttp.version>
 	</properties>
 
